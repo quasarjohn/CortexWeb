@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Sign In | Cortex</title>
+    <!--/*/ <th:block th:include="fragments/head-fragment :: head-fragment"></th:block> /*/-->
+    <link rel="stylesheet" type="text/css" href="static/styles/sign-in.css" th:href="@{styles/sign-in.css}" />
+</head>
+<body>
+<a id="home" href="#" th:href="@{/}" data-toggle="tooltip" data-placement="bottom" title="Home">
+    <span class="fa fa-copyright"></span> Cortex</a>
+<div class="container">
+    <h2 class="text-center">Sign In</h2>
+    <h3 class="text-center">New to Cortex? <a href="#">Sign Up</a></h3>
+
+    <div class="row">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4">
+            <form>
+                <div class="form-group">
+                    <label id="emailLbl">Email</label>
+                    <input type="text" class="form-control" placeholder="Enter your email" name="email" />
+                </div>
+                <div class="form-group">
+                    <label id="passwordLbl">Password</label>
+                    <input type="password" class="form-control" placeholder="Enter your password" name="password" />
+                </div>
+                <div class="form-group">
+                    <label><input type="checkbox" name="checkbox" /> Remember Me</label>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="w3-btn w3-round-xxlarge">Sign In</button>
+                    <p>Or Sign In using</p>
+                    <img class="img-responsive googleImg" src="images/google.png" />
+                </div>
+            </form>
+        </div>
+        <div class="col-sm-4"></div>
+    </div>
+</div>
+
+<!--/*/ <th:block th:include="fragments/scripts-fragment :: scripts-fragment"></th:block> /*/-->
+<script type="text/javascript" src="scripts/sign-in.js"></script>
+</body>
+</html>

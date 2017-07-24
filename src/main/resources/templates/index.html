@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Cortex</title>
+    <!--/*/ <th:block th:include="fragments/head-fragment :: head-fragment"></th:block> /*/-->
+    <link rel="stylesheet" type="text/css" href="static/styles/index.css" th:href="@{styles/index.css}" />
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top w3-card-4">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a href="#" th:href="@{/}" class="navbar-brand w3-text-teal" data-toggle="tooltip" data-placement="bottom" title="Home">
+                <span class="fa fa-copyright"></span> CORTEX</a>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navBarItem">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div id="navBarItem" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar">
+                <li><a href="#" th:href="@{/use-case}" style="padding: 28px 20px; margin-top: 1px;">USE CASES</a></li>
+                <li><a href="#" style="padding: 28px 20px; margin-top: 1px">COMMUNITY</a></li>
+                <li><a href="#" style="padding: 28px 20px; margin-top: 1px">DOCUMENTATION</a></li>
+                <li><a href="#" th:href="@{/support}" style="padding: 28px 20px; margin-top: 1px">SUPPORT</a></li>
+                <li><a href="#" th:href="@{/about}" style="padding: 28px 20px; margin-top: 1px">ABOUT</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#" th:href="@{/sign-in}" style="padding: 28px 20px; margin-top: 2px;">SIGN IN</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div id="con" class="container-fluid text-center" style="padding: 0; margin-top: 50px;">
+    <img class="img-responsive w3-display-container" src="images/home.jpg" style="width: 100%; height: 550px;" />
+    <span class="fa fa-copyright w3-display-middle w3-opacity"></span>
+    <h1 class="w3-display-middle">Cortex</h1>
+    <h4 class="w3-display-middle">Cortex helps lorem ipsum dolor sit amet, tation alterum aliquid ut mea, ne purto option mei.</h4>
+    <a href="#" th:href="@{/try-it}" class="w3-button w3-round tryItBtn endLine w3-hover-teal w3-hover-shadow w3-display-middle">TRY IT</a>
+</div>
+
+<div id="con1" class="container-fluid text-center w3-teal">
+    <div class="row">
+        <div class="col-sm-4">
+            <span class="fa fa-image"></span>
+            <h2>CLASSIFY ANYTHING</h2>
+            <h4>Id aperiam gloriatur deterruisset est, vel numquam appetere te. Exerci commodo argumentum at nam. Eam ut etiam conceptam, mel diceret appareat ad.</h4>
+        </div>
+        <div class="col-sm-4">
+            <span class="fa fa-image"></span>
+            <h2>COMMUNITY BASED</h2>
+            <h4>Sumo debet nonumy eu cum, ut causae mediocrem has. No nulla deserunt mea, ad ius debet laboramus accommodare.</h4>
+        </div>
+        <div class="col-sm-4">
+            <span class="fa fa-image"></span>
+            <h2>CROSS-PLATFORM</h2>
+            <h4 class="endLine">Sit dolorum omnesque an. Minim appellantur sea ea, vitae regione electram eum ea. Nibh atomorum facilisis nam at, doctus viderer intellegam ei nec. Eam in lucilius urbanitas.</h4>
+        </div>
+    </div>
+</div>
+
+<div id="useCases" class="container-fluid">
+    <div class="row">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-7">
+            <h2>Use Case</h2>
+            <h4>Iuvaret facilisi interpretaris ei mei. Justo everti luptatum no eam. Ne ius soluta mediocritatem, his zril nominati deseruisse ut. Pri fabellas pertinacia et, quo sale autem diceret ad, ut diceret molestie est.</h4>
+            <a href="#" th:href="@{/use-case}">Check the Use Case&nbsp;&nbsp;<span class="fa fa-chevron-right"></span></a>
+        </div>
+        <div class="col-sm-4">
+            <span class="fa fa-file-picture-o"></span>
+        </div>
+    </div>
+</div>
+
+<div id="community" class="container-fluid text-right">
+    <div class="row">
+        <div class="col-sm-4">
+            <span class="fa fa-github"></span>
+        </div>
+        <div class="col-sm-7">
+            <h2>Community</h2>
+            <h4>Euripidis consequat nam an. Sea porro liber inermis no, cum accusamus molestiae urbanitas et. Mea et impedit nominati ocurreret, dolorem pertinax mel id. Ut graeci putant quaestio vis, partem inimicus qui at.</h4>
+            <a href="#"><span class="fa fa-chevron-left">&nbsp;&nbsp;</span>Be part of our Community</a>
+        </div>
+        <div class="col-sm-1"></div>
+    </div>
+</div>
+
+<div id="documentation" class="container-fluid">
+    <div class="row">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-7">
+            <h2>Documentation</h2>
+            <h4>Ei vix ancillae recusabo accommodare, civibus molestiae laboramus te vix. Noster oportere has ex. No sed homero tractatos vituperatoribus, per suscipit mediocrem ut, ea tritani placerat iracundia nec.</h4>
+            <a href="#">Read the Documentation&nbsp;&nbsp;<span class="fa fa-chevron-right"></span></a>
+        </div>
+        <div class="col-sm-4">
+            <span class="fa fa-book"></span>
+        </div>
+    </div>
+</div>
+
+<div id="support" class="container-fluid text-right">
+    <div class="row">
+        <div class="col-sm-4">
+            <span class="material-icons">question_answer</span>
+        </div>
+        <div class="col-sm-7">
+            <h2>Support</h2>
+            <h4>Vis cu facer soleat. An quod petentium conclusionemque ius, in choro eirmod per, an mel putent dissentiunt delicatissimi. Eu commune maluisset est, sit vide docendi no.</h4>
+            <a href="#" th:href="@{/support}"><span class="fa fa-chevron-left">&nbsp;&nbsp;</span>Need help?</a>
+        </div>
+        <div class="col-sm-1"></div>
+    </div>
+</div>
+
+<div id="about" class="container-fluid">
+    <div class="row">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-7">
+            <h2>About the Developers</h2>
+            <h4>Eu nusquam adipisci vel. Noluisse quaestio delicatissimi per at, dico nostrum scripserit vix an. Malis urbanitas liberavisse eu vix. Id quo delenit maiorum suavitate, et vel gloriatur suscipiantur.</h4>
+            <a href="#" th:href="@{/about}">Check us out&nbsp;&nbsp;<span class="fa fa-chevron-right"></span></a>
+        </div>
+        <div class="col-sm-4">
+            <span class="fa fa-question-circle"></span>
+        </div>
+    </div>
+</div>
+
+<div id="con2">
+    <div class="container text-center">
+        <h1><span class="fa fa-copyright"></span> Cortex</h1><br/>
+        <h2>Classifying images made easy.</h2><br/>
+        <div class="row">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-2">
+                <a href="#" th:href="@{/try-it}" class="w3-button w3-round tryItBtn endLine w3-hover-teal w3-hover-shadow">TRY IT</a>
+            </div>
+            <div class="col-sm-2">
+                <a href="#" class="w3-button w3-round getStartedBtn w3-hover-teal w3-hover-shadow">GET STARTED</a>
+            </div>
+            <div class="col-sm-4"></div>
+        </div>
+    </div>
+</div>
+
+<!--/*/ <th:block th:include="fragments/footer-fragment :: footer-fragment"></th:block> /*/-->
+
+<!--/*/ <th:block th:include="fragments/scripts-fragment :: scripts-fragment"></th:block> /*/-->
+<script type="text/javascript" src="scripts/index.js"></script>
+</body>
+</html>

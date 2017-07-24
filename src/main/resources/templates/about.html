@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Cortex</title>
+    <!--/*/ <th:block th:include="fragments/head-fragment :: head-fragment"></th:block> /*/-->
+    <link rel="stylesheet" type="text/css" href="styles/about.css" th:href="@{styles/about.css}" />
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top w3-card-4">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a href="#" th:href="@{/}" class="navbar-brand w3-text-teal" data-toggle="tooltip" data-placement="bottom" title="Home">
+                <span class="fa fa-copyright"></span> CORTEX</a>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navBarItem">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div id="navBarItem" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar">
+                <li><a href="#" th:href="@{/use-case}" style="padding: 28px 20px; margin-top: 1px;">USE CASES</a></li>
+                <li><a href="#" style="padding: 28px 20px; margin-top: 1px">COMMUNITY</a></li>
+                <li><a href="#" style="padding: 28px 20px; margin-top: 1px">DOCUMENTATION</a></li>
+                <li><a href="#" th:href="@{/support}" style="padding: 28px 20px; margin-top: 1px">SUPPORT</a></li>
+                <li class="active"><a href="#" th:href="@{/about}" style="padding: 28px 20px; margin-top: 1px">ABOUT</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#" th:href="@{/sign-in}" style="padding: 28px 20px; margin-top: 2px;">SIGN IN</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div id="con" class="container-fluid">
+    <h1 class="text-center">About the Developers</h1><br />
+    <div class="row">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-6">
+            <div class="panel panel-default w3-card-4">
+                <div class="panel-body">
+                    <div class="media">
+                        <div class="media-left">
+                            <img class="media-object img-rounded" src="images/dev1.png" />
+                        </div>
+                        <div class="media-body">
+                            <h2 class="media-heading"><strong>Developers Name</strong></h2>
+                            <p>Lorem ipsum dolor sit amet, ipsum tantas assentior ne nam, vix an mucius prompta incorrupte. Postulant molestiae ne mei. Ne congue antiopam adversarium nec, pri et velit disputando. Ut vim postea verterem vulputate.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3"></div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="panel panel-default w3-card-4">
+                <div class="panel-body">
+                    <div class="media">
+                        <div class="media-left">
+                            <img class="media-object img-rounded" src="images/dev2.png" />
+                        </div>
+                        <div class="media-body">
+                            <h2 class="media-heading"><strong>Developers Name</strong></h2>
+                            <p>Lorem ipsum dolor sit amet, ipsum tantas assentior ne nam, vix an mucius prompta incorrupte.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="panel panel-default w3-card-4">
+                <div class="panel-body">
+                    <div class="media">
+                        <div class="media-left">
+                            <img class="media-object img-rounded" src="images/dev3.png" />
+                        </div>
+                        <div class="media-body">
+                            <h2 class="media-heading"><strong>Developers Name</strong></h2>
+                            <p>Lorem ipsum dolor sit amet, ipsum tantas assentior ne nam, vix an mucius prompta incorrupte.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="panel panel-default w3-card-4">
+                <div class="panel-body">
+                    <div class="media">
+                        <div class="media-left">
+                            <img class="media-object img-rounded" src="images/dev4.png" />
+                        </div>
+                        <div class="media-body">
+                            <h2 class="media-heading"><strong>Developers Name</strong></h2>
+                            <p>Lorem ipsum dolor sit amet, ipsum tantas assentior ne nam, vix an mucius prompta incorrupte.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="panel panel-default w3-card-4">
+                <div class="panel-body">
+                    <div class="media">
+                        <div class="media-left">
+                            <img class="media-object img-rounded" src="images/dev5.png" />
+                        </div>
+                        <div class="media-body">
+                            <h2 class="media-heading"><strong>Developers Name</strong></h2>
+                            <p>Lorem ipsum dolor sit amet, ipsum tantas assentior ne nam, vix an mucius prompta incorrupte.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!--/*/ <th:block th:include="fragments/footer-fragment :: footer-fragment"></th:block> /*/-->
+
+<!--/*/ <th:block th:include="fragments/scripts-fragment :: scripts-fragment"></th:block> /*/-->
+<script type="text/javascript" src="scripts/about.js"></script>
+</body>
+</html>

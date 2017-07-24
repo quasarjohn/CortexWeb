@@ -1,0 +1,94 @@
+body {
+	background-image: url(../images/bg_main.jpg);
+	background-size: 100% 100%;
+	margin: 0;
+}
+
+.navbar-brand {
+	font-family: "Montserrat", sans-serif;
+	font-size: 30px;
+	margin-top: 7px;
+}
+
+.navbar-default {
+	font-family: "Montserrat", sans-serif;
+	font-size: 16px;
+	line-height: 14px;
+}
+
+#navBarItem li.active a, #navBarItem li a:hover {
+	background-color: teal;
+	color: white;
+}
+
+#con h1 {
+	margin-top: 150px;
+	font-size: 48px;
+	font-family: "Montserrat", sans-serif;
+	font-weight: 400;
+	line-height: 68px;
+	color: white;
+}
+
+#con .panel {
+	margin-top: 50px;
+	width: 100%;
+	background-color: rgba(52, 48, 45, 0.8);
+	border-color: rgba(52, 48, 45, 0.8);
+}
+
+#con img {
+ 	height: 100px;
+ 	width: 100px;
+ 	background-color: teal;
+}
+
+#con h2 {
+	/*margin-top: 30px;*/
+	font-size: 24px;
+	font-family: "Montserrat", sans-serif;
+	font-weight: 400;
+	line-height: 38px;
+	color: white;
+}
+
+#con p {
+	margin-top: 10px;
+	font-size: 16px;
+	color: #e6e6e6;
+}
+
+footer {
+	margin-top: 120px;
+	background-color: #34302d;
+	padding: 35px;
+	color: white;
+}
+
+@media screen and (max-width: 768px) {
+	.icon-bar {
+		margin-top: 6px;
+	}	
+	
+	.navbar-brand {
+		margin-top: 0;
+	}
+
+	#con h1 {
+		font-size: 38px;
+		line-height: 48px;
+	}
+	
+	#con .panel {
+		margin-top: 30px;
+	}
+
+	#con img {
+		height: 70px;
+		width: 70px;
+	}
+
+	#con h2 {
+		font-size: 20px;
+	}
+}

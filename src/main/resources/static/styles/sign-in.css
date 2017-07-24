@@ -1,0 +1,65 @@
+#home {
+	margin-left: 50px;
+	font-family: "Montserrat", sans-serif;
+	font-size: 42px;
+	font-weight: 400;
+	color: teal;
+	text-decoration: none;
+}
+
+#home span {
+	margin-top: 40px;
+}
+
+h2 {
+	margin-top: 15px;
+	font-family: "Raleway", sans-serif;
+	font-size: 50px;
+	font-weight: 400;
+}
+
+h3 {
+	margin-top: 15px;
+	font-family: "Raleway", sans-serif;
+	font-weight: 400;
+}
+
+h3 a:link, h3 a:visited {
+	color: teal;
+	text-decoration: none;
+}
+
+.container #emailLbl {
+	margin-top: 30px;
+	font-family: "Raleway", sans-serif;
+	font-weight: 400;
+}
+
+.container #passwordLbl {
+	margin-top: 10px;
+	font-family: "Raleway", sans-serif;
+	font-weight: 400;
+}
+
+.container button {
+	margin-top: 20px;
+	margin-left: 110px;
+	background-color: teal;
+	color: white;
+	padding: 10px 50px;
+}
+
+.container p {
+	margin-top: 20px;
+	margin-left: 120px;
+	font-size: 16px;
+	font-family: "Raleway", sans-serif;
+	font-weight: 400;
+}
+
+.container img {
+	margin-top: 20px;
+	margin-left: 160px;
+	height: 50px;
+	width: 50px;
+}
