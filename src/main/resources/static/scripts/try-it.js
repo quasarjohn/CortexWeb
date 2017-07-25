@@ -5,7 +5,6 @@ function progressbar() {
         color: '#aaa',
         // This has to be the same size as the maximum width to
         // prevent clipping
-        indeterminate: true,
         strokeWidth: 4,
         trailWidth: 1,
         easing: 'easeInOut',
@@ -73,7 +72,7 @@ function classifyImageFromURL(img_url) {
             }
 
             document.getElementById('test_content').innerHTML = xhr.responseText;
-            document.getElementById('resultImg').src = img_url;
+            $('#resultImg').attr('src', img_url);
         }
     };
 }
@@ -113,6 +112,9 @@ $(document).ready(function () {
 });
 
 function onClassificationStarted() {
+    $("#resultImg").hide();
+    $('#labelsList').empty();
+    $('#progressList').empty();
     $(".url").prop("disabled", true);
     $("#progressbarCon").show();
     $("#progressbarText").show();
@@ -145,7 +147,13 @@ $(document).ready(function () {
         $("#file1").click();
     });
 
+    var input = document.getElementById('file1');
     $("#file1").change(function (event) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $('#resultImg').attr('src', e.target.result);
+        }
+        reader.readAsDataURL(input.files[0]);
         $("#btnSubmit").click();
     });
 
@@ -215,14 +223,4 @@ function displayClassificationResults(data) {
 
         $('#labelsList').append("<p>" + label + "&ensp;</p>")
     }
-}
-
-function objToString(obj) {
-    var str = '';
-    for (var p in obj) {
-        if (obj.hasOwnProperty(p)) {
-            str += p + '::' + obj[p] + '\n';
-        }
-    }
-    return str;
 }
