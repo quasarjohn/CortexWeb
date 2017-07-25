@@ -1,5 +1,3 @@
-var progress_bar;
-
 function progressbar() {
     var bar = new ProgressBar.Circle(progressbarCon, {
         color: '#aaa',
@@ -103,7 +101,7 @@ $(document).ready(function () {
 
 //block for classifying images using url
 $(document).ready(function () {
-    //classify image from URL
+    onClassificationStarted();
     $("#classifyURLBtn").click(function () {
         onClassificationStarted();
         var img_url = document.getElementById('img_url_input').value;
@@ -118,7 +116,7 @@ function onClassificationStarted() {
     $(".url").prop("disabled", true);
     $("#progressbarCon").show();
     $("#progressbarText").show();
-    progress_bar = progressbar();
+    progressbar();
     $("#fileChooserBtn").addClass("disableFileChooserBtn");
     $(".classifyBtn").addClass("disableClassifyBtn");
     $(".classifyImg").addClass("opacityClassifyImg");
@@ -129,7 +127,7 @@ function onClassificationDone() {
     $("#fileChooserBtn").removeClass("disableFileChooserBtn");
     $(".classifyBtn").removeClass("disableClassifyBtn");
     $(".classifyImg").removeClass("opacityClassifyImg");
-
+    $("#resultImg").show();
     $("#progressbarCon").empty();
     $("#progressbarCon").hide();
     $("#progressbarText").hide();
