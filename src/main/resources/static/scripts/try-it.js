@@ -1,12 +1,14 @@
+var progress_bar;
+
 function progressbar() {
     var bar = new ProgressBar.Circle(progressbarCon, {
         color: '#aaa',
         // This has to be the same size as the maximum width to
         // prevent clipping
+        indeterminate: true,
         strokeWidth: 4,
         trailWidth: 1,
         easing: 'easeInOut',
-        duration: 10000,
         text: {
             autoStyleContainer: false
         },
@@ -23,36 +25,30 @@ function progressbar() {
             } else {
                 circle.setText(value + "%");
             }
-
-            if (value === 100) {
-                $("#progressbarCon").empty();
-                $("#progressbarCon").hide();
-                $("#progressbarText").hide();
-                $(".result").show();
-                $("#trainBtn").show();
-            }
         }
     });
     bar.text.style.fontFamily = '"Raleway", Helvetica, sans-serif';
     bar.text.style.fontSize = '2rem';
 
     bar.animate(1.0);  // Number from 0.0 to 1.0
+    return bar;
 }
 
-function classifyImage(img_url) {
+function classifyImageFromURL(img_url) {
     //send async request to the server
     var xhr = new XMLHttpRequest();
     /*
      as of the moment, the request is sent to localhost, but it should be sent later to the
      dedicated server for image classification
      */
-    xhr.open('GET', "http://localhost:8091/api/user1/classifier/classify_image/xxx?img_url=" +
+    xhr.open('GET', "http://192.168.0.137:8091/api/user1/classifier/classify_image/xxx?img_url=" +
         encodeURIComponent(img_url) + "&max_results=5", true);
     xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.send();
 
     xhr.onreadystatechange = function () {
+        onClassificationDone();
         if (this.readyState == 4 && this.status == 200) {
             var progressList = document.getElementById('progressList');
             var jsonData = JSON.parse(xhr.responseText);
@@ -74,7 +70,6 @@ function classifyImage(img_url) {
                     "Probability</span></div></div>")
 
                 $('#labelsList').append("<p>" + label + "&ensp;</p>")
-                alert(label);
             }
 
             document.getElementById('test_content').innerHTML = xhr.responseText;
@@ -93,8 +88,9 @@ $(document).ready(function () {
 });
 
 //block for classifying images when clicked
+//TODO classify image when clicked. This has no function yet
+//TODO, remove disability of some elements when classification is done
 $(document).ready(function () {
-    //TODO classify image when clicked. This has no function yet
     $(".classifyImg").click(function () {
         $(".url").prop("disabled", true);
         $("#progressbarCon").show();
@@ -110,20 +106,34 @@ $(document).ready(function () {
 $(document).ready(function () {
     //classify image from URL
     $("#classifyURLBtn").click(function () {
-        $(".url").prop("disabled", true);
-        $("#progressbarCon").show();
-        $("#progressbarText").show();
-
+        onClassificationStarted();
         var img_url = document.getElementById('img_url_input').value;
-        classifyImage(img_url);
-
-        progressbar();
-        $("#fileChooserBtn").addClass("disableFileChooserBtn");
-        $(".classifyBtn").addClass("disableClassifyBtn");
-        $(".classifyImg").addClass("opacityClassifyImg");
+        classifyImageFromURL(img_url);
     });
 });
 
+function onClassificationStarted() {
+    $(".url").prop("disabled", true);
+    $("#progressbarCon").show();
+    $("#progressbarText").show();
+    progress_bar = progressbar();
+    $("#fileChooserBtn").addClass("disableFileChooserBtn");
+    $(".classifyBtn").addClass("disableClassifyBtn");
+    $(".classifyImg").addClass("opacityClassifyImg");
+}
+
+function onClassificationDone() {
+    $(".url").prop("disabled", false);
+    $("#fileChooserBtn").removeClass("disableFileChooserBtn");
+    $(".classifyBtn").removeClass("disableClassifyBtn");
+    $(".classifyImg").removeClass("opacityClassifyImg");
+
+    $("#progressbarCon").empty();
+    $("#progressbarCon").hide();
+    $("#progressbarText").hide();
+    $(".result").show();
+    $("#trainBtn").show();
+}
 /*
  block for classifying image uploaded by user
  right now, it can only send images to the api server,
@@ -148,9 +158,11 @@ $(document).ready(function () {
 
 //uploads file using ajax
 function ajax_classify_image() {
-
+    onClassificationStarted();
     var form = $('#fileUploadForm')[0];
     var data = new FormData(form);
+
+    data.append("key", "testVALUE");
 
     $.ajax({
         type: "POST",
@@ -160,20 +172,57 @@ function ajax_classify_image() {
             'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token',
             'Access-Control-Allow-Credentials': true,
         },
+        //user1 is the temporary api key
         enctype: 'multipart/form-data',
-        url: "http://192.168.0.137:8091/api/upload/multi",
+        url: "http://192.168.0.137:8091/api/user1/classifier/upload_classify_image/modelkey",
         data: data,
         processData: false, //prevent jQuery from automatically transforming the data into a query string
         contentType: false,
         cache: false,
         timeout: 600000,
         success: function (data) {
-
-            console.log("SUCCESS : ", data);
+            // displayClassificationResults(data);
+            var str_data = JSON.stringify(data);
+            onClassificationDone();
+            console.log(str_data);
+            document.getElementById('test_content').innerHTML = str_data;
+            displayClassificationResults(str_data);
         },
         error: function (e) {
-
+            onClassificationDone();
             console.log("ERROR : ", e);
         }
     });
+}
+
+function displayClassificationResults(data) {
+    var jsonData = JSON.parse(data);
+    for (var i = 0; i < jsonData.content.length; i++) {
+        var label = jsonData.content[i].label;
+        var probability = jsonData.content[i].probability * 100;
+        //probability to display
+        var probability_decimal = Number(Math.round(probability + 'e2') + 'e-2').toFixed(2);
+        //used for determining the width of the progressbar
+        var probability_int = Math.round(probability);
+
+        //the probabilities of the classifications are displayed using this piece of code.
+        // medyo baboy yung pagkakacode. haha
+        //TODO please remove the text from the background of the progressbar
+        $('#progressList').append("<div class='progress'><div class='progress-bar progress-bar-custom text' " +
+            "role='progressbar' aria-valuenow='" + probability_int + "' aria-valuemin='0' aria-valuemax='100' " +
+            "style='width: " + probability_int + "%;'><span class='text-center'>" + probability_decimal + "% " +
+            "Probability</span></div></div>")
+
+        $('#labelsList').append("<p>" + label + "&ensp;</p>")
+    }
+}
+
+function objToString(obj) {
+    var str = '';
+    for (var p in obj) {
+        if (obj.hasOwnProperty(p)) {
+            str += p + '::' + obj[p] + '\n';
+        }
+    }
+    return str;
 }
