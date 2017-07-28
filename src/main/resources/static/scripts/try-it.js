@@ -137,7 +137,7 @@ function ajax_classify_image() {
         },
         //user1 is the temporary api key
         enctype: 'multipart/form-data',
-        url: "http://192.168.0.149:8091/api/user1/classifier/upload_classify_image/modelkey",
+        url: "http://192.168.0.141:8091/api/user1/classifier/upload_classify_image/modelkey",
         data: data,
         processData: false, //prevent jQuery from automatically transforming the data into a query string
         contentType: false,
@@ -165,7 +165,7 @@ function classifyImageFromURL(img_url) {
      as of the moment, the request is sent to localhost, but it should be sent later to the
      dedicated server for image classification
      */
-    xhr.open('GET', "http://192.168.0.149:8091/api/user1/classifier/classify_image/xxx?img_url=" +
+    xhr.open('GET', "http://192.168.0.141:8091/api/user1/classifier/classify_image/xxx?img_url=" +
         encodeURIComponent(img_url) + "&max_results=5", true);
     xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
     xhr.setRequestHeader('Content-Type', 'application/json');

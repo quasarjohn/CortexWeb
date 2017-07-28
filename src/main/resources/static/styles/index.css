@@ -46,19 +46,14 @@
 }
 
 #con .tryItBtn {
-	margin-top: 20px;
+	margin-top: 220px;
 	padding: 20px 47px;
 	font-family: "Montserrat", sans-serif;
-	margin-bottom: 150px;
 	color: white;
-}
-
-#con .w3-button {
-	text-decoration: none;
-	margin-top: 220px;
-	padding: 20px 40px;
 	background-color: teal;
 	border-color: teal;
+	text-decoration: none;
+	margin-bottom: 150px;
 }
 
 #con1 span {
@@ -115,8 +110,8 @@
 }
 
 #useCases a, #documentation a, #about a, #useCases .fa-chevron-right, #documentation .fa-chevron-right, #about .fa-chevron-right {
-	margin-top: 15px;	
-	font-size: 18px;	
+	margin-top: 15px;
+	font-size: 18px;
 	color: teal;
 	margin-bottom: 70px;
 }
@@ -154,8 +149,8 @@
 }
 
 #community a, #support a, #community .fa-chevron-left, #support .fa-chevron-left {
-	margin-top: 15px;	
-	font-size: 18px;	
+	margin-top: 15px;
+	font-size: 18px;
 	color: teal;
 	margin-bottom: 70px;
 }
@@ -219,6 +214,25 @@ footer {
 
 /* screen size */
 
+@media screen and (max-width: 1200px) {
+	#con2 .getStartedBtn, #con2 .tryItBtn {
+		margin-left: 0;
+		margin-top: 20px;
+	}
+}
+
+@media screen and (max-width: 992px) {
+	#con2 .tryItBtn {
+		margin-left: -30px;
+		margin-top: 20px;
+	}
+
+	#con2 .getStartedBtn{
+		margin-left: 20px;
+		margin-top: 20px;
+	}
+}
+
 @media screen and (max-width: 768px) {
 	.icon-bar {
 		margin-top: 6px;
@@ -229,36 +243,57 @@ footer {
 	}
 
 	#con span {
+		margin-top: -170px;
 		font-size: 120px;
 	}
 	
 	#con h1 {
-		margin-top: 5px;
+		margin-top: -60px;
 		font-size: 38px;
 	}
 
 	#con h4 {
-		margin-top: 155px;
-		font-size: 20px;
+		margin-top: 80px;
+		font-size: 18px;
 		line-height: 26px;
+	}
+
+	#con .tryItBtn {
+		width: 90%;
+	}
+
+	#con1 .startLine {
+		margin-top: 70px;
+	}
+
+	#con1 span {
+		margin-top: 40px;
+	}
+
+	#con1 h2 {
+		margin-top: 20px;
+	}
+
+	#con1 h4 {
+		margin-top: 20px;
 	}
 
 	#useCases a, #documentation a, #about a, #useCases .fa-chevron-right, #documentation .fa-chevron-right, #about .fa-chevron-right {
 		font-size: 17px;
 	}
 
-	#useCases .fa-file-picture-o, #documentation .fa-book, #about .fa-question-circle {
+	/*#useCases .fa-file-picture-o, #documentation .fa-book, #about .fa-question-circle {
 		margin: -30px 0 40px 0;
-	}
+	}*/
 
 	#community a, #support a, #community .fa-chevron-left, #support .fa-chevron-left {
 		font-size: 17px;
 	}
 
-	#community .fa-github, #support .material-icons {
+	/*#community .fa-github, #support .material-icons {
 		margin: 40px 0 -30px 0;
-	} 
-	
+	}*/
+
 	#con2 h1, #con2 h2 {
 		font-size: 40px;
 	}
@@ -268,7 +303,7 @@ footer {
 		margin-top: 20px;
 	}
 	
-	#con2 button {
+	#con2 .w3-button {
 		width: 100%;
 	}
 

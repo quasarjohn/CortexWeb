@@ -188,11 +188,11 @@ footer {
 		font-size: 40px;
 	}
 
-	#con2 .getStartedBtn, #con2 .demoBtn {
+	#con2 .getStartedBtn, #con2 .tryItBtn {
 		margin-left: 0;
 	}
 	
-	#con2 button {
+	#con2 .w3-button {
 		width: 100%;
 	}
 }

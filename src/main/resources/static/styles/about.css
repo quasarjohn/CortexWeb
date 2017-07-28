@@ -74,6 +74,10 @@ footer {
 		margin-top: 0;
 	}
 
+	#con .row2, #con .row3 {
+		margin-top: -20px;
+	}
+
 	#con h1 {
 		font-size: 38px;
 		line-height: 48px;

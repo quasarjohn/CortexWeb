@@ -41,14 +41,6 @@ body {
     margin-bottom: 40px;
 }
 
-#con1 {
-    margin-top: 20px;
-}
-
-#con1 .nav-pills li.active a {
-    background-color: teal;
-}
-
 #con2 {
     margin-top: 20px;
     background-color: white;
@@ -73,15 +65,30 @@ body {
     margin-bottom: 40px;
 }
 
+#con2 .dropdown .btn {
+    margin-top: -20px;
+    background-color: teal;
+    color: white;
+    margin-bottom: 30px;
+}
+
+#con2 .dropdown .dropdown-menu {
+    margin-top: -25px;
+}
+
 #con2 .firstRow img {
     height: 170px;
     width: 100%;
 }
 
 #con2 .secondRow img{
-    margin-top: 20px;
+    margin-top: 30px;
     height: 170px;
     width: 100%;
+}
+
+#con2 .thirdRow {
+    margin-top: 20px;
 }
 
 #con2 #fileChooserBtn span {
@@ -90,7 +97,7 @@ body {
 }
 
 #con2 #fileChooserBtn {
-    margin-top: 20px;
+    margin-top: 30px;
     font-family: "Montserrat", sans-serif;
     width: 100%;
     height: 170px;
@@ -98,11 +105,19 @@ body {
     border-color: teal;
 }
 
-#con2 .url {
+#con2 .thirdRow .url {
     margin-top: 30px;
+    width: 100%;
     border-style: solid;
     border-color: teal;
     margin-bottom: 50px;
+}
+
+#con2 .thirdRow .w3-btn {
+    margin-top: 25px;
+    background-color: teal;
+    color: white;
+    font-family: "Montserrat", sans-serif;
 }
 
 #progressbarCon {
@@ -227,4 +242,18 @@ footer {
     background-color: #34302d;
     padding: 35px;
     color: white;
+}
+
+@media screen and (max-width: 768px) {
+    #con2 .firstRow img {
+        margin-bottom: 30px;
+    }
+
+    #con2 .secondRow {
+        margin-top: -30px;
+    }
+
+    #con3 a {
+        width: 100%;
+    }
 }

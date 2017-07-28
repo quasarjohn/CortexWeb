@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Cortex | Console</title>
+    <!--/*/ <th:block th:include="fragments/head-fragment :: head-fragment"></th:block> /*/-->
+    <link rel="stylesheet" type="text/css" href="static/styles/console-classify.css" th:href="@{styles/console-classify.css}" />
+</head>
+<body>
+<!--/*/ <th:block th:include="fragments/console-nav-fragment :: console-nav-fragment"></th:block> /*/-->
+
+<!-- Sidebar -->
+<div id="sidebar" class="w3-sidebar w3-bar-block w3-teal w3-collapse w3-animate-left w3-card-4">
+    <a href="#" th:href="@{/console-overview}" class="overview w3-bar-item w3-button w3-hover-white">
+        <span class="glyphicon glyphicon-home"></span> &nbsp;&nbsp;Overview</a><hr />
+    <h5 class="w3-bar-item">Tools</h5>
+    <a href="#" th:href="@{/console-classify}" class="classify w3-bar-item w3-button w3-hover-white w3-white">
+        <span class="fa fa-image"></span> &nbsp;&nbsp;Classify</a>
+    <a href="#" th:href="@{/console-train}" class="train w3-bar-item w3-button w3-hover-white">
+        <span class="fa fa-upload"></span> &nbsp;&nbsp;Train</a><hr />
+    <h5 class="w3-bar-item">Your classifier</h5>
+    <a href="#" class="classifiers w3-bar-item w3-button w3-hover-white">
+        <span class="fa fa-archive"></span> &nbsp;&nbsp;Classifiers</a>
+</div>
+
+<!-- Page content -->
+<div id="pageContent">
+
+    <!-- Overlay -->
+    <div id="overlay" class="w3-overlay w3-animate-opacity" onclick="sidebarClose()"></div>
+
+    <!-- Hamburger button -->
+    <div class="w3-main">
+        <button class="sidebarBtn w3-button w3-hover-teal w3-hide-xlarge w3-hide-large" onclick="sidebarOpen()" >&#9776;</button>
+        <h1>Classify</h1>
+    </div>
+
+    <div id="con" class="container-fluid">
+
+        <h2>Classify image</h2>
+        <h4>Lorem ipsum dolor sit amet, mollis ocurreret instructior ex nam, id vidit dolor ius, no laudem feugait assueverit nec.
+            Lucilius imperdiet urbanitas nec ea, sea sumo habemus ne.</h4>
+
+        <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-4">
+                <form method="POST" enctype="multipart/form-data" id="fileUploadForm" style="display: none">
+                    <input type="text" name="extraField" style="display: none"/><br/><br/>
+                    <input id="file1" type="file" name="files" style="display: none"/><br/><br/>
+                    <input type="submit" value="Submit" id="btnSubmit" style="display: none"/>
+                </form>
+                <button id="fileChooserBtn" class="w3-hover-pale-blue" type="button"><span
+                        class="fa fa-plus"></span><br/>Select File
+                </button>
+            </div>
+            <div class="col-sm-1"></div>
+            <div class="col-sm-5">
+                <input type="text" class="urlTextField form-control" placeholder="Or paste an image url" /><br />
+                <button type="button" class="w3-btn w3-round w3-ripple" id="classifyURLBtn">Classify image from URL</button>
+            </div>
+            <div class="col-sm-1"></div>
+        </div>
+
+        <!-- output, show after progressbar -->
+        <div class="row outputImg">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-8">
+                <img id="image" class="img-reponsive img-rounded" src="images/dog.jpg" />     <!-- output image -->
+            </div>
+            <div class="col-sm-2"></div>
+        </div>
+
+        <div class="row outputPanels">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-4">  <!-- Panel 1 for labels -->
+                <div class="panel-group panel1 w3-round-large" style="width: 100%">
+                    <div class="panel panel-default text-center">
+                        <div class="panel-heading">Labels</div>
+                        <div id="labelsList" class="panel-content">
+                            <p>Test&ensp;</p>
+                            <p>Test1&ensp;</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">  <!-- Panel 2 for scores -->
+                <div class="panel-group panel2 w3-round-large" style="width: 100%">
+                    <div class="panel panel-default">
+                        <div class="panel-heading text-center">Score</div>
+                        <div class="panel-content">
+                            <h6>0.94</h6>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-custom text" role="progressbar" aria-valuenow="94"
+                                     aria-valuemin="0" aria-valuemax="100" style="width: 14%;">
+                                </div>
+                            </div>
+                            <h6>0.94</h6>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-custom text" role="progressbar" aria-valuenow="94"
+                                     aria-valuemin="0" aria-valuemax="100" style="width: 14%;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-2"></div>
+        </div>
+    </div>
+
+</div>
+
+<!--/*/ <th:block th:include="fragments/scripts-fragment :: scripts-fragment"></th:block> /*/-->
+<script type="text/javascript" src="scripts/console-classify.js"></script>
+</body>
+</html>

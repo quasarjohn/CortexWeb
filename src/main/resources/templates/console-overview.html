@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Cortex | Console</title>
+    <!--/*/ <th:block th:include="fragments/head-fragment :: head-fragment"></th:block> /*/-->
+    <link rel="stylesheet" type="text/css" href="static/styles/console-overview.css" th:href="@{styles/console-overview.css}" />
+</head>
+<body>
+<!--/*/ <th:block th:include="fragments/console-nav-fragment :: console-nav-fragment"></th:block> /*/-->
+
+<!-- Sidebar -->
+<div id="sidebar" class="w3-sidebar w3-bar-block w3-teal w3-collapse w3-animate-left w3-card-4">
+    <a href="#" th:href="@{/console-overview}" class="overview w3-bar-item w3-button w3-hover-white w3-white">
+        <span class="glyphicon glyphicon-home"></span> &nbsp;&nbsp;Overview</a><hr />
+    <h5 class="w3-bar-item">Tools</h5>
+    <a href="#" th:href="@{/console-classify}" class="classify w3-bar-item w3-button w3-hover-white">
+        <span class="fa fa-image"></span> &nbsp;&nbsp;Classify</a>
+    <a href="#" th:href="@{/console-train}" class="train w3-bar-item w3-button w3-hover-white">
+        <span class="fa fa-upload"></span> &nbsp;&nbsp;Train</a><hr />
+    <h5 class="w3-bar-item">Your classifier</h5>
+    <a href="#" class="classifiers w3-bar-item w3-button w3-hover-white">
+        <span class="fa fa-archive"></span> &nbsp;&nbsp;Classifiers</a>
+</div>
+
+<!-- Page content -->
+<div id="pageContent">
+
+    <!-- Overlay -->
+    <div id="overlay" class="w3-overlay w3-animate-opacity" onclick="sidebarClose()"></div>
+
+    <!-- Hamburger button -->
+    <div class="w3-main">
+        <button class="sidebarBtn w3-button w3-hover-teal w3-hide-xlarge w3-hide-large" onclick="sidebarOpen()" >&#9776;</button>
+        <h1>Overview</h1>
+    </div>
+
+</div>
+
+<!--/*/ <th:block th:include="fragments/scripts-fragment :: scripts-fragment"></th:block> /*/-->
+<script type="text/javascript" src="scripts/console-overview.js"></script>
+</body>
+</html>

@@ -15,7 +15,7 @@
     <div class="row">
         <div class="col-sm-4"></div>
         <div class="col-sm-4">
-            <form>
+            <form th:action="@{/console-overview}">
                 <div class="form-group">
                     <label id="emailLbl">Email</label>
                     <input type="text" class="form-control" placeholder="Enter your email" name="email" />
@@ -28,7 +28,7 @@
                     <label><input type="checkbox" name="checkbox" /> Remember Me</label>
                 </div>
                 <div class="form-group">
-                    <button type="submit" class="w3-btn w3-round-xxlarge">Sign In</button>
+                    <button type="submit" class="w3-btn w3-round-xxlarge" th:name="action" th:value="sign-in">Sign In</button>
                     <p>Or Sign In using</p>
                     <img class="img-responsive googleImg" src="images/google.png" />
                 </div>

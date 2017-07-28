@@ -1,0 +1,215 @@
+body {
+    background-color: rgba(0, 0, 0, 0.10);
+}
+
+.navbar-brand {
+    font-family: "Montserrat", sans-serif;
+    font-size: 30px;
+    margin-top: 7px;
+}
+
+.navbar-default {
+    font-family: "Montserrat", sans-serif;
+    font-size: 16px;
+    line-height: 14px;
+}
+
+#navBarItem li.active a, #navBarItem li a:hover {
+    background-color: teal;
+    color: white;
+}
+
+.nav li a img {
+    background-color: teal;
+    width: 51px;
+    height: 51px;
+}
+
+.nav .dropdown-menu li h5 {
+    text-align: left;
+    font-family: "Varela", sans-serif;
+    margin-left: 20px;
+    font-size: 14px;
+}
+
+.nav .dropdown-menu li h6 {
+    margin-top: -5px;
+    text-align: left;
+    font-family: "Varela", sans-serif;
+    margin-left: 20px;
+    font-size: 14px;
+}
+
+.nav .dropdown-menu hr {
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+#sidebar {
+    width: 20%;
+    z-index: 5;
+}
+
+#sidebar .overview {
+    margin-top: 20px;
+}
+
+#sidebar a {
+    text-decoration: none;
+    font-size: 20px;
+    font-family: "Varela", sans-serif;
+    font-weight: 400;
+}
+
+#sidebar h5 {
+    font-size: 16px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    color: rgb(230, 230, 230);
+}
+
+#pageContent {
+    margin-left: 20%;
+    margin-top: 80px;
+}
+
+#pageContent #overlay {
+    cursor: pointer;
+}
+
+#pageContent .sidebarBtn {
+    float: left;
+    margin-top: 20px;
+    background-color: teal;
+    color: white;
+}
+
+#pageContent h1 {
+    padding: 20px 25px;
+    font-size: 24px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    line-height: 38px;
+    background-color: teal;
+    color: white;
+}
+
+#con h2 {
+    margin-top: 30px;
+    font-size: 28px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    line-height: 38px;
+}
+
+#con h4 {
+    margin-top: 20px;
+    font-family: "Varela", sans-serif;
+    font-weight: 400;
+    line-height: 30px;
+    color: rgb(77, 77, 77);
+    margin-bottom: 30px;
+}
+
+#con .panel {
+    border-color: teal;
+}
+
+#con .panel-heading {
+    background-color: teal;
+}
+
+#con .uploadPanel {
+    margin-top: 30px;
+}
+
+#con .panel-heading form input {
+    width: 100%;
+    height: 100%;
+}
+
+#con .uploadPanel h2 {
+    margin-top: 10px;
+    font-size: 28px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+}
+
+#con .uploadPanel h4 {
+    margin-top: -10px;
+    font-size: 14px;
+    font-family: "Varela", sans-serif;
+    font-weight: 400;
+    line-height: 30px;
+    color: rgb(77, 77, 77);
+    margin-bottom: 30px;
+}
+
+#con .fileChooserBtn span {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+#con .fileChooserBtn {
+    font-family: "Montserrat", sans-serif;
+    width: 100%;
+    height: 170px;
+    border-style: dashed;
+    border-color: teal;
+    border-width: thin;
+}
+
+#con .createBtn {
+    background-color: teal;
+    color: white;
+}
+
+#con .createBtn:hover {
+    background-color: #009696;
+    color: white;
+}
+
+#con .cancelBtn {
+    border-style: solid;
+    border-width: thin;
+    border-color: teal;
+}
+
+#con .cancelBtn:hover {
+    background-color: #009696;
+    color: white;
+}
+
+@media screen and (max-width: 992px) {
+    #sidebar {
+        width: 35%;
+    }
+
+    #pageContent {
+        margin-left: 0;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .icon-bar {
+        margin-top: 6px;
+    }
+
+    .navbar-brand {
+        margin-top: 0;
+    }
+
+    #sidebar {
+        width: 60%;
+    }
+
+    #pageContent h1 {
+        margin-top: -25px;
+    }
+}
+
+@media only screen and (max-width: 380px){
+    #sidebar {
+        width: 80%;
+    }
+}

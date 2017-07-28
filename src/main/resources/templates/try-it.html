@@ -42,132 +42,146 @@
     </div>
 </div>
 
-<div id="con2" class="tab-content container-fluid">
-    <div class="try tab-pane fade in active">
-        <div class="row">
-            <div class="col-sm-1"></div>
-            <div class="col-sm-10">
-                <h2>Try Cortex</h2>
-                <p>Choose a sample image or upload your own image to try out Visual Recognition</p>
+<div id="con2" class=" container-fluid">
+    <div class="row">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-10">
+            <h2>Try Cortex</h2>
+            <p>Choose a sample image or upload your own image to try out Visual Recognition</p>
 
-                <div class="row firstRow">
-                    <div class="col-sm-3">
-                        <a class="classifyBtn"><img class="img-responsive w3-hover-shadow classifyImg"
-                                                    src="images/dog.jpg"/></a>
-                    </div>
-                    <div class="col-sm-3">
-                        <a class="classifyBtn"><img class="img-responsive w3-hover-shadow classifyImg"
-                                                    src="images/dog.jpg"/></a>
-                    </div>
-                    <div class="col-sm-3">
-                        <a class="classifyBtn"><img class="img-responsive w3-hover-shadow classifyImg"
-                                                    src="images/dog.jpg"/></a>
-                    </div>
-                    <div class="col-sm-3">
-                        <a class="classifyBtn"><img class="img-responsive w3-hover-shadow classifyImg"
-                                                    src="images/dog.jpg"/></a>
-                    </div>
-                </div>
-                <div class="row secondRow">
-                    <div class="col-sm-3">
-                        <a class="classifyBtn"><img class="img-responsive w3-hover-shadow classifyImg"
-                                                    src="images/dog.jpg"/></a>
-                    </div>
-                    <div class="col-sm-3">
-                        <a class="classifyBtn"><img class="img-responsive w3-hover-shadow classifyImg"
-                                                    src="images/dog.jpg"/></a>
-                    </div>
-                    <div class="col-sm-3">
-                        <a class="classifyBtn"><img class="img-responsive w3-hover-shadow classifyImg"
-                                                    src="images/dog.jpg"/></a>
-                    </div>
-                    <div class="col-sm-3">
-                        <form method="POST" enctype="multipart/form-data" id="fileUploadForm" style="display: none">
-                            <input type="text" name="extraField" style="display: none"/><br/><br/>
-                            <input id="file1" type="file" name="files" style="display: none"/><br/><br/>
-                            <input type="submit" value="Submit" id="btnSubmit" style="display: none"/>
-                        </form>
-                        <button id="fileChooserBtn" class="w3-hover-pale-blue" type="button"><span
-                                class="fa fa-plus"></span><br/>Select File
-                        </button>
-                    </div>
-
-                    <!--<div class="col-sm-3">-->
-                    <!--<input id="fileInput" type="file" style="display:none;" />-->
-                    <!--<button id="fileChooserBtn" class="w3-hover-pale-blue" type="button"><span class="fa fa-plus"></span><br />Select File</button>-->
-                    <!--</div>-->
-                </div>
-                <input id="img_url_input" class="url" type="text" placeholder="Or paste an image url"/>
-                <button type="button" id="classifyURLBtn">Classify image from URL</button>
-                <p id="test_content"></p>
-
-
-                <!-- Progress bar -->
-                <div class="row">
-                    <div class="col-sm-4"></div>
-                    <div class="col-sm-4">
-                        <div id="progressbarCon"></div>
-                        <p id="progressbarText">Cortex is classifying the image...</p>
-                    </div>
-                    <div class="col-sm-4"></div>
-                </div>
-                <br/>
-
-                <!-- Output -->
-                <div class="result">
-                    <h1>Cortex sees...</h1>
-                    <div class="row">
-                        <div class="col-sm-2"></div>
-                        <div class="col-sm-8">
-                            <img id="resultImg" class="img-responsive" src="images/dog.jpg"/>
-
-                            <div class="row resultPanel">
-                                <div class="col-sm-2"></div>
-                                <div class="col-sm-4">
-                                    <div class="panel-group panel1">
-                                        <div class="panel panel-default text-center">
-                                            <div class="panel-heading">Labels</div>
-                                            <div id="labelsList" class="panel-content">
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4">
-                                    <div class="panel-group panel2">
-                                        <div class="panel panel-default text-center">
-                                            <div class="panel-heading">Score</div>
-                                            <div id="progressList" class="panel-content">
-                                                <!--<div class="progress">-->
-                                                <!--<div class="progress-bar progress-bar-custom text" role="progressbar" aria-valuenow="94" aria-valuemin="0" aria-valuemax="100" style="width: 94%;">-->
-                                                <!--<span class="text-center">94% Probability</span>-->
-                                                <!--</div>-->
-                                                <!--</div>-->
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-2"></div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-sm-5"></div>
-                                <div class="col-sm-2">
-                                    <button id="trainBtn" class="w3-btn w3-teal w3-round">Classify again</button>
-                                </div>
-                                <div class="col-sm-5"></div>
-                            </div>
-                        </div>
-                        <div class="col-sm-2"></div>
-                    </div>
-                </div>
-                <!-- Output end -->
+            <div class="dropdown">
+                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                    Category <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li class="active"><a>Dogs</a></li>
+                    <li><a>Anime</a></li>
+                    <li><a>Cars</a></li>
+                    <!-- Put the categories here -->
+                </ul>
             </div>
-            <div class="col-sm-1"></div>
+
+            <div class="row firstRow">
+                <div class="col-sm-3">
+                    <a class="classifyBtn"><img class="img-responsive w3-hover-shadow classifyImg"
+                                                    src="images/dog.jpg"/></a>
+                </div>
+                <div class="col-sm-3">
+                    <a class="classifyBtn"><img class="img-responsive w3-hover-shadow classifyImg"
+                                                    src="images/dog.jpg"/></a>
+                </div>
+                <div class="col-sm-3">
+                    <a class="classifyBtn"><img class="img-responsive w3-hover-shadow classifyImg"
+                                                    src="images/dog.jpg"/></a>
+                </div>
+                <div class="col-sm-3">
+                    <a class="classifyBtn"><img class="img-responsive w3-hover-shadow classifyImg"
+                                                src="images/dog.jpg"/></a>
+                </div>
+            </div>
+            <div class="row secondRow">
+                <div class="col-sm-3">
+                    <a class="classifyBtn"><img class="img-responsive w3-hover-shadow classifyImg"
+                                                src="images/dog.jpg"/></a>
+                </div>
+                <div class="col-sm-3">
+                    <a class="classifyBtn"><img class="img-responsive w3-hover-shadow classifyImg"
+                                                src="images/dog.jpg"/></a>
+                </div>
+                <div class="col-sm-3">
+                    <a class="classifyBtn"><img class="img-responsive w3-hover-shadow classifyImg"
+                                                src="images/dog.jpg"/></a>
+                </div>
+                <div class="col-sm-3">
+                    <form method="POST" enctype="multipart/form-data" id="fileUploadForm" style="display: none">
+                        <input type="text" name="extraField" style="display: none"/><br/><br/>
+                        <input id="file1" type="file" name="files" style="display: none"/><br/><br/>
+                        <input type="submit" value="Submit" id="btnSubmit" style="display: none"/>
+                    </form>
+                    <button id="fileChooserBtn" class="w3-hover-pale-blue" type="button"><span
+                            class="fa fa-plus"></span><br/>Select File
+                    </button>
+                </div>
+
+                <!--<div class="col-sm-3">-->
+                <!--<input id="fileInput" type="file" style="display:none;" />-->
+                <!--<button id="fileChooserBtn" class="w3-hover-pale-blue" type="button"><span class="fa fa-plus"></span><br />Select File</button>-->
+                <!--</div>-->
+            </div>
+            <div class="row thirdRow">
+                <div class="col-sm-6">
+                    <input id="img_url_input" class="url" type="text" placeholder="Or paste an image url"/>
+                </div>
+                <div class="col-sm-3">
+                    <button type="button" class="w3-btn w3-round w3-ripple" id="classifyURLBtn">Classify image from URL</button>
+                </div>
+                <div class="col-sm-3"></div>
+            </div>
+
+            <p id="test_content"></p>
+
+            <!-- Progress bar -->
+            <div class="row">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-4">
+                    <div id="progressbarCon"></div>
+                    <p id="progressbarText">Cortex is classifying the image...</p>
+                </div>
+                <div class="col-sm-4"></div>
+            </div>
+            <br/>
+
+            <!-- Output -->
+            <div class="result">
+                <h1>Cortex sees...</h1>
+                <div class="row">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-8">
+                        <img id="resultImg" class="img-responsive" src="images/dog.jpg"/>
+
+                        <div class="row resultPanel">
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-4">
+                                <div class="panel-group panel1">
+                                    <div class="panel panel-default text-center">
+                                        <div class="panel-heading">Labels</div>
+                                        <div id="labelsList" class="panel-content">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="panel-group panel2">
+                                    <div class="panel panel-default text-center">
+                                        <div class="panel-heading">Score</div>
+                                        <div id="progressList" class="panel-content">
+                                            <!--<div class="progress">-->
+                                            <!--<div class="progress-bar progress-bar-custom text" role="progressbar" aria-valuenow="94" aria-valuemin="0" aria-valuemax="100" style="width: 94%;">-->
+                                            <!--<span class="text-center">94% Probability</span>-->
+                                            <!--</div>-->
+                                            <!--</div>-->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-2"></div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-5"></div>
+                            <div class="col-sm-2">
+                                <button id="trainBtn" class="w3-btn w3-teal w3-round">Classify again</button>
+                            </div>
+                            <div class="col-sm-5"></div>
+                        </div>
+                    </div>
+                    <div class="col-sm-2"></div>
+                </div>
+            </div>
+            <!-- Output end -->
         </div>
-    </div>
-    <div class="train tab-pane fade">
-        <p>Put notice here. ("To use the train and other features of Cortex, you must sign in first etc etc...)</p>
+        <div class="col-sm-1"></div>
     </div>
 </div>
 
@@ -189,10 +203,7 @@
 
 <!--/*/ <th:block th:include="fragments/scripts-fragment :: scripts-fragment"></th:block> /*/-->
 <script type="text/javascript" src="scripts/progressbar.js"></script>
-
-<script type="text/javascript"
-        src="webjars/jquery/2.2.4/jquery.min.js"></script>
-
+<script type="text/javascript" src="webjars/jquery/2.2.4/jquery.min.js"></script>
 <script type="text/javascript" src="scripts/try-it.js"></script>
 </body>
 </html>
