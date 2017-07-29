@@ -56,52 +56,14 @@
                                         <form><input type="text" class="form-control" placeholder="Class name" /></form>
                                     </div>
                                     <div class="panel-body">
-                                        <form method="POST" enctype="multipart/form-data" class="fileUploadForm" style="display: none">
-                                            <input type="text" name="extraField" style="display: none"/><br/><br/>
-                                            <input class="file1" type="file" name="files" style="display: none"/><br/><br/>
-                                            <input type="submit" value="Submit" class="btnSubmit" style="display: none"/>
+                                        <form method="POST" enctype="multipart/form-data" id="fileUploadForm" style="display: none">
+                                            <input id="file1" type="file" name="files" style="display: none"/><br/><br/>
+                                            <input type="submit" value="Submit" id="btnSubmit" style="display: none"/>
                                         </form>
-                                        <button class="fileChooserBtn w3-hover-pale-blue" type="button">
+                                        <button id="fileChooserBtn" class="fileChooserBtn w3-hover-pale-blue" type="button">
                                             Drag .zip file here to train class Or choose your file
                                         </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="panel-group">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <form><input type="text" class="form-control" placeholder="Class name" /></form>
-                                    </div>
-                                    <div class="panel-body">
-                                        <form method="POST" enctype="multipart/form-data" class="fileUploadForm" style="display: none">
-                                            <input type="text" name="extraField" style="display: none"/><br/><br/>
-                                            <input class="file1" type="file" name="files" style="display: none"/><br/><br/>
-                                            <input type="submit" value="Submit" class="btnSubmit" style="display: none"/>
-                                        </form>
-                                        <button class="fileChooserBtn w3-hover-pale-blue" type="button">
-                                            Drag .zip file here to train class Or choose your file
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="panel-group">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <form><input type="text" class="form-control" placeholder="Class name" /></form>
-                                    </div>
-                                    <div class="panel-body">
-                                        <form method="POST" enctype="multipart/form-data" class="fileUploadForm" style="display: none">
-                                            <input type="text" name="extraField" style="display: none"/><br/><br/>
-                                            <input class="file1" type="file" name="files" style="display: none"/><br/><br/>
-                                            <input type="submit" value="Submit" class="btnSubmit" style="display: none"/>
-                                        </form>
-                                        <button class="fileChooserBtn w3-hover-pale-blue" type="button">
-                                            Drag .zip file here to train class Or choose your file
-                                        </button>
+                                        <p id="uploadStatus"></p>
                                     </div>
                                 </div>
                             </div>
@@ -119,6 +81,7 @@
 </div>
 
 <!--/*/ <th:block th:include="fragments/scripts-fragment :: scripts-fragment"></th:block> /*/-->
+<script type="text/javascript" src="webjars/jquery/2.2.4/jquery.min.js"></script>
 <script type="text/javascript" src="scripts/console-train.js"></script>
 </body>
 </html>
