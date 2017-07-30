@@ -50,7 +50,7 @@ function ajax_upload_training_data() {
 
                     var status = document.getElementById('uploadStatus');
 
-                    if(percentage < 100)
+                    if (percentage < 100)
                         status.innerHTML = percentage_str + "%";
                     else
                         status.innerHTML = "Unzipping files";
@@ -75,6 +75,35 @@ function ajax_upload_training_data() {
             var status = document.getElementById('uploadStatus');
             //TODO create a method for checking the training status every minute
             status.innerHTML = "CORTEX is training your image classifier.";
+            var count = 0;
+
+            var now = new Date();
+            var delay = 1000 * 60; // 60 sec
+            var start = delay - (now.getMinutes() * 60 + now.getSeconds()) * 1000 + now.getMilliseconds();
+
+            setTimeout(function doSomething() {
+                // do the operation
+                // ... your code here...
+                // status.innerHTML = "CORTEX is training your image classifier." + count + " seconds ago.";
+                count++;
+
+                // schedule the next tick
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET', "http://192.168.0.149:8091/api/user1/trainer/status");
+                xhr.setRequestHeader('Content-Type', 'application/json');
+                xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
+                xhr.setRequestHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS');
+                xhr.setRequestHeader('Access-Control-Allow-Headers', 'Origin, Content-Type, X-Auth-Token');
+                xhr.send();
+
+                xhr.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        var jsonData = JSON.parse(xhr.responseText);
+                        status.innerHTML = JSON.stringify(jsonData);
+                    }
+                };
+                setTimeout(doSomething, delay);
+            }, start);
         },
         error: function (e) {
             console.log("ERROR : ", e);
