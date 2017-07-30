@@ -18,7 +18,7 @@
     <a href="#" th:href="@{/console-train}" class="train w3-bar-item w3-button w3-hover-white w3-white">
         <span class="fa fa-upload"></span> &nbsp;&nbsp;Train</a><hr />
     <h5 class="w3-bar-item">Your classifier</h5>
-    <a href="#" class="classifiers w3-bar-item w3-button w3-hover-white">
+    <a href="#" th:href="@{/console-classifiers}" class="classifiers w3-bar-item w3-button w3-hover-white">
         <span class="fa fa-archive"></span> &nbsp;&nbsp;Classifiers</a>
 </div>
 
@@ -31,7 +31,7 @@
     <!-- Hamburger button -->
     <div class="w3-main">
         <button class="sidebarBtn w3-button w3-hover-teal w3-hide-xlarge w3-hide-large" onclick="sidebarOpen()" >&#9776;</button>
-        <h1>Train</h1>
+        <h1 class="w3-hide-large">Train</h1>
     </div>
 
     <div id="con" class="container-fluid">
@@ -45,13 +45,13 @@
                     <form><input type="text" class="form-control" placeholder="Classifier name" /></form> <!-- Set classifier name -->
                 </div>
                 <div class="panel-body">
-                    <h2>Classes</h2>
-                    <h4>Upload at least 2 classes, each in a zipped file with at least n photos.</h4>
+                    <h2>Class</h2>
+                    <h4>Upload a class in a zipped file with at least n photos.</h4>
 
                     <div class="row">
-                        <div class="col-sm-4">
+                        <div class="col-sm-6">
                             <div class="panel-group">
-                                <div class="panel panel-default">
+                                <div class="panel panel-default panel2">
                                     <div class="panel-heading">
                                         <form><input type="text" class="form-control" placeholder="Class name" /></form>
                                     </div>
@@ -68,49 +68,23 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-4">
-                            <div class="panel-group">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <form><input type="text" class="form-control" placeholder="Class name" /></form>
-                                    </div>
-                                    <div class="panel-body">
-                                        <form method="POST" enctype="multipart/form-data" class="fileUploadForm" style="display: none">
-                                            <input type="text" name="extraField" style="display: none"/><br/><br/>
-                                            <input class="file1" type="file" name="files" style="display: none"/><br/><br/>
-                                            <input type="submit" value="Submit" class="btnSubmit" style="display: none"/>
-                                        </form>
-                                        <button class="fileChooserBtn w3-hover-pale-blue" type="button">
-                                            Drag .zip file here to train class Or choose your file
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="panel-group">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <form><input type="text" class="form-control" placeholder="Class name" /></form>
-                                    </div>
-                                    <div class="panel-body">
-                                        <form method="POST" enctype="multipart/form-data" class="fileUploadForm" style="display: none">
-                                            <input type="text" name="extraField" style="display: none"/><br/><br/>
-                                            <input class="file1" type="file" name="files" style="display: none"/><br/><br/>
-                                            <input type="submit" value="Submit" class="btnSubmit" style="display: none"/>
-                                        </form>
-                                        <button class="fileChooserBtn w3-hover-pale-blue" type="button">
-                                            Drag .zip file here to train class Or choose your file
-                                        </button>
-                                    </div>
-                                </div>
+                        <div id="hideOnLoad" class="col-sm-6" style="display: none;">
+                            <div id="trainingCon">
+                                <span id="progressBar" class="fa fa-spinner w3-spin"></span>
+                                <p id="progressBarMessage">Training images</p>
+                                <span id="warning" class="fa fa-warning w3-display-center"></span>
+                                <p id="warningMessage">Training cancelled</p>
+                                <span id="finished" class="material-icons">done</span>
+                                <p id="finishedMessage">Training finished</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="panel-footer w3-right-align">
-                    <button type="button" class="cancelBtn w3-btn w3-ripple w3-round-xxlarge">Cancel</button>
-                    <button type="button" class="createBtn w3-btn w3-ripple w3-round-xxlarge">Create</button>
+                    <button id="hideOnLoad1" class="cancelBtn w3-btn w3-round-xxlarge" style="display: none;">
+                        Cancel</button>
+                    <button class="createBtn w3-btn w3-round-xxlarge">
+                        Create</button>
                 </div>
             </div>
         </div>
@@ -119,6 +93,7 @@
 </div>
 
 <!--/*/ <th:block th:include="fragments/scripts-fragment :: scripts-fragment"></th:block> /*/-->
+<script type="text/javascript" src="scripts/sidebar.js"></script>
 <script type="text/javascript" src="scripts/console-train.js"></script>
 </body>
 </html>

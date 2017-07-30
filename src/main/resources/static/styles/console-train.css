@@ -46,7 +46,7 @@ body {
 }
 
 #sidebar {
-    width: 20%;
+    width: 18%;
     z-index: 5;
 }
 
@@ -69,7 +69,7 @@ body {
 }
 
 #pageContent {
-    margin-left: 20%;
+    margin-left: 18%;
     margin-top: 80px;
 }
 
@@ -95,7 +95,7 @@ body {
 }
 
 #con h2 {
-    margin-top: 30px;
+    margin-top: 15px;
     font-size: 28px;
     font-family: "Montserrat", sans-serif;
     font-weight: 400;
@@ -103,34 +103,38 @@ body {
 }
 
 #con h4 {
-    margin-top: 20px;
+    font-size: 18px;
     font-family: "Varela", sans-serif;
     font-weight: 400;
-    line-height: 30px;
+    line-height: 24px;
     color: rgb(77, 77, 77);
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 #con .panel {
     border-color: teal;
 }
 
-#con .panel-heading {
-    background-color: teal;
+#con .panel2 {
+    margin-top: -10px;
+    height: 230px;
+    margin-bottom: -20px;
 }
 
-#con .uploadPanel {
-    margin-top: 30px;
+#con .panel-heading {
+    background-color: teal;
+    height: 47px;
 }
 
 #con .panel-heading form input {
+    margin-top: -4px;
     width: 100%;
     height: 100%;
 }
 
 #con .uploadPanel h2 {
-    margin-top: 10px;
-    font-size: 28px;
+    margin-top: -10px;
+    font-size: 24px;
     font-family: "Montserrat", sans-serif;
     font-weight: 400;
 }
@@ -140,23 +144,58 @@ body {
     font-size: 14px;
     font-family: "Varela", sans-serif;
     font-weight: 400;
-    line-height: 30px;
     color: rgb(77, 77, 77);
-    margin-bottom: 30px;
-}
-
-#con .fileChooserBtn span {
-    font-size: 40px;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 #con .fileChooserBtn {
     font-family: "Montserrat", sans-serif;
     width: 100%;
-    height: 170px;
+    height: 140px;
     border-style: dashed;
     border-color: teal;
     border-width: thin;
+}
+
+#con #trainingCon {
+    margin-top: 20px;
+    text-align: center;
+}
+
+#con #progressBar {
+    font-size: 150px;
+    color: teal;
+}
+
+#con #progressBarMessage {
+    font-size: 16px;
+    font-family: "Varela", sans-serif;
+    font-weight: 400;
+    color: teal;
+}
+
+#con #warning {
+    font-size: 150px;
+    color: #ff1a1a;
+}
+
+#con #warningMessage {
+    font-size: 16px;
+    font-family: "Varela", sans-serif;
+    font-weight: 400;
+    color: #ff1a1a;
+}
+
+#con #finished {
+    font-size: 150px;
+    color: #00e6e6;
+}
+
+#con #finishedMessage {
+    font-size: 16px;
+    font-family: "Varela", sans-serif;
+    font-weight: 400;
+    color: #00e6e6;
 }
 
 #con .createBtn {
@@ -182,7 +221,15 @@ body {
 
 @media screen and (max-width: 992px) {
     #sidebar {
-        width: 35%;
+        width: 25%;
+    }
+
+    #sidebar a {
+        font-size: 17px;
+    }
+
+    #sidebar h5 {
+        font-size: 14px;
     }
 
     #pageContent {
@@ -190,7 +237,13 @@ body {
     }
 }
 
-@media screen and (max-width: 768px) {
+@media only screen and (max-width: 926px) {
+    #pageContent h1 {
+        margin-top: 159px;
+    }
+}
+
+@media only screen and (max-width: 767px) {
     .icon-bar {
         margin-top: 6px;
     }
@@ -200,16 +253,62 @@ body {
     }
 
     #sidebar {
-        width: 60%;
+        width: 43%;
+    }
+
+    #sidebar a {
+        font-size: 15px;
+    }
+
+    #sidebar h5 {
+        font-size: 13px;
     }
 
     #pageContent h1 {
         margin-top: -25px;
     }
+
+    #con #trainingCon {
+        margin-top: 55px;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    #con #progressBar {
+        font-size: 120px;
+    }
+
+    #con #progressBarMessage {
+        font-size: 14px;
+    }
+
+    #con #warning {
+        font-size: 120px;
+    }
+
+    #con #warningMessage {
+        font-size: 14px;
+    }
+
+    #con #finished {
+        font-size: 120px;
+    }
+
+    #con #finishedMessage {
+        font-size: 14px;
+    }
 }
 
 @media only screen and (max-width: 380px){
     #sidebar {
-        width: 80%;
+        width: 55%;
+    }
+
+    #sidebar a {
+        font-size: 14px;
+    }
+
+    #sidebar h5 {
+        font-size: 12px;
     }
 }

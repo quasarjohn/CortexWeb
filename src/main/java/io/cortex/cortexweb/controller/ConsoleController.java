@@ -15,4 +15,9 @@ public class ConsoleController {
     public String showConsoleTrainPage() {
         return "console-train";
     }
+
+    @RequestMapping("/console-classifiers")
+    public String showConsoleClassifiersPage() {
+        return "console-classifiers";
+    }
 }

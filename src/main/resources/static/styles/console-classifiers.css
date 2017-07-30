@@ -111,103 +111,31 @@ body {
     margin-bottom: 30px;
 }
 
-#con #fileChooserBtn span {
-    font-size: 40px;
+#con img {
+    margin-top: 20px;
+    width: 100%;
+    height: 200px;
+}
+
+#con .w3-container {
+    background-color: white;
+    margin-bottom: 40px;
+}
+
+#con h3 {
+    margin-top: 30px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
     margin-bottom: 15px;
 }
 
-#con #fileChooserBtn {
-    /*margin-top: 30px;*/
-    font-family: "Montserrat", sans-serif;
-    width: 100%;
-    height: 230px;
-    border-style: dashed;
-    border-color: teal;
-}
-
-#con .urlTextField {
-    margin-top: 30px;
-    width: 100%;
-    border-style: solid;
-    border-color: teal;
-}
-
-#con #classifyURLBtn {
-    background-color: teal;
-    color: white;
-    font-family: "Montserrat", sans-serif;
-    display: block;
-    margin: auto;
-    margin-bottom: 50px;
-}
-
-#con #classifyingCon {
-    margin-top: 20px;
-    text-align: center;
-}
-
-#con #progressBar {
-    font-size: 150px;
-    color: teal;
-}
-
-#con #progressBarMessage {
-    font-size: 16px;
+#con1 .w3-container p {
+    margin-top: 10px;
     font-family: "Varela", sans-serif;
     font-weight: 400;
-    color: teal;
-}
-
-#con #outputImage {
-    margin-top: -20px;
-    width: 100%;
-    height: 250px;
-}
-
-#con .panel {
-    border-color: teal;
-}
-
-#con .outputPanels {
-    margin-top: 25px;
-}
-
-#con .panel-heading {
-    background-color: teal;
-    color: white;
-}
-
-#con .panel1 p {
-    margin-top: 20px;
-    font-family: "Varela", sans-serif;
     font-size: 16px;
-    font-weight: 400;
-    margin-bottom: 20px;
-}
-
-#con .panel2 h6 {
-    float: left;
-    margin-top: 3px;
-    margin-left: 12px;
-    margin-right: 7px;
-}
-
-#con .panel2 .progress {
-    margin-top: 20px;
-    width: 80%;
-    background: rgba(245, 245, 245, 1);
-    border: 3px solid rgba(245, 245, 245, 1);
-    border-radius: 17px; height: 24px;
-}
-
-#con .panel2 .progress-bar-custom {
-    background: rgba(0, 128, 128, 1);
-}
-
-@media only screen and (max-width: 1366px) {
-    #con .panel2 .progress {
-        width: 70%;
-    }
+    color: #8c8c8c;
+    margin-bottom: 30px;
 }
 
 @media screen and (max-width: 992px) {
@@ -226,21 +154,11 @@ body {
     #pageContent {
         margin-left: 0;
     }
-
-    #con .panel2 .progress {
-        width: 68%;
-    }
 }
 
 @media only screen and (max-width: 926px) {
     #pageContent h1 {
         margin-top: 159px;
-    }
-}
-
-@media screen and (max-width: 768px) {
-    #con .panel2 .progress {
-        width: 67%;
     }
 }
 
@@ -269,35 +187,12 @@ body {
         margin-top: -25px;
     }
 
-    #con #outputImage {
-        height: 200px;
+    #con h4 {
+        margin-bottom: 45px;
     }
 
-    #con #classifyingCon {
-        margin-top: 55px;
-        margin-bottom: 40px;
-    }
-
-    #con #progressBar {
-        font-size: 120px;
-    }
-
-    #con #progressBarMessage {
-        font-size: 14px;
-    }
-
-    #con #classifyURLBtn {
-        width: 100%;
-    }
-
-    #con .panel2 .progress {
-        width: 90%;
-    }
-}
-
-@media only screen and (max-width: 550px) {
-    #con .panel2 .progress {
-        width: 80%;
+    #con .row {
+        margin-top: -15px;
     }
 }
 

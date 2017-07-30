@@ -46,7 +46,7 @@ body {
 }
 
 #sidebar {
-    width: 20%;
+    width: 18%;
     z-index: 5;
 }
 
@@ -56,20 +56,20 @@ body {
 
 #sidebar a {
     text-decoration: none;
-    font-size: 20px;
+    font-size: 18px;
     font-family: "Varela", sans-serif;
     font-weight: 400;
 }
 
 #sidebar h5 {
-    font-size: 16px;
+    font-size: 14px;
     font-family: "Montserrat", sans-serif;
     font-weight: 400;
     color: rgb(230, 230, 230);
 }
 
 #pageContent {
-    margin-left: 20%;
+    margin-left: 18%;
     margin-top: 80px;
 }
 
@@ -94,17 +94,129 @@ body {
     color: white;
 }
 
+#con {
+    background-color: white;
+    width: 100%;
+    height: 300px;
+}
+
+#con h2 {
+    margin-top: 40px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    text-align: center;
+    color: #8c8c8c;
+    margin-bottom: 60px;
+}
+
+#con img {
+    width: 90px;
+    height: 90px;
+    display: block;
+    margin: auto;
+}
+
+#con p {
+    margin-top: 15px;
+    font-family: "Varela", sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    text-align: center;
+}
+
+#con1 p {
+    margin-top: 40px;
+    color: #8c8c8c;
+}
+
+#con1 #classifyImageThumbnail {
+    margin-top: 20px;
+    width: 100%;
+    height: 200px;
+    background-color: greenyellow;
+}
+
+#con1 #trainImageThumbnail {
+    margin-top: 82px;
+    width: 100%;
+    height: 200px;
+    background-color: darkorange;
+}
+
+#con1 .w3-container {
+    background-color: white;
+    margin-bottom: 40px;
+}
+
+#con1 h3 {
+    margin-top: 30px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+#con1 .w3-container p {
+    margin-top: 10px;
+    font-family: "Varela", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    color: #8c8c8c;
+    margin-bottom: 30px;
+}
+
+#con1 a {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    text-decoration: underline;
+    color: teal;
+}
+
+#con1 .btn-default {
+    margin-top: -28px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    background-color: transparent;
+    border-color: transparent;
+    color: teal;
+    float: right;
+    margin-bottom: 5px;
+}
+
+#con1 .btn-default:hover {
+    background-color: rgba(0, 128, 128, 0.17);
+}
+
 @media screen and (max-width: 992px) {
     #sidebar {
-        width: 35%;
+        width: 25%;
+    }
+
+    #sidebar a {
+        font-size: 17px;
+    }
+
+    #sidebar h5 {
+        font-size: 14px;
     }
 
     #pageContent {
         margin-left: 0;
     }
+
+    #con {
+        margin-top: -10px;
+    }
 }
 
-@media screen and (max-width: 768px) {
+@media only screen and (max-width: 926px) {
+    #pageContent h1 {
+        margin-top: 159px;
+    }
+}
+
+@media only screen and (max-width: 767px) {
     .icon-bar {
         margin-top: 6px;
     }
@@ -114,16 +226,77 @@ body {
     }
 
     #sidebar {
-        width: 60%;
+        width: 43%;
+    }
+
+    #sidebar a {
+        font-size: 15px;
+    }
+
+    #sidebar h5 {
+        font-size: 13px;
     }
 
     #pageContent h1 {
         margin-top: -25px;
     }
+
+    #con1 #trainImageThumbnail {
+        margin-top: 30px;
+    }
+}
+
+@media only screen and (max-width: 645px) {
+    #con img {
+        width: 80px;
+        height: 80px;
+    }
+
+    #con p {
+        font-size: 16px;
+    }
+}
+
+@media only screen and (max-width: 590px) {
+    #con {
+        display: none;
+    }
 }
 
 @media only screen and (max-width: 380px){
     #sidebar {
-        width: 80%;
+        width: 55%;
+    }
+
+    #sidebar a {
+        font-size: 14px;
+    }
+
+    #sidebar h5 {
+        font-size: 12px;
+    }
+
+    #con1 img{
+        height: 170px;
+    }
+
+    #con1 h3 {
+        margin-top: 20px;
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+
+    #con1 .w3-container p {
+        font-size: 14px;
+        margin-bottom: 30px;
+    }
+
+    #con1 a {
+        font-size: 14px;
+    }
+
+    #con1 .btn-default {
+        font-size: 14px;
+        margin-bottom: 5px;
     }
 }

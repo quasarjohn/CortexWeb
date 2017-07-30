@@ -40,6 +40,7 @@ $(document).ready(function () {
     $("#progressbarText").hide();
     $(".result").hide();
     $("#trainBtn").hide();
+    $('[data-toggle="tooltip"]').tooltip();
 });
 
 //block for classifying images when clicked
