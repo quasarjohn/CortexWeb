@@ -1,57 +1,112 @@
-//On page load
-$(document).ready(function() {
-   $("#progressBar").hide();
-   $("#progressBarMessage").hide();
-   $(".cancelBtn").hide();
-   $("#warning").hide();
-   $("#warningMessage").hide();
-   $("#finished").hide();
-   $("#finishedMessage").hide();
-   $('[data-toggle="tooltip"]').tooltip();
-});
-
-//Execute after the uploading of files is finished
-function trainingFinished() {
-    $("#progressBar").hide();
-    $("#progressBarMessage").hide();
-    $(".cancelBtn").hide();
-    $(".createBtn").show();
-    $("#finished").show();
-    $("#finishedMessage").show();
+function sidebarOpen() {
+    document.getElementById("sidebar").style.display = "block";
+    document.getElementById("overlay").style.display = "block";
 }
 
-//Executes after the user clicked the cancel button
-function trainingCancelled() {
-    $("#warning").show();
-    $("#warningMessage").show();
+function sidebarClose() {
+    document.getElementById("sidebar").style.display = "none";
+    document.getElementById("overlay").style.display = "none";
 }
 
-var timeout;
+$(document).ready(function () {
+    $("#fileChooserBtn").click(function () {
+        $("#file1").click();
+    });
 
-//Hide create button, show cancel button and training finished message
-$(".createBtn").click(function() {
-    var hideOnLoad = document.getElementById("hideOnLoad");
-    hideOnLoad.style.display = hideOnLoad.style.display.replace("none", "");
-    var hideOnLoad1 = document.getElementById("hideOnLoad1");
-    hideOnLoad1.style.display = hideOnLoad1.style.display.replace("none", "");
+    $("#file1").change(function () {
+        $("#btnSubmit").click();
+    })
 
-    $("#warning").hide();
-    $("#warningMessage").hide();
-    $("#finished").hide();
-    $("#finishedMessage").hide();
-    $("#progressBar").show();
-    $("#progressBarMessage").show();
-    $(".cancelBtn").show();
-    $(".createBtn").hide();
-    timeout = setTimeout(trainingFinished, 3000);
-});
+    $("#btnSubmit").click(function (event) {
+        event.preventDefault();
+        ajax_upload_training_data();
+    })
+})
 
-//Hide cancel button, show create button and training cancelled message
-$(".cancelBtn").click(function() {
-    clearTimeout(timeout);
-    $("#progressBar").hide();
-    $("#progressBarMessage").hide();
-    trainingCancelled();
-    $(".cancelBtn").hide();
-    $(".createBtn").show();
-});
+function ajax_upload_training_data() {
+    var form = $('#fileUploadForm')[0];
+    var data = new FormData(form);
+
+    $.ajax({
+        type: "POST",
+        headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
+            'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token',
+            'Access-Control-Allow-Credentials': true,
+        },
+        xhr: function () {
+            var xhr = new window.XMLHttpRequest();
+            xhr.upload.addEventListener('progress', function (e) {
+                if (e.lengthComputable) {
+                    // Append progress percentage.
+                    var loaded = e.loaded;
+                    var total = e.total;
+                    var progressValue = Math.round(( loaded / total ) * 100);
+
+                    // Bytes received.
+                    var percentage = (loaded / total) * 100;
+                    var percentage_str = Number(Math.round(percentage + 'e2') + 'e-2').toFixed(2);
+
+                    var status = document.getElementById('uploadStatus');
+
+                    if (percentage < 100)
+                        status.innerHTML = percentage_str + "%";
+                    else
+                        status.innerHTML = "Unzipping files";
+
+                }
+            }, false);
+            return xhr;
+        },
+        //user1 is the temporary api key
+        enctype: 'multipart/form-data',
+        url: "http://192.168.0.149:8091/api/user1/trainer/upload_train_model/hand_gestures/500",
+        data: data,
+        processData: false, //prevent jQuery from automatically transforming the data into a query string
+        contentType: false,
+        cache: false,
+        //2 hours timeout
+        timeout: 7200000,
+        success: function (data) {
+            // displayClassificationResults(data);
+            var str_data = JSON.stringify(data);
+            console.log(str_data);
+            var status = document.getElementById('uploadStatus');
+            //TODO create a method for checking the training status every minute
+            status.innerHTML = "CORTEX is training your image classifier.";
+            var count = 0;
+
+            var now = new Date();
+            var delay = 1000 * 60; // 60 sec
+            var start = delay - (now.getMinutes() * 60 + now.getSeconds()) * 1000 + now.getMilliseconds();
+
+            setTimeout(function doSomething() {
+                // do the operation
+                // ... your code here...
+                // status.innerHTML = "CORTEX is training your image classifier." + count + " seconds ago.";
+                count++;
+
+                // schedule the next tick
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET', "http://192.168.0.149:8091/api/user1/trainer/status");
+                xhr.setRequestHeader('Content-Type', 'application/json');
+                xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
+                xhr.setRequestHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS');
+                xhr.setRequestHeader('Access-Control-Allow-Headers', 'Origin, Content-Type, X-Auth-Token');
+                xhr.send();
+
+                xhr.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        var jsonData = JSON.parse(xhr.responseText);
+                        status.innerHTML = JSON.stringify(jsonData);
+                    }
+                };
+                setTimeout(doSomething, delay);
+            }, start);
+        },
+        error: function (e) {
+            console.log("ERROR : ", e);
+        }
+    });
+}
