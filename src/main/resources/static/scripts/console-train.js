@@ -1,27 +1,23 @@
-function sidebarOpen() {
-    document.getElementById("sidebar").style.display = "block";
-    document.getElementById("overlay").style.display = "block";
-}
-
-function sidebarClose() {
-    document.getElementById("sidebar").style.display = "none";
-    document.getElementById("overlay").style.display = "none";
-}
-
 $(document).ready(function () {
+    $("#progressBar").hide();
+    $("#progressBarMessage").hide();
+    $("#progressBarPercentage").hide();
+    $("#hideOnLoad").attr("style", "display: block;");
+
     $("#fileChooserBtn").click(function () {
         $("#file1").click();
     });
 
     $("#file1").change(function () {
         $("#btnSubmit").click();
-    })
+    });
 
     $("#btnSubmit").click(function (event) {
         event.preventDefault();
+        $("#progressBar").show();
         ajax_upload_training_data();
-    })
-})
+    });
+});
 
 function ajax_upload_training_data() {
     var form = $('#fileUploadForm')[0];
@@ -50,18 +46,27 @@ function ajax_upload_training_data() {
 
                     var status = document.getElementById('uploadStatus');
 
-                    if (percentage < 100)
+                    if (percentage < 100) {
                         status.innerHTML = percentage_str + "%";
-                    else
+                        $("#progressBarPercentage").show();
+                        $("#progressBarPercentage").text(percentage_str + "%");
+                        //progressbar(percentage_str, percentage_str + "%");
+                        //$("#progressbarText").setText(percentage_str + "%");
+                    }
+                    else {
                         status.innerHTML = "Unzipping files";
-
+                        $("#progressBarMessage").show();
+                        $("#progressBarMessage").text("Unzipping files");
+                        //progressbar(percentage_str,  percentage_str + "%");
+                        //$("#progressbarText").setText("Unzipping files");
+                    }
                 }
             }, false);
             return xhr;
         },
         //user1 is the temporary api key
         enctype: 'multipart/form-data',
-        url: "http://192.168.0.149:8091/api/user1/trainer/upload_train_model/hand_gestures/500",
+        url: "http://192.168.1.3:8091/api/user1/trainer/upload_train_model/hand_gestures/500",
         data: data,
         processData: false, //prevent jQuery from automatically transforming the data into a query string
         contentType: false,
@@ -75,7 +80,11 @@ function ajax_upload_training_data() {
             var status = document.getElementById('uploadStatus');
             //TODO create a method for checking the training status every minute
             status.innerHTML = "CORTEX is training your image classifier.";
+            $("#progressBarMessage").text("CORTEX is training your image classifier...");
+            $("#progressBarPercentage").hide();
+            //$("#progressbarText").setText("CORTEX is training your image classifier.");
             var count = 0;
+            var hour;
 
             var now = new Date();
             var delay = 1000 * 60; // 60 sec
@@ -85,11 +94,25 @@ function ajax_upload_training_data() {
                 // do the operation
                 // ... your code here...
                 // status.innerHTML = "CORTEX is training your image classifier." + count + " seconds ago.";
+                //$("#progressbarText").setText("CORTEX is training your image classifier." + count + " seconds ago.");
+                if(count == 0) {
+                    $("#progressBarMessage").text("CORTEX is training your image classifier...");
+                } else if(count > 0) {
+                    $("#progressBarMessage").text("CORTEX is training your image classifier... " + count + " minute/s ago.");
+                } else if(count == 60) {
+                    count /= 60;
+                    $("#progressBarMessage").text("CORTEX is training your image classifier... " + count + " hour/s ago.");
+                } else if(count > 60) {
+                    hour = count/60;
+                    count%=60;
+                    $("#progressBarMessage").text("CORTEX is training your image classifier... " + hour + " hour/s and " + count + " minute/s ago.");
+                }
+
                 count++;
 
                 // schedule the next tick
                 var xhr = new XMLHttpRequest();
-                xhr.open('GET', "http://192.168.0.149:8091/api/user1/trainer/status");
+                xhr.open('GET', "http://192.168.1.3:8091/api/user1/trainer/status");
                 xhr.setRequestHeader('Content-Type', 'application/json');
                 xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
                 xhr.setRequestHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS');
@@ -100,13 +123,18 @@ function ajax_upload_training_data() {
                     if (this.readyState == 4 && this.status == 200) {
                         var jsonData = JSON.parse(xhr.responseText);
                         status.innerHTML = JSON.stringify(jsonData);
+                        var progressPercentage = jsonData.content["percentage"];
+                        $("#progressBarPercentage").show();
+                        $("#progressBarPercentage").text(progressPercentage + "%");
                     }
+                    //$("#hideOnLoad").attr("style", "display: none;");
                 };
                 setTimeout(doSomething, delay);
             }, start);
         },
         error: function (e) {
             console.log("ERROR : ", e);
+            $("#progressBarMessage").text("Error : ", e);
         }
     });
 }

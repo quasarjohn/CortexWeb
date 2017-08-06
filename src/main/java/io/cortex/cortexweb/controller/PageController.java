@@ -1,4 +1,5 @@
 package io.cortex.cortexweb.controller;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,11 +24,6 @@ public class PageController {
     @RequestMapping("/about")
     public String showAboutPage() {
         return "about";
-    }
-
-    @RequestMapping("/sign-in")
-    public String showSignInPage() {
-        return "sign-in";
     }
 
     @RequestMapping("/try-it")

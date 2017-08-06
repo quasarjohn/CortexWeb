@@ -6,6 +6,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class ConsoleController {
 
+    @RequestMapping("/console-overview")
+    public String showConsoleOverviewPage() {
+        return "console-overview";
+    }
+
     @RequestMapping("/console-classify")
     public String showConsoleClassifyPage() {
         return "console-classify";

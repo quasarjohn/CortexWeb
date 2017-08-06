@@ -1,4 +1,4 @@
-function progressbar() {
+/*function progressbar() {
     var bar = new ProgressBar.Circle(progressbarCon, {
         color: '#aaa',
         // This has to be the same size as the maximum width to
@@ -29,7 +29,7 @@ function progressbar() {
 
     bar.animate(1.0);  // Number from 0.0 to 1.0
     return bar;
-}
+}*/
 
 //on page load, hide some elements that will only be shown when classifying images
 $(document).ready(function () {
@@ -37,8 +37,6 @@ $(document).ready(function () {
     $("#progressbarCon").hide();
     $("#progressbarText").hide();
     $(".result").hide();
-    $("#trainBtn").hide();
-    $('[data-toggle="tooltip"]').tooltip();
 });
 
 //block for classifying images when clicked
@@ -47,9 +45,10 @@ $(document).ready(function () {
 $(document).ready(function () {
     $(".classifyImg").click(function () {
         $(".url").prop("disabled", true);
+        $(".result").hide();
         $("#progressbarCon").show();
         $("#progressbarText").show();
-        progressbar();
+        //progressbar();
         $("#fileChooserBtn").addClass("disableFileChooserBtn");
         $(".classifyBtn").addClass("disableClassifyBtn");
         $(".classifyImg").addClass("opacityClassifyImg");
@@ -59,6 +58,7 @@ $(document).ready(function () {
 //block for classifying images using url
 $(document).ready(function () {
     $("#classifyURLBtn").click(function () {
+        $(".result").hide();
         onClassificationStarted();
         var img_url = document.getElementById('img_url_input').value;
         classifyImageFromURL(img_url);
@@ -72,7 +72,7 @@ function onClassificationStarted() {
     $(".url").prop("disabled", true);
     $("#progressbarCon").show();
     $("#progressbarText").show();
-    progressbar();
+    //progressbar();
     $("#fileChooserBtn").addClass("disableFileChooserBtn");
     $(".classifyBtn").addClass("disableClassifyBtn");
     $(".classifyImg").addClass("opacityClassifyImg");
@@ -88,7 +88,6 @@ function onClassificationDone() {
     $("#progressbarCon").hide();
     $("#progressbarText").hide();
     $(".result").show();
-    $("#trainBtn").show();
 }
 /*
  block for classifying image uploaded by user
@@ -136,7 +135,7 @@ function ajax_classify_image() {
         },
         //user1 is the temporary api key
         enctype: 'multipart/form-data',
-        url: "http://192.168.0.149:8091/api/user1/classifier/upload_classify_image/modelkey",
+        url: "http://192.168.43.252:8091/api/user1/classifier/upload_classify_image/modelkey",
         data: data,
         processData: false, //prevent jQuery from automatically transforming the data into a query string
         contentType: false,
@@ -147,7 +146,7 @@ function ajax_classify_image() {
             var str_data = JSON.stringify(data);
             onClassificationDone();
             console.log(str_data);
-            document.getElementById('test_content').innerHTML = str_data;
+            //document.getElementById('test_content').innerHTML = str_data;
             displayClassificationResults(str_data);
         },
         error: function (e) {
@@ -164,7 +163,7 @@ function classifyImageFromURL(img_url) {
      as of the moment, the request is sent to localhost, but it should be sent later to the
      dedicated server for image classification
      */
-    xhr.open('GET', "http://192.168.0.149:8091/api/user1/classifier/classify_image/xxx?img_url=" +
+    xhr.open('GET', "http://192.168.43.252:8091/api/user1/classifier/classify_image/xxx?img_url=" +
         encodeURIComponent(img_url) + "&max_results=5", true);
     xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
     xhr.setRequestHeader('Content-Type', 'application/json');
@@ -187,15 +186,14 @@ function classifyImageFromURL(img_url) {
                 //the probabilities of the classifications are displayed using this piece of code.
                 // medyo baboy yung pagkakacode. haha
                 //TODO please remove the text from the background of the progressbar
-                $('#progressList').append("<div class='progress'><div class='progress-bar progress-bar-custom text' " +
+                $('#progressList').append("<h6>" + probability_decimal + "% " + "</h6><div class='progress'><div class='progress-bar progress-bar-custom text' " +
                     "role='progressbar' aria-valuenow='" + probability_int + "' aria-valuemin='0' aria-valuemax='100' " +
-                    "style='width: " + probability_int + "%;'><span class='text-center'>" + probability_decimal + "% " +
-                    "Probability</span></div></div>")
+                    "style='width: " + probability_int + "%;'></div></div>")
 
                 $('#labelsList').append("<p>" + label + "&ensp;</p>")
             }
 
-            document.getElementById('test_content').innerHTML = xhr.responseText;
+            //document.getElementById('test_content').innerHTML = xhr.responseText;
             $('#resultImg').attr('src', img_url);
         }
     };
@@ -214,10 +212,9 @@ function displayClassificationResults(data) {
         //the probabilities of the classifications are displayed using this piece of code.
         // medyo baboy yung pagkakacode. haha
         //TODO please remove the text from the background of the progressbar
-        $('#progressList').append("<div class='progress'><div class='progress-bar progress-bar-custom text' " +
+        $('#progressList').append("<h6>" + probability_decimal + "% " + "</h6><div class='progress'><div class='progress-bar progress-bar-custom text' " +
             "role='progressbar' aria-valuenow='" + probability_int + "' aria-valuemin='0' aria-valuemax='100' " +
-            "style='width: " + probability_int + "%;'><span class='text-center'>" + probability_decimal + "% " +
-            "Probability</span></div></div>")
+            "style='width: " + probability_int + "%;'></div></div>")
 
         $('#labelsList').append("<p>" + label + "&ensp;</p>")
     }

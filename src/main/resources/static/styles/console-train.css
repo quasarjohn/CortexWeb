@@ -108,7 +108,7 @@ body {
     font-weight: 400;
     line-height: 24px;
     color: rgb(77, 77, 77);
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 
 #con .panel {
@@ -116,7 +116,7 @@ body {
 }
 
 #con .panel2 {
-    margin-top: -10px;
+    margin-top: 0;
     height: 230px;
     margin-bottom: -20px;
 }
@@ -133,7 +133,7 @@ body {
 }
 
 #con .uploadPanel h2 {
-    margin-top: -10px;
+    margin-top: -5px;
     font-size: 24px;
     font-family: "Montserrat", sans-serif;
     font-weight: 400;
@@ -148,7 +148,7 @@ body {
     margin-bottom: 20px;
 }
 
-#con .fileChooserBtn {
+#con #fileChooserBtn {
     font-family: "Montserrat", sans-serif;
     width: 100%;
     height: 140px;
@@ -168,13 +168,22 @@ body {
 }
 
 #con #progressBarMessage {
+    margin-top: 15px;
     font-size: 16px;
     font-family: "Varela", sans-serif;
     font-weight: 400;
     color: teal;
 }
 
-#con #warning {
+#con #progressBarPercentage {
+    margin-top: -160px;
+    font-size: 14px;
+    font-family: "Varela", sans-serif;
+    font-weight: 400;
+    color: teal;
+}
+
+/*#con #warning {
     font-size: 150px;
     color: #ff1a1a;
 }
@@ -196,7 +205,7 @@ body {
     font-family: "Varela", sans-serif;
     font-weight: 400;
     color: #00e6e6;
-}
+}*/
 
 #con .createBtn {
     background-color: teal;
@@ -234,6 +243,16 @@ body {
 
     #pageContent {
         margin-left: 0;
+    }
+
+    #con #progressBarPercentage {
+        margin-top: -135px;
+    }
+}
+
+@media only screen and (max-width: 940px) {
+    #con #progressBarPercentage {
+        margin-top: -160px;
     }
 }
 
@@ -279,10 +298,17 @@ body {
     }
 
     #con #progressBarMessage {
+        margin-top: 15px;
         font-size: 14px;
     }
 
-    #con #warning {
+    #con #progressBarPercentage {
+        margin-top: -115px;
+        font-size: 12px;
+        margin-bottom: 95px;
+    }
+
+    /*#con #warning {
         font-size: 120px;
     }
 
@@ -296,6 +322,14 @@ body {
 
     #con #finishedMessage {
         font-size: 14px;
+    }*/
+}
+
+@media only screen and (max-width: 445px) {
+    #con #progressBarPercentage {
+        margin-top: -135px;
+        font-size: 12px;
+        margin-bottom: 110px;
     }
 }
 

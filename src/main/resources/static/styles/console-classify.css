@@ -194,7 +194,7 @@ body {
 
 #con .panel2 .progress {
     margin-top: 20px;
-    width: 80%;
+    /*width: 80%;*/
     background: rgba(245, 245, 245, 1);
     border: 3px solid rgba(245, 245, 245, 1);
     border-radius: 17px; height: 24px;
@@ -204,11 +204,11 @@ body {
     background: rgba(0, 128, 128, 1);
 }
 
-@media only screen and (max-width: 1366px) {
+/*@media only screen and (max-width: 1366px) {
     #con .panel2 .progress {
         width: 70%;
     }
-}
+}*/
 
 @media screen and (max-width: 992px) {
     #sidebar {
@@ -227,9 +227,9 @@ body {
         margin-left: 0;
     }
 
-    #con .panel2 .progress {
+    /*#con .panel2 .progress {
         width: 68%;
-    }
+    }*/
 }
 
 @media only screen and (max-width: 926px) {
@@ -238,11 +238,11 @@ body {
     }
 }
 
-@media screen and (max-width: 768px) {
+/*@media screen and (max-width: 768px) {
     #con .panel2 .progress {
         width: 67%;
     }
-}
+}*/
 
 @media only screen and (max-width: 767px) {
     .icon-bar {
@@ -290,16 +290,16 @@ body {
         width: 100%;
     }
 
-    #con .panel2 .progress {
+    /*#con .panel2 .progress {
         width: 90%;
-    }
+    }*/
 }
 
-@media only screen and (max-width: 550px) {
+/*@media only screen and (max-width: 550px) {
     #con .panel2 .progress {
         width: 80%;
     }
-}
+}*/
 
 @media only screen and (max-width: 380px){
     #sidebar {

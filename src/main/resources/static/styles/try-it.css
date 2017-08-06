@@ -87,10 +87,6 @@ body {
     width: 100%;
 }
 
-#con2 .thirdRow {
-    margin-top: 20px;
-}
-
 #con2 #fileChooserBtn span {
     font-size: 40px;
     margin-bottom: 15px;
@@ -103,6 +99,10 @@ body {
     height: 170px;
     border-style: dashed;
     border-color: teal;
+}
+
+#con2 .thirdRow {
+    margin-top: 20px;
 }
 
 #con2 .thirdRow .url {
@@ -120,17 +120,20 @@ body {
     font-family: "Montserrat", sans-serif;
 }
 
-#progressbarCon {
-    margin: 20px;
-    width: 250px;
-    height: 250px;
-    position: relative;
+#con2 #classifyingCon {
+    margin-top: 40px;
+    text-align: center;
 }
 
-#progressbarText {
-    margin-top: 50px;
-    margin-left: 20px;
+#con2 #progressbarCon {
+    font-size: 150px;
+    color: teal;
+}
+
+#con2 #progressbarText {
     font-size: 24px;
+    font-family: "Varela", sans-serif;
+    font-weight: 400;
     color: teal;
 }
 
@@ -162,6 +165,19 @@ body {
     margin-top: 60px;
 }
 
+#con2 .result .resultPanel .panel1 {
+    width: 100%;
+}
+
+#con2 .result .resultPanel .panel {
+    border-color: teal;
+}
+
+#con2 .result .resultPanel .panel-heading {
+    background-color: teal;
+    color: white;
+}
+
 #con2 .result .resultPanel .panel1 p {
     font-family: "Varela", sans-serif;
     font-size: 16px;
@@ -180,14 +196,21 @@ body {
 }
 
 #con2 .result .resultPanel .panel2 {
-    width: 250px;
+    width: 100%;
+}
+
+#con2 .result .resultPanel .panel2 h6 {
+    float: left;
+    margin-top: 3px;
+    margin-left: 12px;
+    margin-right: 7px;
 }
 
 #con2 .result .resultPanel .panel2 .progress {
     margin-top: 20px;
     background: rgba(245, 245, 245, 1);
     border: 3px solid rgba(245, 245, 245, 1);
-    border-radius: 17px; height: 25px;
+    border-radius: 17px; height: 24px;
 }
 
 #con2 .result .resultPanel .panel2 .progress-bar-custom {
@@ -245,15 +268,72 @@ footer {
 }
 
 @media screen and (max-width: 768px) {
-    #con2 .firstRow img {
+    .icon-bar {
+        margin-top: 6px;
+    }
+
+    .navbar-brand {
+        margin-top: 0;
+    }
+
+    #con {
+        margin-top: 50px;
+    }
+
+    #con2 .firstRow img, #con2 .secondRow img {
+        height: 120px;
+    }
+
+    #con2 #fileChooserBtn span {
+        font-size: 28px;
+        margin-bottom: 14px;
+    }
+
+    #con2 #fileChooserBtn {
+        margin-top: 0;
+        height: 120px;
+    }
+
+    #con2 .col-xs-6 img {
         margin-bottom: 30px;
     }
 
-    #con2 .secondRow {
-        margin-top: -30px;
+    #con2 .secondRow img {
+        margin-top: 0;
+    }
+
+    #con2 .thirdRow {
+        margin-top: 0;
+    }
+
+    #con2 #classifyURLBtn {
+        margin-top: -25px;
+        width: 100%;
+    }
+
+    #con2 #progressbarText {
+        font-size: 20px;
     }
 
     #con3 a {
         width: 100%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    #con2 #progressbarText {
+        font-size: 16px;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    #con2 .result img {
+        height: 290px;
+    }
+}
+
+@media only screen and (max-width: 300px) {
+    #con2 .result img {
+        height: 200px;
     }
 }
