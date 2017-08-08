@@ -133,14 +133,14 @@ body {
     margin-top: 20px;
     width: 100%;
     height: 200px;
-    background-color: greenyellow;
+    background-color: #ffff66;
 }
 
 #con1 #trainImageThumbnail {
     margin-top: 82px;
     width: 100%;
     height: 200px;
-    background-color: darkorange;
+    background-color: #1affa3;
 }
 
 #con1 .w3-container {

@@ -11,7 +11,7 @@
 <!-- Sidebar -->
 <div id="sidebar" class="w3-sidebar w3-bar-block w3-teal w3-collapse w3-animate-left w3-card-4">
     <a href="#" th:href="@{/console-overview}" class="overview w3-bar-item w3-button w3-hover-white">
-        <span class="glyphicon glyphicon-home"></span> &nbsp;&nbsp;Overview</a><hr />
+        <span class="fa fa-home"></span> &nbsp;&nbsp;Overview</a><hr />
     <h5 class="w3-bar-item">Tools</h5>
     <a href="#" th:href="@{/console-classify}" class="classify w3-bar-item w3-button w3-hover-white">
         <span class="fa fa-image"></span> &nbsp;&nbsp;Classify</a>
@@ -72,6 +72,7 @@
                             <div id="trainingCon">
                                 <span id="progressBar" class="fa fa-spinner w3-spin"></span>
                                 <p id="progressBarMessage"></p>
+                                <p id="progressBarStepsCount"></p>
                                 <p id="progressBarPercentage"></p>
                                 <!--<span id="warning" class="fa fa-warning w3-display-center"></span>
                                 <p id="warningMessage">Training cancelled</p>

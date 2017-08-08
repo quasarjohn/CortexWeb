@@ -2,6 +2,7 @@ $(document).ready(function () {
     $("#progressBar").hide();
     $("#progressBarMessage").hide();
     $("#progressBarPercentage").hide();
+    $("#progressBarStepsCount").hide();
     $("#hideOnLoad").attr("style", "display: block;");
 
     $("#fileChooserBtn").click(function () {
@@ -48,15 +49,17 @@ function ajax_upload_training_data() {
 
                     if (percentage < 100) {
                         status.innerHTML = percentage_str + "%";
-                        $("#progressBarPercentage").show();
-                        $("#progressBarPercentage").text(percentage_str + "%");
+                        //$("#progressBarPercentage").show();
+                        //$("#progressBarPercentage").text(percentage_str + "%");
+                        $("#progressBarMessage").show();
+                        $("#progressBarMessage").text("Uploading files...")
                         //progressbar(percentage_str, percentage_str + "%");
                         //$("#progressbarText").setText(percentage_str + "%");
                     }
                     else {
                         status.innerHTML = "Unzipping files";
-                        $("#progressBarMessage").show();
-                        $("#progressBarMessage").text("Unzipping files");
+                        //$("#progressBarPercentage").hide();
+                        $("#progressBarMessage").text("Unzipping files...");
                         //progressbar(percentage_str,  percentage_str + "%");
                         //$("#progressbarText").setText("Unzipping files");
                     }
@@ -66,7 +69,7 @@ function ajax_upload_training_data() {
         },
         //user1 is the temporary api key
         enctype: 'multipart/form-data',
-        url: "http://192.168.0.140:8091/api/user1/trainer/upload_train_model/hand_gestures/500",
+        url: "http://192.168.1.2:8091/api/user1/trainer/upload_train_model/hand_gestures/500",
         data: data,
         processData: false, //prevent jQuery from automatically transforming the data into a query string
         contentType: false,
@@ -81,13 +84,12 @@ function ajax_upload_training_data() {
             //TODO create a method for checking the training status every minute
             status.innerHTML = "CORTEX is training your image classifier.";
             $("#progressBarMessage").text("CORTEX is training your image classifier...");
-            $("#progressBarPercentage").hide();
             //$("#progressbarText").setText("CORTEX is training your image classifier.");
             var count = 0;
-            var hour;
+            var seconds = 0, minute = 0, hour = 0;
 
             var now = new Date();
-            var delay = 1000 * 60; // 60 sec
+            var delay = 1000; // 60 sec
             var start = delay - (now.getMinutes() * 60 + now.getSeconds()) * 1000 + now.getMilliseconds();
 
             setTimeout(function doSomething() {
@@ -95,24 +97,20 @@ function ajax_upload_training_data() {
                 // ... your code here...
                 // status.innerHTML = "CORTEX is training your image classifier." + count + " seconds ago.";
                 //$("#progressbarText").setText("CORTEX is training your image classifier." + count + " seconds ago.");
-                if(count == 0) {
-                    $("#progressBarMessage").text("CORTEX is training your image classifier...");
-                } else if(count > 0) {
-                    $("#progressBarMessage").text("CORTEX is training your image classifier... " + count + " minute/s ago.");
-                } else if(count == 60) {
-                    count /= 60;
-                    $("#progressBarMessage").text("CORTEX is training your image classifier... " + count + " hour/s ago.");
-                } else if(count > 60) {
-                    hour = count/60;
-                    count%=60;
-                    $("#progressBarMessage").text("CORTEX is training your image classifier... " + hour + " hour/s and " + count + " minute/s ago.");
-                }
 
-                count++;
+                count+=delay;
+
+                seconds = count%60000;
+                seconds/=1000;
+                minute = Math.floor(count/60000);
+                hour = Math.floor(minute/60000);
+
+                $("#progressBarMessage").text("CORTEX is training your image classifier... " + hour + "h " + minute + "m " + seconds + "s ago.");
+
 
                 // schedule the next tick
                 var xhr = new XMLHttpRequest();
-                xhr.open('GET', "http://192.168.0.140:8091/api/user1/trainer/status");
+                xhr.open('GET', "http://192.168.1.2:8091/api/user1/trainer/status");
                 xhr.setRequestHeader('Content-Type', 'application/json');
                 xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
                 xhr.setRequestHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS');
@@ -124,8 +122,28 @@ function ajax_upload_training_data() {
                         var jsonData = JSON.parse(xhr.responseText);
                         status.innerHTML = JSON.stringify(jsonData);
                         var progressPercentage = jsonData.content["percentage"];
-                        $("#progressBarPercentage").show();
-                        $("#progressBarPercentage").text(progressPercentage + "%");
+                        var log = jsonData.content["log"];
+                        var searchIndex = log.search("S");
+                        var substringedLog = log.substring(0, searchIndex);
+                        var progressBarStepsCount = log.replace(substringedLog, "");
+
+                        if(jsonData.content["percentage"] == 0.00) {
+                            console.log("test");
+                            $("#progressBarPercentage").hide();
+                        }
+                        else {
+                            $("#progressBarPercentage").show();
+                            $("#progressBarPercentage").text(progressPercentage + "%");
+                            $("#progressBarStepsCount").show();
+                            $("#progressBarStepsCount").text(progressBarStepsCount);
+                        }
+
+                        if(jsonData.content["percentage"] == 100.00) {
+                            $("#progressBar").hide();
+                            $("#progressBarMessage").hide();
+                            $("#progressBarPercentage").hide();
+                            $("#progressBarStepsCount").hide();
+                        }
                     }
                     //$("#hideOnLoad").attr("style", "display: none;");
                 };
