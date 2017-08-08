@@ -66,7 +66,7 @@ function ajax_upload_training_data() {
         },
         //user1 is the temporary api key
         enctype: 'multipart/form-data',
-        url: "http://192.168.1.3:8091/api/user1/trainer/upload_train_model/hand_gestures/500",
+        url: "http://192.168.0.140:8091/api/user1/trainer/upload_train_model/hand_gestures/500",
         data: data,
         processData: false, //prevent jQuery from automatically transforming the data into a query string
         contentType: false,
@@ -112,7 +112,7 @@ function ajax_upload_training_data() {
 
                 // schedule the next tick
                 var xhr = new XMLHttpRequest();
-                xhr.open('GET', "http://192.168.1.3:8091/api/user1/trainer/status");
+                xhr.open('GET', "http://192.168.0.140:8091/api/user1/trainer/status");
                 xhr.setRequestHeader('Content-Type', 'application/json');
                 xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
                 xhr.setRequestHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS');
