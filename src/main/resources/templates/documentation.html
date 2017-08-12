@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Cortex | Documentation</title>
+    <!--/*/ <th:block th:include="fragments/head-fragment :: head-fragment"></th:block> /*/-->
+    <link rel="stylesheet" type="text/css" href="static/styles/documentation.css" th:href="@{styles/documentation.css}" />
+</head>
+<body data-spy="scroll" th:attr="data-target='#scrollSpy'" data-offset="120">
+<nav class="navbar navbar-default navbar-fixed-top w3-card-4">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a href="#" th:href="@{/}" class="navbar-brand w3-text-teal" data-toggle="tooltip" data-placement="bottom" title="Home">
+                <span class="fa fa-copyright"></span> CORTEX</a>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navBarItem">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div id="navBarItem" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar">
+                <li><a href="#" th:href="@{/use-case}" style="padding: 28px 20px; margin-top: 1px;">USE CASES</a></li>
+                <li><a href="#" th:href="@{/community-sign-in}" style="padding: 28px 20px; margin-top: 1px">COMMUNITY</a></li>
+                <li class="active"><a href="#" th:href="@{/documentation}" style="padding: 28px 20px; margin-top: 1px">DOCUMENTATION</a></li>
+                <li><a href="#" th:href="@{/support}" style="padding: 28px 20px; margin-top: 1px">SUPPORT</a></li>
+                <li><a href="#" th:href="@{/about}" style="padding: 28px 20px; margin-top: 1px">ABOUT</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#" th:href="@{/sign-in}" style="padding: 28px 20px; margin-top: 2px;">SIGN IN</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Console -->
+<div id="sidebar" class="w3-sidebar w3-bar-block w3-teal w3-collapse w3-animate-right w3-card-4">
+    <div id="noActionSelected" style="display: block; ">
+        <h2>No action selected</h2>
+        <p>You can try selecting 'Classify lorem ipsum' from the left column.</p>
+    </div>
+
+    <div id="blockquoteSelected" style="display: none;">
+        <p>Test</p>
+    </div>
+</div>
+
+<div id="pageContent">
+
+    <div id="con" class="container-fluid">
+        <div class="row">
+            <div id="scrollSpy" class="col-sm-3"> <!-- links -->
+                <ul class="nav nav-pills nav-stacked">
+                    <li id="introduction"><a href="#" th:attr="href='#introductionContent'">Introduction</a></li>
+                    <li id="reference"><a href="#" th:attr="href='#referenceContent'">Reference</a></li>
+                    <li id="classify"><a href="#" th:attr="href='#classifyContent'">Classify</a></li>
+                    <li><a href="#" th:attr="href='#classify1'">classify1</a></li> <!-- change links (optional) -->
+                    <li><a href="#" th:attr="href='#classify2'">classify2</a></li>
+                    <li><a href="#" th:attr="href='#classify3'">classify3</a></li>
+                    <li><a href="#" th:attr="href='#classify4'">classify4</a></li>
+                    <li id="train"><a href="#" th:attr="href='#trainContent'">Train</a></li>
+                    <li><a href="#" th:attr="href='#train1'">train1</a></li> <!-- change links (optional) -->
+                    <li><a href="#" th:attr="href='#train2'">train2</a></li>
+                    <li><a href="#" th:attr="href='#train3'">train3</a></li>
+                    <li><a href="#" th:attr="href='#train4'">train4</a></li>
+                </ul>
+            </div>
+
+            <div class="col-sm-9">
+                <h1>Cortex</h1><hr />
+
+                <div id="introductionContent">  <!-- introduction -->
+                    <h3>INTRODUCTION</h3>
+
+                    <p>Documentation for Cortex lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Suspendisse id placerat est. Nunc eu commodo turpis.</p>
+                </div>
+
+                <h3 id="referenceContent">REFERENCE</h3>
+                <!-- Classify -->
+                <h1 id="classifyContent">Classify</h1><hr />
+
+                <div id="classify1">
+                    <h2>Classify 1</h2>     <!-- title -->
+                    <blockquote><h3>Classify lorem ipsum</h3>
+                        <span class="fa fa-chevron-right"></span>
+                    </blockquote>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse id placerat est. Nunc eu commodo turpis.
+                        Integer faucibus mauris non eros rhoncus, maximus ullamcorper nibh porta. </p> <!-- title content -->
+                </div>
+
+                <div id="classify2">
+                    <h2>Classify 2</h2>
+                    <blockquote><h3>Classify lorem ipsum</h3>
+                        <span class="fa fa-chevron-right"></span>
+                    </blockquote>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse id placerat est. Nunc eu commodo turpis.
+                        Integer faucibus mauris non eros rhoncus, maximus ullamcorper nibh porta. </p>
+                </div>
+
+                <div id="classify3">
+                    <h2>Classify 3</h2>
+                    <blockquote><h3>Classify lorem ipsum</h3>
+                        <span class="fa fa-chevron-right"></span>
+                    </blockquote>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse id placerat est. Nunc eu commodo turpis.
+                        Integer faucibus mauris non eros rhoncus, maximus ullamcorper nibh porta. </p>
+                </div>
+
+                <div id="classify4">
+                    <h2>Classify 4</h2>
+                    <blockquote><h3>Classify lorem ipsum</h3>
+                        <span class="fa fa-chevron-right"></span>
+                    </blockquote>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse id placerat est. Nunc eu commodo turpis.
+                        Integer faucibus mauris non eros rhoncus, maximus ullamcorper nibh porta. </p>
+                </div>
+                <!-- Train -->
+                <h1 id="trainContent">Train</h1><hr />
+
+                <div id="train1">
+                    <h2>Train 1</h2>
+                    <blockquote><h3>Train lorem ipsum</h3>
+                        <span class="fa fa-chevron-right"></span>
+                    </blockquote>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse id placerat est. Nunc eu commodo turpis.
+                        Integer faucibus mauris non eros rhoncus, maximus ullamcorper nibh porta. </p>
+                </div>
+
+                <div id="train2">
+                    <h2>Train 2</h2>
+                    <blockquote><h3>Train lorem ipsum</h3>
+                        <span class="fa fa-chevron-right"></span>
+                    </blockquote>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse id placerat est. Nunc eu commodo turpis.
+                        Integer faucibus mauris non eros rhoncus, maximus ullamcorper nibh porta. </p>
+                </div>
+
+                <div id="train3">
+                    <h2>Train 3</h2>
+                    <blockquote><h3>Train lorem ipsum</h3>
+                        <span class="fa fa-chevron-right"></span>
+                    </blockquote>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse id placerat est. Nunc eu commodo turpis.
+                        Integer faucibus mauris non eros rhoncus, maximus ullamcorper nibh porta. </p>
+                </div>
+
+                <div id="train4">
+                    <h2>Train 4</h2>
+                    <blockquote><h3>Train lorem ipsum</h3>
+                        <span class="fa fa-chevron-right"></span>
+                    </blockquote>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse id placerat est. Nunc eu commodo turpis.
+                        Integer faucibus mauris non eros rhoncus, maximus ullamcorper nibh porta. </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!--/*/ <th:block th:include="fragments/scripts-fragment :: scripts-fragment"></th:block> /*/-->
+<script type="text/javascript" src="scripts/home-tooltip.js"></script>
+<script type="text/javascript" src="scripts/documentation.js"></script>
+</body>
+</html>

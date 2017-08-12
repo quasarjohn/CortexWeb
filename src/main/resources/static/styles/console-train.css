@@ -201,7 +201,7 @@ body {
     font-family: "Varela", sans-serif;
     font-weight: 400;
     color: #ff1a1a;
-}
+}*/
 
 #con #finished {
     font-size: 150px;
@@ -213,9 +213,13 @@ body {
     font-family: "Varela", sans-serif;
     font-weight: 400;
     color: #00e6e6;
-}*/
+}
 
-#con .createBtn {
+#con .panel-footer {
+    margin-top: 20px;
+}
+
+/*#con .createBtn {
     background-color: teal;
     color: white;
 }
@@ -234,7 +238,7 @@ body {
 #con .cancelBtn:hover {
     background-color: #009696;
     color: white;
-}
+}*/
 
 @media only screen and (max-width: 1145px ) {
     #con #progressBarPercentage {

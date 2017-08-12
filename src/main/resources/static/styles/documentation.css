@@ -1,0 +1,166 @@
+body {
+    background-color: rgba(0, 0, 0, 0.10);
+    position: relative;
+    background-color: white;
+}
+
+.navbar-brand {
+    font-family: "Montserrat", sans-serif;
+    font-size: 30px;
+    margin-top: 7px;
+}
+
+.navbar-default {
+    font-family: "Montserrat", sans-serif;
+    font-size: 16px;
+    line-height: 14px;
+}
+
+#navBarItem li.active a, #navBarItem li a:hover {
+    background-color: teal;
+    color: white;
+}
+
+#sidebar {
+    width: 38%;
+    right: 0;
+}
+
+#sidebar #noActionSelected, #sidebar #blockquoteSelected {
+    margin-top: 60%;
+    text-align: center;
+}
+
+#pageContent {
+    margin-right: 38%;
+    margin-top: 80px;
+}
+
+#con ul {
+    margin-top: 30px;
+    position: fixed;
+    font-size: 14px;
+    font-family: "Montserrat", sans-serif;
+    color: #696969;
+    height: 100%;
+    width: 130px;
+    overflow-y: auto;
+}
+
+#introduction:hover, #reference:hover, #classify:hover, #train:hover {
+    cursor: pointer;
+    color: teal;
+}
+
+#introduction, #reference, #classify, #train {
+    margin-left: -15px;
+    font-size: 16px;
+}
+
+#introduction {
+    margin-bottom: 15px;
+}
+
+#reference {
+    margin-bottom: -15px;
+}
+
+#con hr {
+    border-color: #696969;;
+}
+
+#con ul li.active a{
+    background-color: transparent;
+    color: teal;
+    border-radius: 0;
+    border-left: solid;
+    border-left-color: teal;
+}
+
+#con ul li a:hover {
+    background-color: transparent;
+    color: teal;
+}
+
+#con blockquote span {
+    font-size: 24px;
+    float: right;
+    color: #c6c6c6;
+}
+
+#con blockquote {
+    margin: 10px 0; !important;
+    border-color: teal;
+    background-color: #f0f0f0;
+}
+
+#con blockquote h3 {
+    display: inline;
+}
+
+#con h1, #con h2, #con h3 {
+    font-family: "Montserrat", sans-serif;
+}
+
+#con h1, #con h2, #con blockquote h3 {
+    font-weight: 600;
+}
+
+#con p {
+    font-family: "Varela", sans-serif;
+    font-size: 18px;
+    margin-bottom: 60px;
+}
+
+#con h1 {
+    margin-top: 30px;
+}
+
+#con h2 {
+    margin-top: 40px;
+    margin-bottom: 30px;
+}
+
+#con h3 {
+    margin-top: 40px;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+#con #referenceContent {
+    margin-top: 80px;
+}
+
+#con blockquote {
+    margin-bottom: 30px;
+}
+
+#con blockquote:hover {
+    cursor: pointer;
+    background-color: rgba(0, 128, 128, 0.17);
+}
+
+blockquote.active {
+    border-color: #f0f0f0;
+    background-color: teal;
+    color: white;
+}
+
+footer {
+    margin-top: 150px;
+    background-color: #34302d;
+    padding: 35px;
+    color: white;
+}
+
+/* screen size */
+
+@media screen and (max-width: 768px) {
+    .icon-bar {
+        margin-top: 6px;
+    }
+
+    .navbar-brand {
+        margin-top: 0;
+    }
+}

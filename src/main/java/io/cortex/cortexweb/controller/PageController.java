@@ -16,6 +16,11 @@ public class PageController {
         return "use-case";
     }
 
+    @RequestMapping("/documentation")
+    public String showDocumentationPage() {
+        return "documentation";
+    }
+
     @RequestMapping("/support")
     public String showSupportPage() {
         return "support";
