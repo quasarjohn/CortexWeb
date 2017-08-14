@@ -1,6 +1,7 @@
 package io.cortex.cortexweb;
 
 import org.apache.coyote.http11.AbstractHttp11Protocol;
+import org.h2.tools.Server;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.embedded.ConfigurableEmbeddedServletContainer;
@@ -9,10 +10,13 @@ import org.springframework.boot.context.embedded.tomcat.TomcatConnectorCustomize
 import org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainerFactory;
 import org.springframework.context.annotation.Bean;
 
+import java.sql.SQLException;
+
 @SpringBootApplication
 public class CortexapiApplication {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws SQLException {
+		Server.createTcpServer("-tcpPort", "9092", "-tcpAllowOthers").start();
 		SpringApplication.run(CortexapiApplication.class, args);
 	}
 

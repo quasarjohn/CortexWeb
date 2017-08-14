@@ -53,15 +53,15 @@
                     <li id="introduction"><a href="#" th:attr="href='#introductionContent'">Introduction</a></li>
                     <li id="reference"><a href="#" th:attr="href='#referenceContent'">Reference</a></li>
                     <li id="classify"><a href="#" th:attr="href='#classifyContent'">Classify</a></li>
-                    <li><a href="#" th:attr="href='#classify1'">classify1</a></li> <!-- change links (optional) -->
-                    <li><a href="#" th:attr="href='#classify2'">classify2</a></li>
-                    <li><a href="#" th:attr="href='#classify3'">classify3</a></li>
-                    <li><a href="#" th:attr="href='#classify4'">classify4</a></li>
+                    <li><a href="#" th:attr="href='#classify1'">Classify from URL</a></li> <!-- change links (optional) -->
+                    <li><a href="#" th:attr="href='#classify2'">Upload and classify</a></li>
+                    <li><a href="#" th:attr="href='#classify3'">Retrieve Classifiers</a></li>
                     <li id="train"><a href="#" th:attr="href='#trainContent'">Train</a></li>
-                    <li><a href="#" th:attr="href='#train1'">train1</a></li> <!-- change links (optional) -->
-                    <li><a href="#" th:attr="href='#train2'">train2</a></li>
-                    <li><a href="#" th:attr="href='#train3'">train3</a></li>
-                    <li><a href="#" th:attr="href='#train4'">train4</a></li>
+                    <li><a href="#" th:attr="href='#train1'">Train a classifier</a></li> <!-- change links (optional) -->
+                    <li><a href="#" th:attr="href='#train2'">View training status</a></li>
+                    <li><a href="#" th:attr="href='#train3'">View training information</a></li>
+                    <li><a href="#" th:attr="href='#train4'">View training logs</a></li>
+                    <li><a href="#" th:attr="href='#train5'">Stop training</a></li>
                 </ul>
             </div>
 
@@ -71,8 +71,7 @@
                 <div id="introductionContent">  <!-- introduction -->
                     <h3>INTRODUCTION</h3>
 
-                    <p>Documentation for Cortex lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Suspendisse id placerat est. Nunc eu commodo turpis.</p>
+                    <p>Cortex API allows users to perform specific actions using specific requests.</p>
                 </div>
 
                 <h3 id="referenceContent">REFERENCE</h3>
@@ -80,77 +79,69 @@
                 <h1 id="classifyContent">Classify</h1><hr />
 
                 <div id="classify1">
-                    <h2>Classify 1</h2>     <!-- title -->
-                    <blockquote><h3>Classify lorem ipsum</h3>
+                    <h2>Classify an image from URL</h2>     <!-- title -->
+                    <blockquote><h3>Classify an image from URL</h3>
                         <span class="fa fa-chevron-right"></span>
                     </blockquote>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse id placerat est. Nunc eu commodo turpis.
-                        Integer faucibus mauris non eros rhoncus, maximus ullamcorper nibh porta. </p> <!-- title content -->
+                    <p>Classify an image by submitting an image URL in the POST request.</p> <!-- title content -->
                 </div>
 
                 <div id="classify2">
-                    <h2>Classify 2</h2>
-                    <blockquote><h3>Classify lorem ipsum</h3>
+                    <h2>Upload and classify image</h2>
+                    <blockquote><h3>Upload and classify image</h3>
                         <span class="fa fa-chevron-right"></span>
                     </blockquote>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse id placerat est. Nunc eu commodo turpis.
-                        Integer faucibus mauris non eros rhoncus, maximus ullamcorper nibh porta. </p>
+                    <p>Let users upload an image from their device to classify it.</p>
                 </div>
 
                 <div id="classify3">
-                    <h2>Classify 3</h2>
-                    <blockquote><h3>Classify lorem ipsum</h3>
+                    <h2>Retrieve the list of a user's classifiers</h2>
+                    <blockquote><h3>Retrieve the list of a user's classifiers</h3>
                         <span class="fa fa-chevron-right"></span>
                     </blockquote>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse id placerat est. Nunc eu commodo turpis.
-                        Integer faucibus mauris non eros rhoncus, maximus ullamcorper nibh porta. </p>
+                    <p>Get a JSON file containing the list of a specific user's classifiers.</p>
                 </div>
 
-                <div id="classify4">
-                    <h2>Classify 4</h2>
-                    <blockquote><h3>Classify lorem ipsum</h3>
-                        <span class="fa fa-chevron-right"></span>
-                    </blockquote>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse id placerat est. Nunc eu commodo turpis.
-                        Integer faucibus mauris non eros rhoncus, maximus ullamcorper nibh porta. </p>
-                </div>
-                <!-- Train -->
                 <h1 id="trainContent">Train</h1><hr />
 
                 <div id="train1">
-                    <h2>Train 1</h2>
-                    <blockquote><h3>Train lorem ipsum</h3>
+                    <h2>Train a classifier</h2>
+                    <blockquote><h3>Train a classifier</h3>
                         <span class="fa fa-chevron-right"></span>
                     </blockquote>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse id placerat est. Nunc eu commodo turpis.
-                        Integer faucibus mauris non eros rhoncus, maximus ullamcorper nibh porta. </p>
+                    <p>Train a classifier using images. This may take some time so be patient.</p>
                 </div>
 
                 <div id="train2">
-                    <h2>Train 2</h2>
-                    <blockquote><h3>Train lorem ipsum</h3>
+                    <h2>View training status</h2>
+                    <blockquote><h3>View training status</h3>
                         <span class="fa fa-chevron-right"></span>
                     </blockquote>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse id placerat est. Nunc eu commodo turpis.
-                        Integer faucibus mauris non eros rhoncus, maximus ullamcorper nibh porta. </p>
+                    <p>See the percentage of the training.</p>
                 </div>
 
                 <div id="train3">
-                    <h2>Train 3</h2>
-                    <blockquote><h3>Train lorem ipsum</h3>
+                    <h2>View training information</h2>
+                    <blockquote><h3>View training information</h3>
                         <span class="fa fa-chevron-right"></span>
                     </blockquote>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse id placerat est. Nunc eu commodo turpis.
-                        Integer faucibus mauris non eros rhoncus, maximus ullamcorper nibh porta. </p>
+                    <p>View the details of the training including labels that will be available for the classifier once the training is complete. </p>
                 </div>
 
                 <div id="train4">
-                    <h2>Train 4</h2>
-                    <blockquote><h3>Train lorem ipsum</h3>
+                    <h2>View training logs</h2>
+                    <blockquote><h3>View training logs</h3>
                         <span class="fa fa-chevron-right"></span>
                     </blockquote>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse id placerat est. Nunc eu commodo turpis.
-                        Integer faucibus mauris non eros rhoncus, maximus ullamcorper nibh porta. </p>
+                    <p>See detailed logs of the training process.</p>
+                </div>
+
+                <div id="train5">
+                    <h2>Stop training</h2>
+                    <blockquote><h3>Stop training</h3>
+                        <span class="fa fa-chevron-right"></span>
+                    </blockquote>
+                    <p>Stop the current training process.</p>
                 </div>
             </div>
         </div>
