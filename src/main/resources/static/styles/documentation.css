@@ -26,9 +26,45 @@ body {
     right: 0;
 }
 
-#sidebar #noActionSelected, #sidebar #blockquoteSelected {
-    margin-top: 60%;
+#sidebar #noActionSelected {
+    margin-top: 40%;
     text-align: center;
+}
+
+#sidebar #blockquoteSelected {
+    margin-top: 50px;
+    margin-left: 20px;
+    margin-right: 20px;
+    font-size: 18px;
+    text-align: left;
+    font-family: "Varela", sans-serif;
+}
+
+#sidebar .sidebarBtn {
+    font-family: none;
+    font-size: 50px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+#sidebar .sidebarBtn:hover {
+    color: white;
+}
+
+#sidebar h5, #sidebar ul li {
+    font-family: "Montserrat", sans-serif;
+    text-align: center; !important;
+}
+
+#sidebar .subHr {
+    background-color: rgba(174, 174, 174, 0.56);
+}
+
+#sidebar pre {
+    margin-left: -20px;
+    margin-right: -20px;
+    color: whitesmoke;
+    border-color: #209a92;
+    background-color: #209a92;
 }
 
 #pageContent {
@@ -43,7 +79,7 @@ body {
     font-family: "Montserrat", sans-serif;
     color: #696969;
     height: 100%;
-    width: 180px;
+    width: 200px;
     overflow-y: auto;
 }
 
