@@ -5,13 +5,24 @@ $("blockquote").click(function () {
     noActionSelected.style.display = noActionSelected.style.display.replace("block", "none");
     blockquoteSelected.style.display = blockquoteSelected.style.display.replace("none", "block");
 
+    //all the data are retrieved from Cortex API server
     switch (this.id) {
         case "classify-from-url" :
-            $("#test").html("CLASSIFY FROM URL");
             loadDocumentation("http://192.168.0.149:8091/api/docs/classifier/classify-from-url");
             break;
+        case "upload-classify":
+            loadDocumentation("http://192.168.0.149:8091/api/docs/classifier/upload-classify");
+        case "upload-train":
+            loadDocumentation("http://192.168.0.149:8091/api/docs/trainer/train");
+        case "status":
+            loadDocumentation("http://192.168.0.149:8091/api/docs/trainer/status");
+        case "info":
+            loadDocumentation("http://192.168.0.149:8091/api/docs/trainer/info");
+        case "logs":
+            loadDocumentation("http://192.168.0.149:8091/api/docs/trainer/logs");
+        case "stop":
+            loadDocumentation("http://192.168.0.149:8091/api/docs/trainer/stop");
         default:
-            $("#test").html("DEFAULT");
             break;
     }
 
