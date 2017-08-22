@@ -164,7 +164,7 @@ function classifyImageFromURL(img_url) {
      dedicated server for image classification
      */
     xhr.open('GET', "http://192.168.0.149:8091/api/user1/classifier/classify_image/xxx?img_url=" +
-        encodeURIComponent(img_url) + "&max_results=5", true);
+       img_url + "&max_results=5", true);
     xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.send();

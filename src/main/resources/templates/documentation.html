@@ -43,43 +43,45 @@
     </div>
 
     <div id="blockquoteSelected" style="display: none;">
-        <p><code>GET</code> http://cortexapi.io/api/lorem_ipsum/etc</p>
+        <p id="url"><code>GET</code> http://cortexapi.io/api/lorem_ipsum/etc</p>
         <hr />
 
         <br />
         <h5>Parameters</h5><hr />
-        <div class="row">
-            <div class="col-sm-4">
-                <h5>lorem ipsum</h5>
-            </div>
-            <div class="col-sm-5">
-                <ul>
-                    <li>Lorem ipsum dolor sit amet</li>
-                </ul>
-            </div>
-            <div class="col-sm-3">
-                <h5>String</h5>
-            </div>
-        </div><hr class="subHr" />
+        <div id="params">
+            <div class="row">
+                <div class="col-sm-4">
+                    <h5>lorem ipsum</h5>
+                </div>
+                <div class="col-sm-5">
+                    <ul>
+                        <li>Lorem ipsum dolor sit amet</li>
+                    </ul>
+                </div>
+                <div class="col-sm-3">
+                    <h5>String</h5>
+                </div>
+            </div><hr class="subHr" />
+
+            <div class="row">
+                <div class="col-sm-4">
+                    <h5>lorem ipsum</h5>
+                </div>
+                <div class="col-sm-5">
+                    <ul>
+                        <li>Lorem ipsum dolor sit amet</li>
+                    </ul>
+                </div>
+                <div class="col-sm-3">
+                    <h5>String</h5>
+                </div>
+            </div><hr class="subHr" />
+
+        </div>
 
         <br />
         <h5>Request</h5><hr />
-        <pre>
-import javax.ws.rs.client.Client;
-import javax.ws.rs.client.ClientBuilder;
-import javax.ws.rs.client.Entity;
-import javax.ws.rs.core.Response;
-import javax.ws.rs.core.MediaType;
-
-Client client = ClientBuilder.newClient();
-Response response = client.target("http://yugiohprices.com/api/price_history/{print_tag}?rarity={rarity}")
-.request(MediaType.TEXT_PLAIN_TYPE)
-.get();
-
-System.out.println("status: " + response.getStatus());
-System.out.println("headers: " + response.getHeaders());
-System.out.println("body:" + response.readEntity(String.class));
-</pre>
+        <pre id="request"/>
 
         <br />
         <h5>Response</h5><hr />
@@ -89,23 +91,8 @@ System.out.println("body:" + response.readEntity(String.class));
 
         <br />
         <p>BODY</p><hr class="subHr" />
-        <pre>
-{
-    "status": "success",
-    "data": [
-        {
-            "price_average": 6.33,
-            "price_shift": -0.0047169811320754715,
-            "created_at": "2013-11-14 00:42:12 -0700"
-        },
-        {
-            "price_average": 6.36,
-            "price_shift": 0.01597444089456869,
-            "created_at": "2013-11-12 19:16:07 -0700"
-        }
-    ]
-}
-</pre>
+        <pre id="json-result"/>
+
     </div>
 </div>
 
@@ -132,6 +119,7 @@ System.out.println("body:" + response.readEntity(String.class));
 
             <div class="col-sm-9">
                 <h1>Cortex</h1><hr />
+                <pre id="test">HELLO TEST</pre>
 
                 <div id="introductionContent">  <!-- introduction -->
                     <h3>INTRODUCTION</h3>
@@ -145,7 +133,7 @@ System.out.println("body:" + response.readEntity(String.class));
 
                 <div id="classify1">
                     <h2>Classify an image from URL</h2>     <!-- title -->
-                    <blockquote><h3>Classify an image from URL</h3>
+                    <blockquote id="classify-from-url"><h3>Classify an image from URL</h3>
                         <span class="fa fa-chevron-right"></span>
                     </blockquote>
                     <p>Classify an image by submitting an image URL in the POST request.</p> <!-- title content -->
