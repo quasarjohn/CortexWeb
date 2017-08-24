@@ -5,7 +5,7 @@
     <!--/*/ <th:block th:include="fragments/head-fragment :: head-fragment"></th:block> /*/-->
     <link rel="stylesheet" type="text/css" href="static/styles/documentation.css" th:href="@{styles/documentation.css}" />
 </head>
-<body data-spy="scroll" th:attr="data-target='#scrollSpy'" data-offset="120">
+<body>
 <nav class="navbar navbar-default navbar-fixed-top w3-card-4">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -33,9 +33,9 @@
 </nav>
 
 <!-- Console -->
-<div id="sidebar" class="w3-sidebar w3-bar-block w3-teal w3-collapse w3-animate-right w3-card-4">
+<div id="sidebar" class="w3-sidebar w3-bar-block w3-teal w3-collapse w3-animate-right w3-card-4" style="width: 38%">
     <!-- Close Button -->
-    <button class="sidebarBtn w3-button w3-hover-teal"><span class="fa fa-times-circle-o"></span></button><hr />
+    <button id="closeBtn" class="sidebarBtn w3-button w3-hover-teal" onclick="sidebarClose()"><span class="fa fa-times-circle-o"></span></button><hr />
 
     <div id="noActionSelected" style="display: block; ">
         <h2>No action selected</h2>
@@ -50,29 +50,29 @@
         <h5>Parameters</h5><hr />
         <div id="params">
             <div class="row">
-                <div class="col-sm-4">
+                <div class="col-sm-4 col-xs-4">
                     <h5>lorem ipsum</h5>
                 </div>
-                <div class="col-sm-5">
+                <div class="col-sm-5 col-xs-5">
                     <ul>
                         <li>Lorem ipsum dolor sit amet</li>
                     </ul>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-sm-3 col-xs-3">
                     <h5>String</h5>
                 </div>
             </div><hr class="subHr" />
 
             <div class="row">
-                <div class="col-sm-4">
+                <div class="col-sm-4 col-xs-4">
                     <h5>lorem ipsum</h5>
                 </div>
-                <div class="col-sm-5">
+                <div class="col-sm-5 col-xs-5">
                     <ul>
                         <li>Lorem ipsum dolor sit amet</li>
                     </ul>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-sm-3 col-xs-3">
                     <h5>String</h5>
                 </div>
             </div><hr class="subHr" />
@@ -101,7 +101,7 @@
     <div id="con" class="container-fluid">
         <div class="row">
             <div id="scrollSpy" class="col-sm-3"> <!-- links -->
-                <ul class="nav nav-pills nav-stacked">
+                <ul id="links" class="nav nav-pills nav-stacked">
                     <li id="introduction"><a href="#" th:attr="href='#introductionContent'">Introduction</a></li>
                     <li id="reference"><a href="#" th:attr="href='#referenceContent'">Reference</a></li>
                     <li id="classify"><a href="#" th:attr="href='#classifyContent'">Classify</a></li>
@@ -117,7 +117,16 @@
                 </ul>
             </div>
 
-            <div class="col-sm-9">
+            <div id="mainContent" class="col-sm-9" data-spy="scroll" th:attr="data-target='#scrollSpy'" data-offset="40">
+
+                <!-- Hamburger button -->
+                <div class="w3-main">
+                    <button id="openLinksBtn" class="w3-button w3-hover-teal show-850px" onclick="linksOpen()" >&#9776;</button>
+                    <button id="closeLinksBtn" class="w3-button w3-hover-teal show-850px" onclick="linksClose()" style="display: none">
+                        &#9776;</button>
+                    <h1 id="documentation" class="show-850px">Documentation</h1>
+                </div>
+
                 <h1>Cortex</h1><hr />
                 <pre id="test">HELLO TEST</pre>
 

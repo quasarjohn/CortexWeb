@@ -1,4 +1,44 @@
+function sidebarClose() {
+    document.getElementById("sidebar").style.width = "0";
+    document.getElementById("mainContent").style.width = "85vw";
+}
+
+function linksOpen() {
+    document.getElementById("openLinksBtn").style.display = "none";
+    document.getElementById("closeLinksBtn").style.display = "block";
+    document.getElementById("scrollSpy").style.display = "block";
+    document.getElementById("mainContent").style.marginLeft = "80%";
+    document.getElementById("links").style.width = "80%";
+
+    $("ul li").click(function () {
+        document.getElementById("closeLinksBtn").style.display = "none";
+        document.getElementById("openLinksBtn").style.display = "block";
+        document.getElementById("scrollSpy").style.display = "none";
+        document.getElementById("mainContent").style.marginLeft = "0";
+    });
+}
+
+function linksClose() {
+    document.getElementById("closeLinksBtn").style.display = "none";
+    document.getElementById("openLinksBtn").style.display = "block";
+    document.getElementById("scrollSpy").style.display = "none";
+    document.getElementById("mainContent").style.marginLeft = "0";
+}
+
 $("blockquote").click(function () {
+    var screenWidth = window.innerWidth
+        || document.documentElement.clientWidth
+        || document.body.clientWidth;
+
+    if(screenWidth <= 992) {
+        document.getElementById("sidebar").style.display = "block";
+        document.getElementById("sidebar").style.width = "100vw";
+    }
+    else if(screenWidth > 992) {
+        document.getElementById("sidebar").style.width = "38%";
+        document.getElementById("mainContent").style.width = "47vw";
+    }
+
     var noActionSelected = document.getElementById("noActionSelected");
     var blockquoteSelected = document.getElementById("blockquoteSelected");
 
@@ -8,20 +48,20 @@ $("blockquote").click(function () {
     //all the data are retrieved from Cortex API server
     switch (this.id) {
         case "classify-from-url" :
-            loadDocumentation("http://192.168.0.149:8091/api/docs/classifier/classify-from-url");
+            loadDocumentation("http://192.168.1.8:8091/api/docs/classifier/classify-from-url");
             break;
         case "upload-classify":
-            loadDocumentation("http://192.168.0.149:8091/api/docs/classifier/upload-classify");
+            loadDocumentation("http://192.168.1.8:8091/api/docs/classifier/upload-classify");
         case "upload-train":
-            loadDocumentation("http://192.168.0.149:8091/api/docs/trainer/train");
+            loadDocumentation("http://192.168.1.8:8091/api/docs/trainer/train");
         case "status":
-            loadDocumentation("http://192.168.0.149:8091/api/docs/trainer/status");
+            loadDocumentation("http://192.168.1.8:8091/api/docs/trainer/status");
         case "info":
-            loadDocumentation("http://192.168.0.149:8091/api/docs/trainer/info");
+            loadDocumentation("http://192.168.1.8:8091/api/docs/trainer/info");
         case "logs":
-            loadDocumentation("http://192.168.0.149:8091/api/docs/trainer/logs");
+            loadDocumentation("http://192.168.1.8:8091/api/docs/trainer/logs");
         case "stop":
-            loadDocumentation("http://192.168.0.149:8091/api/docs/trainer/stop");
+            loadDocumentation("http://192.168.1.8:8091/api/docs/trainer/stop");
         default:
             break;
     }

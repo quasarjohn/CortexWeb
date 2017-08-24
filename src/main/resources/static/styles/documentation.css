@@ -22,7 +22,7 @@ body {
 }
 
 #sidebar {
-    width: 38%;
+    height: 88vh;
     right: 0;
 }
 
@@ -63,24 +63,63 @@ body {
     margin-left: -20px;
     margin-right: -20px;
     color: whitesmoke;
-    border-color: #209a92;
-    background-color: #209a92;
+    border-color: #009688;
+    background-color: #009688;
 }
 
 #pageContent {
-    margin-right: 38%;
-    margin-top: 80px;
+    margin-right: 38vw; !important;
+}
+
+#pageContent .w3-main {
+    left: 0 !important;
+    width: 100%;
+    display: none;
+}
+
+#pageContent #openLinksBtn, #pageContent #closeLinksBtn {
+    float: left;
+    margin-top: 20px;
+    background-color: teal;
+    color: white;
+}
+
+#pageContent #documentation {
+    padding: 20px 20px;
+    font-size: 24px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    line-height: 38px;
+    background-color: teal;
+    color: white;
+}
+
+#con #mainContent {
+    position: fixed;
+    height: 88vh;
+    width: 47vw;
+    left: 15vw;
+    overflow: auto;
+}
+
+#con #scrollSpy {
+    display: block;
+}
+
+#con #scrollSpy, #con #mainContent, #sidebar {
+    margin-top: 12.5vh;
 }
 
 #con ul {
-    margin-top: 30px;
+    padding-top: 3vh;
     position: fixed;
     font-size: 14px;
     font-family: "Montserrat", sans-serif;
     color: #696969;
-    height: 100%;
-    width: 200px;
-    overflow-y: auto;
+    height: 88vh;
+    width: 14vw;
+    overflow: auto;
+    padding-bottom: 15px;
 }
 
 #introduction:hover, #reference:hover, #classify:hover, #train:hover {
@@ -176,6 +215,10 @@ body {
     background-color: rgba(0, 128, 128, 0.17);
 }
 
+#con #train5 {
+    margin-bottom: 60vh;
+}
+
 blockquote.active {
     border-color: #f0f0f0;
     background-color: teal;
@@ -191,7 +234,33 @@ footer {
 
 /* screen size */
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 992px) {
+    .w3-sidebar.w3-collapse {
+        display: none;
+    }
+
+    #con #mainContent {
+        width: 85vw !important;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    #pageContent .w3-main {
+        display: block;
+    }
+
+    #con #scrollSpy {
+        display: none;
+    }
+
+    #con #mainContent {
+        //height: 88vh;
+        width: 100vw !important;
+        left: 0;
+    }
+}
+
+@media screen and (max-width: 767px) {
     .icon-bar {
         margin-top: 6px;
     }
