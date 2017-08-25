@@ -40,18 +40,11 @@ $(document).ready(function () {
 });
 
 //block for classifying images when clicked
-//TODO classify image when clicked. This has no function yet
-//TODO, remove disability of some elements when classification is done
 $(document).ready(function () {
     $(".classifyImg").click(function () {
-        $(".url").prop("disabled", true);
-        $(".result").hide();
-        $("#progressbarCon").show();
-        $("#progressbarText").show();
-        //progressbar();
-        $("#fileChooserBtn").addClass("disableFileChooserBtn");
-        $(".classifyBtn").addClass("disableClassifyBtn");
-        $(".classifyImg").addClass("opacityClassifyImg");
+
+        onClassificationStarted();
+        classifyImageFromURL(this.src);
     });
 });
 
@@ -89,6 +82,7 @@ function onClassificationDone() {
     $("#progressbarText").hide();
     $(".result").show();
 }
+
 /*
  block for classifying image uploaded by user
  right now, it can only send images to the api server,
@@ -164,7 +158,7 @@ function classifyImageFromURL(img_url) {
      dedicated server for image classification
      */
     xhr.open('GET', "http://192.168.0.149:8091/api/user1/classifier/classify_image/xxx?img_url=" +
-       img_url + "&max_results=5", true);
+        img_url + "&max_results=5", true);
     xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.send();
@@ -217,5 +211,58 @@ function displayClassificationResults(data) {
             "style='width: " + probability_int + "%;'></div></div>")
 
         $('#labelsList').append("<p>" + label + "&ensp;</p>")
+    }
+}
+
+$(document).ready(function () {
+
+    changeImgSrc("flowers");
+
+    $(".dropdown-menu li").click(function () {
+        $(".dropdown-menu li").removeClass("active");
+        $(this).addClass("active");
+
+
+        switch (this.id) {
+            case "flowers":
+                $("#dropdown-preview").html("Flowers <span class=\"caret\">");
+                break;
+            case "hands":
+                $("#dropdown-preview").html("Hand Gestures <span class=\"caret\">");
+                break;
+            case "bills":
+                $("#dropdown-preview").html("Bills <span class=\"caret\">");
+                break;
+            default:
+                break;
+        }
+
+        changeImgSrc(this.id);
+    });
+
+});
+
+function changeImgSrc(category) {
+    var images = [$("#img1"), $("#img2"), $("#img3"), $("#img4"), $("#img5"), $("#img6"), $("#img7")];
+
+    var flowers = ["daisy.jpg", "dandelion.jpg", "rose.jpg", "sunflower.jpg", "daisy1.jpg", "rose1.jpg", "tulip1.jpg"];
+    var hand_gestures = ["a.jpg", "i.jpg", "n.jpg", "p.jpg", "s.jpg", "t.jpg", "u.jpg"];
+    var bills = ["5.jpg", "10.jpg", "20.jpg", "100.jpg", "1000.jpg", "200.jpg", "500.jpg"];
+
+
+    if (category == "flowers") {
+        for (var i = 0; i < images.length; i++) {
+            images[i].attr("src", "images/flowers/" + flowers[i]);
+        }
+    }
+    else if (category == "bills") {
+        for (var i = 0; i < images.length; i++) {
+            images[i].attr("src", "images/bills/" + bills[i]);
+        }
+    }
+    else {
+        for (var i = 0; i < images.length; i++) {
+            images[i].attr("src", "images/hand_gestures/" + hand_gestures[i]);
+        }
     }
 }
