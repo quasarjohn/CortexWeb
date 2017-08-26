@@ -32,6 +32,9 @@
 }*/
 
 //on page load, hide some elements that will only be shown when classifying images
+
+var classifier = "flowers";
+
 $(document).ready(function () {
     $(".url").prop("disabled", false);
     $("#progressbarCon").hide();
@@ -83,12 +86,8 @@ function onClassificationDone() {
     $(".result").show();
 }
 
-/*
- block for classifying image uploaded by user
- right now, it can only send images to the api server,
- i will add the code for image classification later
- it will all be done on the server though so this part is complete
- */
+
+// block for classifying image uploaded by user
 $(document).ready(function () {
     $("#fileChooserBtn").click(function () {
         $("#file1").click();
@@ -129,7 +128,7 @@ function ajax_classify_image() {
         },
         //user1 is the temporary api key
         enctype: 'multipart/form-data',
-        url: "http://192.168.0.149:8091/api/user1/classifier/upload_classify_image/modelkey",
+        url: "http://192.168.0.149:8091/api/publicapikey/classifier/upload_classify_image/" + classifier,
         data: data,
         processData: false, //prevent jQuery from automatically transforming the data into a query string
         contentType: false,
@@ -157,7 +156,7 @@ function classifyImageFromURL(img_url) {
      as of the moment, the request is sent to localhost, but it should be sent later to the
      dedicated server for image classification
      */
-    xhr.open('GET', "http://192.168.0.149:8091/api/user1/classifier/classify_image/xxx?img_url=" +
+    xhr.open('GET', "http://192.168.0.149:8091/api/publicapikey/classifier/classify_image/" + classifier + "?img_url=" +
         img_url + "&max_results=5", true);
     xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
     xhr.setRequestHeader('Content-Type', 'application/json');
@@ -179,7 +178,6 @@ function classifyImageFromURL(img_url) {
 
                 //the probabilities of the classifications are displayed using this piece of code.
                 // medyo baboy yung pagkakacode. haha
-                //TODO please remove the text from the background of the progressbar
                 $('#progressList').append("<h6>" + probability_decimal + "% " + "</h6><div class='progress'><div class='progress-bar progress-bar-custom text' " +
                     "role='progressbar' aria-valuenow='" + probability_int + "' aria-valuemin='0' aria-valuemax='100' " +
                     "style='width: " + probability_int + "%;'></div></div>")
@@ -222,15 +220,17 @@ $(document).ready(function () {
         $(".dropdown-menu li").removeClass("active");
         $(this).addClass("active");
 
-
         switch (this.id) {
             case "flowers":
+                classifier = "flowers";
                 $("#dropdown-preview").html("Flowers <span class=\"caret\">");
                 break;
             case "hands":
+                classifier = "hand_gestures";
                 $("#dropdown-preview").html("Hand Gestures <span class=\"caret\">");
                 break;
             case "bills":
+                classifier = "bills";
                 $("#dropdown-preview").html("Bills <span class=\"caret\">");
                 break;
             default:
@@ -248,7 +248,6 @@ function changeImgSrc(category) {
     var flowers = ["daisy.jpg", "dandelion.jpg", "rose.jpg", "sunflower.jpg", "daisy1.jpg", "rose1.jpg", "tulip1.jpg"];
     var hand_gestures = ["a.jpg", "i.jpg", "n.jpg", "p.jpg", "s.jpg", "t.jpg", "u.jpg"];
     var bills = ["5.jpg", "10.jpg", "20.jpg", "100.jpg", "1000.jpg", "200.jpg", "500.jpg"];
-
 
     if (category == "flowers") {
         for (var i = 0; i < images.length; i++) {
