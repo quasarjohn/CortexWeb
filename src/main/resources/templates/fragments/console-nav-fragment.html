@@ -28,8 +28,8 @@
                         </div>
                     </form>
                     <ul class="nav navbar-nav navbar">
-                        <li><a href="#" style="padding: 28px 20px; margin-top: 1px;">QUESTIONS</a></li>
-                        <li><a href="#" style="padding: 28px 20px; margin-top: 1px">USERS</a></li>
+                        <li><a href="#" th:href="@{/community-questions}" style="padding: 28px 20px; margin-top: 1px;">QUESTIONS</a></li>
+                        <li><a href="#" th:href="@{/community-users}" style="padding: 28px 20px; margin-top: 1px">USERS</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li class="active"><a href="#" th:href="@{/console-overview}" style="padding: 28px 20px; margin-top: 2px;">CONSOLE</a></li>
@@ -41,7 +41,7 @@
                                 <li><h5>Signed in as</h5></li>
                                 <li><h6><strong>Username</strong></h6></li><hr />
                                 <li><a href="#">Your profile</a></li>
-                                <li><a href="#">Your stars</a></li><hr />
+                                <li><a href="#">Your reputation</a></li><hr />
                                 <li><a href="#">Settings</a></li>
                                 <li><a href="#" th:href="@{/}">Sign out</a></li>
                             </ul>

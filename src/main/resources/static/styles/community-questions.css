@@ -1,0 +1,147 @@
+body {
+    background-color: rgba(0, 0, 0, 0.14);
+    font-family: "Varela", sans-serif;
+}
+
+.navbar-brand {
+    font-family: "Montserrat", sans-serif;
+    font-size: 30px;
+    margin-top: 7px;
+}
+
+.navbar-default {
+    font-family: "Montserrat", sans-serif;
+    font-size: 16px;
+    line-height: 14px;
+}
+
+#navBarItem li.active a, #navBarItem li a:hover {
+    background-color: teal;
+    color: white;
+}
+
+.nav li a img {
+    background-color: teal;
+    width: 51px;
+    height: 51px;
+}
+
+.nav .dropdown-menu li h5 {
+    text-align: left;
+    font-family: "Varela", sans-serif;
+    margin-left: 20px;
+    font-size: 14px;
+}
+
+.nav .dropdown-menu li h6 {
+    margin-top: -5px;
+    text-align: left;
+    font-family: "Varela", sans-serif;
+    margin-left: 20px;
+    font-size: 14px;
+}
+
+.nav .dropdown-menu hr {
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+h2 {
+    margin-top: 120px;
+    margin-left: 20px;
+    font-family: "Montserrat", sans-serif;
+    color: teal;
+}
+
+#askQuestion {
+    width: 23vw;
+    float: right;
+}
+
+#askQuestion h2 {
+    margin-top: -60px;
+    margin-left: 0;
+}
+
+#askQuestion p {
+    margin-top: -10px;
+    color: teal;
+}
+
+#askQuestion .btn {
+    margin-top: -100px;
+    margin-left: 15px;
+    border-color: #00bbbb;
+    background-color: white;
+    color: #00bbbb;
+}
+
+#askQuestion .btn:hover {
+    border-color: #009494;
+    background-color: rgba(0, 170, 170, 0.14);
+    color: #009494;
+}
+
+.question {
+    margin-top: 15px;
+    background-color: white;
+}
+
+hr {
+    background-color: gray;
+}
+
+.col-sm-2 h3, .col-sm-2 p, .askedBy p, .askedBy .reputationTooltip {
+    color: #6a737c;
+}
+
+a {
+    color: #337ab7;
+}
+
+a:hover {
+    color: #40b4ff;
+    text-decoration: none;
+}
+
+.questionTitle {
+    font-size: 20px;
+}
+
+.col-sm-10 p {
+    margin-top: 15px;
+}
+
+.askedBy .reputationTooltip {
+    margin-top: 0;
+}
+
+.col-sm-2 {
+    text-align: center;
+}
+
+.askedBy {
+    font-size: 13px;
+    float: right;
+    margin-right: 10px;
+}
+
+.askedBy a, .askedBy .reputationTooltip {
+    margin-left: -20px;
+}
+
+.askedBy img {
+    width: 70px;
+    height: 40px;
+    background-color: teal;
+}
+
+@media only screen and (max-width: 767px) {
+    .icon-bar {
+        margin-top: 6px;
+    }
+
+    .navbar-brand {
+        margin-top: 0;
+    }
+}
