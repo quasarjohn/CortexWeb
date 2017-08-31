@@ -7,10 +7,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class CommunityController {
 
     @RequestMapping("/community-questions")
-    public String showCommunityQuestions() {
+    public String showCommunityQuestionsPage() {
         return "community-questions";
     }
 
+    @RequestMapping("/community-questions-ask-question")
+    public String showCommunityAskQuestionPage() { return "community-ask-question"; }
+
+    @RequestMapping("/question")
+    public String showQuestionPage() { return "community-view-question"; }
+
     @RequestMapping("/community-users")
-    public String showCommunityUsers() { return "community-users"; }
+    public String showCommunityUsersPage() { return "community-users"; }
 }

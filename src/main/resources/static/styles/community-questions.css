@@ -71,15 +71,13 @@ h2 {
 #askQuestion .btn {
     margin-top: -100px;
     margin-left: 15px;
-    border-color: #00bbbb;
-    background-color: white;
-    color: #00bbbb;
+    color: white;
+    background-color: #00a5a5;
 }
 
 #askQuestion .btn:hover {
-    border-color: #009494;
-    background-color: rgba(0, 170, 170, 0.14);
-    color: #009494;
+    background-color: teal;
+    color: white;
 }
 
 .question {
