@@ -1,4 +1,4 @@
-package io.cortex.cortexweb.configs;
+package io.cortex.cortexweb.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -35,6 +35,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .and()
                 .logout()
+                .logoutSuccessUrl("/sign-in?logout")
                 .permitAll();
     }
 

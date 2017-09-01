@@ -12,18 +12,18 @@
     <div class="row">
         <div class="col-sm-1"></div>
         <div class="col-sm-10">
-            <form>
+            <form target="/community-questions" method="post">
                 <div class="form-group">
                     <label>Title :</label>
-                    <input type="text" class="form-control" placeholder="What's your Cortex API question? Be specific." />
+                    <input type="text" id="title" class="form-control" placeholder="What's your Cortex API question? Be specific." />
                 </div>
 
                 <div class="form-group">
                     <label>Content :</label>
-                    <textarea class="form-control" rows="15" placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer tincidunt venenatis orci non porta. In aliquam sapien ac nisi lobortis aliquam..."></textarea>
+                    <textarea class="form-control" id="body" rows="15" placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer tincidunt venenatis orci non porta. In aliquam sapien ac nisi lobortis aliquam..."></textarea>
                 </div>
 
-                <button id="postQuestion" type="submit" class="btn btn-default">Post Your Question</button>
+                <button id="send" type="submit" class="btn btn-default">Post Your Question</button>
             </form>
         </div>
         <div class="col-sm-1"></div>
@@ -32,5 +32,10 @@
 
 <!--/*/ <th:block th:include="fragments/scripts-fragment :: scripts-fragment"></th:block> /*/-->
 <script type="text/javascript" src="scripts/home-tooltip.js"></script>
+<script type="text/javascript" src="scripts/community-ask-question.js"></script>
+<script src="/webjars/jquery/jquery.min.js"></script>
+<script src="/webjars/sockjs-client/sockjs.min.js"></script>
+<script src="/webjars/stomp-websocket/stomp.min.js"></script>
+
 </body>
 </html>
