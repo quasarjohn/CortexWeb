@@ -15,7 +15,7 @@
     <div class="row">
         <div class="col-sm-4"></div>
         <div class="col-sm-4">
-            <form th:action="@{/index}" th:object="${user}">
+            <form th:action="@{/sign-in}" method="post" th:object="${user}">
                 <div class="form-group">
                     <label id="emailLbl">Email</label>
                     <input type="text" class="form-control" required="true" placeholder="Enter your email" name="email" th:field="*{email}" />

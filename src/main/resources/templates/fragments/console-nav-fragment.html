@@ -39,7 +39,7 @@
                             </a>
                             <ul class="dropdown-menu w3-round">
                                 <li><h5>Signed in as</h5></li>
-                                <li><h6><strong>Username</strong></h6></li><hr />
+                                <li><h6 th:inline="text"><strong>[[${#httpServletRequest.remoteUser}]]</strong></h6></li><hr />
                                 <li><a href="#">Your profile</a></li>
                                 <li><a href="#">Your reputation</a></li><hr />
                                 <li><a href="#">Settings</a></li>
