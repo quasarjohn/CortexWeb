@@ -20,11 +20,34 @@ $(document).ready(function () {
         $("#finished").hide();
         $("#finishedMessage").hide();
         $("#progressBar").show();
-        ajax_upload_training_data();
+        json_fetch_session_data();
     });
 });
 
-function ajax_upload_training_data() {
+function json_fetch_session_data() {
+
+    /*
+    fetch the email or username(tba) of the logged in user.
+    this param will be used to determine the path of the classifier in the cortex api
+     */
+
+    var xhr = new window.XMLHttpRequest();
+    xhr.open('GET', 'http://192.168.0.150:8090/session/user-info');
+    xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.send();
+
+    xhr.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            var jsonData = JSON.parse(xhr.responseText);
+            var user = jsonData.email;
+
+            ajax_upload_training_data(user);
+        }
+    }
+}
+
+function ajax_upload_training_data(user) {
     var form = $('#fileUploadForm')[0];
     var data = new FormData(form);
 
@@ -73,7 +96,7 @@ function ajax_upload_training_data() {
         },
         //user1 is the temporary api key
         enctype: 'multipart/form-data',
-        url: "http://192.168.0.149:8091/api/user1/trainer/upload_train_model/hand_gestures/4000",
+        url: "http://192.168.99.1:8091/api/" + user + "/trainer/upload_train_model/" + $("#classifiername").val() + "/4000",
         data: data,
         processData: false, //prevent jQuery from automatically transforming the data into a query string
         contentType: false,
@@ -102,19 +125,19 @@ function ajax_upload_training_data() {
                 // status.innerHTML = "CORTEX is training your image classifier." + count + " seconds ago.";
                 //$("#progressbarText").setText("CORTEX is training your image classifier." + count + " seconds ago.");
 
-                count+=delay;
+                count += delay;
 
-                seconds = count%60000;
-                seconds/=1000;
-                minute = Math.floor(count/60000);
-                hour = Math.floor(minute/60000);
+                seconds = count % 60000;
+                seconds /= 1000;
+                minute = Math.floor(count / 60000);
+                hour = Math.floor(minute / 60000);
 
                 $("#progressBarMessage").text("CORTEX is training your image classifier... " + hour + "h " + minute + "m " + seconds + "s ago.");
 
 
                 // schedule the next tick
                 var xhr = new XMLHttpRequest();
-                xhr.open('GET', "http://192.168.0.149:8091/api/user1/trainer/status");
+                xhr.open('GET', "http://192.168.99.1:8091/api/user1/trainer/status");
                 xhr.setRequestHeader('Content-Type', 'application/json');
                 xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
                 xhr.setRequestHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS');
@@ -131,7 +154,7 @@ function ajax_upload_training_data() {
                         var substringedLog = log.substring(0, searchIndex);
                         var progressBarStepsCount = log.replace(substringedLog, "");
 
-                        if(jsonData.content["percentage"] == 0.00) {
+                        if (jsonData.content["percentage"] == 0.00) {
                             console.log("test");
                             $("#progressBarPercentage").hide();
                         }
@@ -142,7 +165,7 @@ function ajax_upload_training_data() {
                             $("#progressBarStepsCount").text(progressBarStepsCount);
                         }
 
-                        if(jsonData.content["percentage"] == 100.00) {
+                        if (jsonData.content["percentage"] == 100.00) {
                             $("#progressBar").hide();
                             $("#progressBarMessage").hide();
                             $("#progressBarPercentage").hide();

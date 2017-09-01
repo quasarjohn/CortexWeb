@@ -1,5 +1,6 @@
 package io.cortex.cortexweb.controller;
 
+import io.cortex.cortexweb.model.User;
 import io.cortex.cortexweb.security.AuthenticationManager;
 import io.cortex.cortexweb.security.IAuthenticationManager;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,9 +56,7 @@ public class PageController {
         if (auth != null) {
             System.out.println("HINDI NULL");
             new SecurityContextLogoutHandler().logout(request, response, auth);
-        }else {
-            System.out.println("NULL SYA");
         }
-        return "redirect:/sign-in?logout";//You can redirect wherever you want, but generally it's a good practice to show login screen again.
+        return "redirect:/sign-in?logout";
     }
 }

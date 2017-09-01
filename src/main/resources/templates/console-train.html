@@ -36,24 +36,21 @@
 
     <div id="con" class="container-fluid">
         <h2>Create new classifier</h2>
-        <h4>Lorem ipsum dolor sit amet, mollis ocurreret instructior ex nam, id vidit dolor ius, no laudem feugait assueverit nec.
-            Lucilius imperdiet urbanitas nec ea, sea sumo habemus ne.</h4>
+        <h4>Train a new classifier using your own images. You may then use this model for classifying images.</h4>
 
         <div class="panel-group uploadPanel">
             <div class="panel panel-default">
-                <div class="panel-heading">
-                    <form><input type="text" class="form-control" placeholder="Classifier name" /></form> <!-- Set classifier name -->
-                </div>
                 <div class="panel-body">
                     <h2>Class</h2>
-                    <h4>Upload a class in a zipped file with at least n photos.</h4>
+                    <h4>Images that belong to the same class must be placed in
+                        their respective folder.</h4>
 
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="panel-group">
                                 <div class="panel panel-default panel2">
                                     <div class="panel-heading">
-                                        <form><input type="text" class="form-control" placeholder="Class name" /></form>
+                                        <form><input id="classifiername" type="text" class="form-control" placeholder="Classifier name" /></form>
                                     </div>
                                     <div class="panel-body">
                                         <form method="POST" enctype="multipart/form-data" id="fileUploadForm" style="display: none">

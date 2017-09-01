@@ -1,4 +1,4 @@
-package io.cortex.cortexweb.security;
+package io.cortex.cortexweb.sockets;
 
 
 import org.springframework.context.annotation.Configuration;
