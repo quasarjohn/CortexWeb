@@ -9,7 +9,8 @@
 <nav class="navbar navbar-default navbar-fixed-top w3-card-4">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a href="#" th:href="@{/}" class="navbar-brand w3-text-teal" data-toggle="tooltip" data-placement="bottom" title="Home">
+            <a href="#" th:href="@{/}" class="navbar-brand w3-text-teal" data-toggle="tooltip" data-placement="bottom"
+               title="Home">
                 <span class="fa fa-copyright"></span> CORTEX</a>
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navBarItem">
                 <span class="icon-bar"></span>
@@ -48,7 +49,8 @@
             <p>Choose a sample image or upload your own image to try out Visual Recognition</p>
 
             <div class="dropdown">
-                <button id="dropdown-preview" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                <button id="dropdown-preview" class="btn btn-primary dropdown-toggle" type="button"
+                        data-toggle="dropdown">
                     Flowers <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu">
@@ -62,15 +64,15 @@
             <div class="row firstRow">
                 <div class="col-sm-3 col-xs-6">
                     <a class="classifyBtn"><img id="img1" class="img-responsive w3-hover-shadow classifyImg"
-                                                    src="images/dog.jpg"/></a>
+                                                src="images/dog.jpg"/></a>
                 </div>
                 <div class="col-sm-3 col-xs-6">
                     <a class="classifyBtn"><img id="img2" class="img-responsive w3-hover-shadow classifyImg"
-                                                    src="images/dog.jpg"/></a>
+                                                src="images/dog.jpg"/></a>
                 </div>
                 <div class="col-sm-3 col-xs-6">
                     <a class="classifyBtn"><img id="img3" class="img-responsive w3-hover-shadow classifyImg"
-                                                    src="images/dog.jpg"/></a>
+                                                src="images/dog.jpg"/></a>
                 </div>
                 <div class="col-sm-3 col-xs-6">
                     <a class="classifyBtn"><img id="img4" class="img-responsive w3-hover-shadow classifyImg"
@@ -113,7 +115,9 @@
                     <input id="img_url_input" class="url" type="text" placeholder="Or paste an image url"/>
                 </div>
                 <div class="col-sm-3">
-                    <button id="classifyURLBtn" type="button" class="w3-btn w3-round w3-ripple">Classify image from URL</button>
+                    <button id="classifyURLBtn" type="button" class="w3-btn w3-round w3-ripple">Classify image from
+                        URL
+                    </button>
                 </div>
                 <div class="col-sm-3"></div>
             </div>
@@ -124,15 +128,15 @@
             <!--<div class="row">
                 <div class="col-sm-4"></div>
                 <div class="col-sm-4">-->
-                    <!--<div id="progressbarCon"></div>
-                    <p id="progressbarText">Cortex is classifying the image...</p>-->
-                    <div id="classifyingCon">
-                        <span id="progressbarCon" class="fa fa-spinner w3-spin"></span> <!-- change color -->
-                        <p id="progressbarText">Cortex is classifying the image...</p>
-                    </div>
-                <!--</div>
-                <div class="col-sm-4"></div>
-            </div>-->
+            <!--<div id="progressbarCon"></div>
+            <p id="progressbarText">Cortex is classifying the image...</p>-->
+            <div id="classifyingCon">
+                <span id="progressbarCon" class="fa fa-spinner w3-spin"></span> <!-- change color -->
+                <p id="progressbarText">Cortex is classifying the image...</p>
+            </div>
+            <!--</div>
+            <div class="col-sm-4"></div>
+        </div>-->
             <br/>
 
             <!-- Output -->
@@ -186,7 +190,8 @@
         <div class="row">
             <div class="col-sm-4"></div>
             <div class="col-sm-4">
-                <a href="#" th:href="@{/sign-in}" class="w3-button w3-round getStartedBtn w3-hover-teal w3-hover-shadow">GET STARTED</a>
+                <a href="#" th:href="@{/sign-in}"
+                   class="w3-button w3-round getStartedBtn w3-hover-teal w3-hover-shadow">GET STARTED</a>
             </div>
             <div class="col-sm-4"></div>
         </div>
@@ -197,7 +202,9 @@
 
 <!--/*/ <th:block th:include="fragments/scripts-fragment :: scripts-fragment"></th:block> /*/-->
 <script type="text/javascript" src="scripts/progressbar.js"></script>
-<script type="text/javascript" src="webjars/jquery/2.2.4/jquery.min.js"></script>
+<!--<script type="text/javascript" src="webjars/jquery/2.2.4/jquery.min.js"></script>-->
 <script type="text/javascript" src="scripts/try-it.js"></script>
+<script type="text/javascript" src="scripts/utils.js"></script>
+
 </body>
 </html>

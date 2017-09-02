@@ -13,3 +13,17 @@ function json_fetch_session_data() {
 
     return xhr;
 }
+
+function requestJson(url) {
+    var xhr = new window.XMLHttpRequest();
+    xhr.open('GET', url);
+    xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.send();
+
+    return xhr;
+}
+
+function getServerAddress() {
+    return 'http://192.168.0.150:8091';
+}

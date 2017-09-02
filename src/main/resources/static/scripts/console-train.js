@@ -86,7 +86,7 @@ function ajax_upload_training_data(user) {
         },
         //user1 is the temporary api key
         enctype: 'multipart/form-data',
-        url: "http://192.168.99.1:8091/api/" + user + "/trainer/upload_train_model/" + $("#classifiername").val() + "/4000",
+        url: getServerAddress() + "/api/" + user + "/trainer/upload_train_model/" + $("#classifiername").val() + "/4000",
         data: data,
         processData: false, //prevent jQuery from automatically transforming the data into a query string
         contentType: false,
@@ -124,10 +124,9 @@ function ajax_upload_training_data(user) {
 
                 $("#progressBarMessage").text("CORTEX is training your image classifier... " + hour + "h " + minute + "m " + seconds + "s ago.");
 
-
                 // schedule the next tick
                 var xhr = new XMLHttpRequest();
-                xhr.open('GET', "http://192.168.99.1:8091/api/" + session_user + "/trainer/status");
+                xhr.open('GET', getServerAddress() + "/api/" + session_user + "/trainer/status");
                 xhr.setRequestHeader('Content-Type', 'application/json');
                 xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
                 xhr.setRequestHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS');

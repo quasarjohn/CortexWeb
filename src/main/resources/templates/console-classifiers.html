@@ -8,6 +8,7 @@
 <body>
 <!--/*/ <th:block th:include="fragments/console-nav-fragment :: console-nav-fragment"></th:block> /*/-->
 
+
 <!-- Sidebar -->
 <div id="sidebar" class="w3-sidebar w3-bar-block w3-teal w3-collapse w3-animate-left w3-card-4">
     <a href="#" th:href="@{/console-overview}" class="overview w3-bar-item w3-button w3-hover-white">
@@ -22,8 +23,11 @@
         <span class="fa fa-archive"></span> &nbsp;&nbsp;Classifiers</a>
 </div>
 
+
+
 <!-- Page content -->
 <div id="pageContent">
+
 
     <!-- Overlay -->
     <div id="overlay" class="w3-overlay w3-animate-opacity" onclick="sidebarClose()"></div>
@@ -39,64 +43,68 @@
         <h4>Lorem ipsum dolor sit amet, mollis ocurreret instructior ex nam, id vidit dolor ius, no laudem feugait assueverit nec.
             Lucilius imperdiet urbanitas nec ea, sea sumo habemus ne.</h4>
 
-        <div class="row">
-            <div class="col-sm-4">
-                <div class="w3-card-4">
-                    <img class="img-responsive" src="images/classifier-thumbnail.png" />
-                    <div class="w3-container">
-                        <h3>Classifier name</h3>
-                        <p>Accuracy : 92.23%</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="w3-card-4">
-                    <img class="img-responsive" src="images/classifier-thumbnail.png" />
-                    <div class="w3-container">
-                        <h3>Classifier name</h3>
-                        <p>Accuracy : 14.12N%</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="w3-card-4">
-                    <img class="img-responsive" src="images/classifier-thumbnail.png" />
-                    <div class="w3-container">
-                        <h3>Classifier name</h3>
-                        <p>Accuracy : 38.6N%</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <div id="rows">
 
-        <div class="row">
-            <div class="col-sm-4">
-                <div class="w3-card-4">
-                    <img class="img-responsive" src="images/classifier-thumbnail.png" />
-                    <div class="w3-container">
-                        <h3>Classifier name</h3>
-                        <p>Accuracy : 51.15%</p>
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="w3-card-4">
+                        <img class="img-responsive" src="images/classifier-thumbnail.png" />
+                        <div class="w3-container">
+                            <h3>Classifier name</h3>
+                            <p>Accuracy : 92.23%</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="w3-card-4">
+                        <img class="img-responsive" src="images/classifier-thumbnail.png" />
+                        <div class="w3-container">
+                            <h3>Classifier name</h3>
+                            <p>Accuracy : 14.12N%</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="w3-card-4">
+                        <img class="img-responsive" src="images/classifier-thumbnail.png" />
+                        <div class="w3-container">
+                            <h3>Classifier name</h3>
+                            <p>Accuracy : 38.6N%</p>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-4">
-                <div class="w3-card-4">
-                    <img class="img-responsive" src="images/classifier-thumbnail.png" />
-                    <div class="w3-container">
-                        <h3>Classifier name</h3>
-                        <p>Accuracy : 84.53N%</p>
+
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="w3-card-4">
+                        <img class="img-responsive" src="images/classifier-thumbnail.png" />
+                        <div class="w3-container">
+                            <h3>Classifier name</h3>
+                            <p>Accuracy : 51.15%</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="w3-card-4">
+                        <img class="img-responsive" src="images/classifier-thumbnail.png" />
+                        <div class="w3-container">
+                            <h3>Classifier name</h3>
+                            <p>Accuracy : 84.53N%</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="w3-card-4">
+                        <img class="img-responsive" src="images/classifier-thumbnail.png" />
+                        <div class="w3-container">
+                            <h3>Classifier name</h3>
+                            <p>Accuracy : 32.87N%</p>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-4">
-                <div class="w3-card-4">
-                    <img class="img-responsive" src="images/classifier-thumbnail.png" />
-                    <div class="w3-container">
-                        <h3>Classifier name</h3>
-                        <p>Accuracy : 32.87N%</p>
-                    </div>
-                </div>
-            </div>
+
         </div>
     </div>
 
@@ -104,6 +112,8 @@
 
 <!--/*/ <th:block th:include="fragments/scripts-fragment :: scripts-fragment"></th:block> /*/-->
 <script type="text/javascript" src="scripts/sidebar.js"></script>
-<script type="text/javascript" src="scripts/console-classify.js"></script>
+<script type="text/javascript" src="scripts/utils.js"></script>
+<script type="text/javascript" src="scripts/console-classifiers.js"></script>
+
 </body>
 </html>
