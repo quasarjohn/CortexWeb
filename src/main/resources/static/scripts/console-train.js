@@ -1,3 +1,5 @@
+var session_user = null;
+
 $(document).ready(function () {
     $("#progressBar").hide();
     $("#progressBarMessage").hide();
@@ -20,32 +22,20 @@ $(document).ready(function () {
         $("#finished").hide();
         $("#finishedMessage").hide();
         $("#progressBar").show();
-        json_fetch_session_data();
+
+        //from utils
+        var xhr = json_fetch_session_data();
+        xhr.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                var jsonData = JSON.parse(xhr.responseText);
+                var user = jsonData.email;
+                session_user = user;
+                ajax_upload_training_data(user);
+            }
+        }
     });
 });
 
-function json_fetch_session_data() {
-
-    /*
-    fetch the email or username(tba) of the logged in user.
-    this param will be used to determine the path of the classifier in the cortex api
-     */
-
-    var xhr = new window.XMLHttpRequest();
-    xhr.open('GET', 'http://192.168.0.150:8090/session/user-info');
-    xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
-    xhr.setRequestHeader('Content-Type', 'application/json');
-    xhr.send();
-
-    xhr.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-            var jsonData = JSON.parse(xhr.responseText);
-            var user = jsonData.email;
-
-            ajax_upload_training_data(user);
-        }
-    }
-}
 
 function ajax_upload_training_data(user) {
     var form = $('#fileUploadForm')[0];
@@ -137,7 +127,7 @@ function ajax_upload_training_data(user) {
 
                 // schedule the next tick
                 var xhr = new XMLHttpRequest();
-                xhr.open('GET', "http://192.168.99.1:8091/api/user1/trainer/status");
+                xhr.open('GET', "http://192.168.99.1:8091/api/" + session_user + "/trainer/status");
                 xhr.setRequestHeader('Content-Type', 'application/json');
                 xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
                 xhr.setRequestHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS');
