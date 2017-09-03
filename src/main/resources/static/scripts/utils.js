@@ -6,7 +6,7 @@ function json_fetch_session_data() {
      */
 
     var xhr = new window.XMLHttpRequest();
-    xhr.open('GET', 'http://192.168.99.1:8090/session/user-info');
+    xhr.open('GET', 'http://localhost:8090/session/user-info');
     xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.send();
