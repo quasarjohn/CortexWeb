@@ -3,7 +3,7 @@ body {
     position: relative;
     background-color: white;
 }
-
+/*
 .navbar-brand {
     font-family: "Montserrat", sans-serif;
     font-size: 30px;
@@ -15,7 +15,7 @@ body {
     font-size: 16px;
     line-height: 14px;
 }
-
+*/
 #navBarItem li.active a, #navBarItem li a:hover {
     background-color: teal;
     color: white;

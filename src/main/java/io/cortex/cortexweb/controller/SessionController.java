@@ -4,6 +4,7 @@ import io.cortex.cortexweb.model.ReturnableUser;
 import io.cortex.cortexweb.model.User;
 import io.cortex.cortexweb.repository.UserRepository;
 import io.cortex.cortexweb.security.IAuthenticationManager;
+import io.cortex.cortexweb.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +18,13 @@ public class SessionController {
     This class allows us to access user information from javascript file using ajax request
      */
 
+    private UserService userService;
+
+    @Autowired
+    public void setUserService(UserService userService) {
+        this.userService = userService;
+    }
+
     @Autowired
     private IAuthenticationManager authenticationManager;
 
@@ -25,7 +33,8 @@ public class SessionController {
 
     @GetMapping("/user-info")
     public ReturnableUser getUserInfo() {
-        User user = userRepository.findUserByEmail(authenticationManager.getCurrentUser());
+        User user = userService.findUserByEmail(authenticationManager.getCurrentUser());
+        //User user = userRepository.findUserByEmail(authenticationManager.getCurrentUser());
 
         ReturnableUser returnableUser = new ReturnableUser();
         returnableUser.setEmail(user.getEmail());

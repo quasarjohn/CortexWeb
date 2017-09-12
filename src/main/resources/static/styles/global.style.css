@@ -1,0 +1,22 @@
+.navbar-brand {
+    font-family: "Montserrat", sans-serif;
+    font-size: 28px;
+    /*margin-top: 7px;*/
+}
+
+.navbar-nav > li > a, .navbar-brand {
+    padding-top:10px !important;
+    padding-bottom: 10px !important;
+    height: 48px;
+    line-height: 32px !important;
+}
+
+.navbar {
+    min-height:48px !important;
+}
+
+.navbar-default {
+    font-family: "Montserrat", sans-serif;
+    font-size: 14px;
+    line-height: 14px;
+}

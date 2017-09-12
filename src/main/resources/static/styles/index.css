@@ -2,21 +2,32 @@
     padding: 0;
     margin-top: 50px;
     background-size: cover;
-    background: url("bg_neuron.jpg") no-repeat center;
+    background: url(../images/home.jpg) no-repeat center;
     height: 600px;
     width: 100%;
 }
-
+/*
 .navbar-brand {
-    font-size: 30px;
-    margin-top: 7px;
+    font-size: 28px;
+    //margin-top: 7px;
+}
+
+.navbar-nav > li > a, .navbar-brand {
+	padding-top:10px !important;
+	padding-bottom: 10px !important;
+	height: 48px;
+	line-height: 32px !important;
+}
+
+.navbar {
+    min-height:48px !important;
 }
 
 .navbar-default {
-    font-size: 16px;
+    font-size: 14px;
     line-height: 14px;
 }
-
+*/
 #navBarItem li a:hover {
     background-color: teal;
     color: white;
@@ -260,7 +271,7 @@ footer {
     #con h4 {
         margin-top: 80px;
         /*font-size: 18px;*/
-        line-height: 26px;
+        line-height: 38px;
     }
 
     #con .tryItBtn {
@@ -312,5 +323,12 @@ footer {
 
     footer h5 {
         font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 623px) {
+    #con h4 {
+        margin-top: 80px;
+        font-size: 30px;
     }
 }
