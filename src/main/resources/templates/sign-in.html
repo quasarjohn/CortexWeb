@@ -4,6 +4,8 @@
     <title>Sign In | Cortex</title>
     <!--/*/ <th:block th:include="fragments/head-fragment :: head-fragment"></th:block> /*/-->
     <link rel="stylesheet" type="text/css" href="static/styles/sign-in.css" th:href="@{styles/sign-in.css}" />
+    <script src="https://apis.google.com/js/platform.js"></script>
+    <meta name="google-signin-client_id" content="36486410372-vl7067jt59p6j46tu712vvi93b91ha0t.apps.googleusercontent.com"/>
 </head>
 <body>
 <a id="home" href="#" th:href="@{/}" data-toggle="tooltip" data-placement="bottom" title="Home">
@@ -30,7 +32,7 @@
                 <div class="form-group">
                     <button type="submit" class="w3-btn w3-round-xxlarge" th:name="action" th:value="sign-in">Sign In</button>
                     <p>Or Sign In using</p>
-                    <img class="img-responsive googleImg" src="images/google.png" />
+                    <div class="g-signin2" data-onsuccess="onSignIn"></div>
                 </div>
             </form>
         </div>
@@ -40,5 +42,7 @@
 
 <!--/*/ <th:block th:include="fragments/scripts-fragment :: scripts-fragment"></th:block> /*/-->
 <script type="text/javascript" src="scripts/home-tooltip.js"></script>
+<script type="text/javascript" src="scripts/sign-in.js"></script>
+
 </body>
 </html>

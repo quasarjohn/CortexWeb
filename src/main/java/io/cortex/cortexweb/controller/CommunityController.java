@@ -60,10 +60,11 @@ public class CommunityController {
     @MessageMapping("/new-question")
     @SendTo("/community/questions")
     public CommunityQuestion postQuestion(CommunityQuestion question) {
-        communityQuestionService.postQuestion(question);
         question.setTime_stamp(System.currentTimeMillis());
         question.setUser_id(user);
-        question.setQUESTION_NUMBER(communityQuestionService.showQuestionNumber());
+        question.setQUESTION_NUMBER(communityQuestionService.showQuestionNumber() + 1);
+        communityQuestionService.postQuestion(question);
+
         return question;
     }
 
