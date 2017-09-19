@@ -17,7 +17,7 @@
                 <h3 id="profileEmail" th:text="${userInfo.email}"></h3>
                 <p id="profileReputation">Reputation score: <span th:text="${userInfo.reputationScore}"></span></p>
                 <p th:if="${not #lists.isEmpty(userInfo.bio)}" th:text="${userInfo.bio}"></p>
-                <a id="addBio" href="#" th:if="${#lists.isEmpty(userInfo.bio)}">Add a bio</a>
+                <a id="addBio" href="#" th:if="${#lists.isEmpty(userInfo.bio)}" th:href="@{/user-settings}">Add a bio</a>
             </div>
             <div class="col-sm-9">
                 <div id="content" class="container-fluid">

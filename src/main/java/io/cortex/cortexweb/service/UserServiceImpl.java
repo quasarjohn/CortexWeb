@@ -18,4 +18,9 @@ public class UserServiceImpl implements UserService {
     public User findUserByEmail(String email) {
         return userRepository.findOne(email);
     }
+
+    @Override
+    public void updateUser(String username, String bio, String email) {
+        userRepository.updateUser(username, bio, email);
+    }
 }

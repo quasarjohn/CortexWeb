@@ -1,5 +1,6 @@
 package io.cortex.cortexweb.controller;
 
+import io.cortex.cortexweb.model.User;
 import io.cortex.cortexweb.security.IAuthenticationManager;
 import io.cortex.cortexweb.service.CommunityQuestionService;
 import io.cortex.cortexweb.service.SocialService;
@@ -51,8 +52,19 @@ public class ProfileController {
     }
 
     @RequestMapping("/user-settings")
-    public String showUserSettingsPage() {
+    public String showUserSettingsPage(Model model) {
+        user = authenticationManager.getCurrentUser();
+        model.addAttribute("user", userService.findUserByEmail(user));
+
         return "user-settings";
+    }
+
+    @RequestMapping("update/profile")
+    public String updateProfile(User userModel) {
+        user = authenticationManager.getCurrentUser();
+        userService.updateUser(userModel.getUsername(), userModel.getBio(), user);
+
+        return "redirect:/user-profile";
     }
 
     @RequestMapping("unfollow/user/{followingEmail}")
