@@ -20,7 +20,17 @@ public class CommunityQuestionServiceImpl implements CommunityQuestionService {
     }
 
     @Override
-    public Iterable<CommunityQuestion> displayAllQuestions() {
+    public Iterable<CommunityQuestion> findAllQuestions() {
         return communityQuestionRepository.findAll();
+    }
+
+    @Override
+    public Iterable<CommunityQuestion> findAllUserQuestions(String email) {
+        return communityQuestionRepository.findAllUserQuestions(email);
+    }
+
+    @Override
+    public int showQuestionNumber() {
+        return communityQuestionRepository.showQuestionNumber();
     }
 }

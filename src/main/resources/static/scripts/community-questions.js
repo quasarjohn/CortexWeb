@@ -13,7 +13,12 @@ function connect() {
 
 function showQuestion(question) {
     // $("#test").html(question.title + " : " + question.body + " : " + question.time_stamp + " : " + question.user_id);
+    var x = question.question_NUMBER;
+    console.log(x);
 
+    $("#questionNumberCon h2").text(function () { return x; });
+
+    //$("#questionNumberCon").prepend("<h2>" + x + "</h2>");
 
     $("#questions").prepend("<div class=\"question\">\n" +
         "            <hr/>\n" +

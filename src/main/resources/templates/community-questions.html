@@ -12,11 +12,11 @@
 <div class="container-fluid">
     <h2>Questions</h2>
 
-    <div id="askQuestion" th:if="${not #lists.isEmpty(questions)}">
+    <div id="askQuestion">
         <div class="row">
-            <div class="col-sm-6" th:each="question, iterStat : ${questions}" th:if="${iterStat.count >= iterStat.size}">
+            <div id="questionNumberCon" class="col-sm-6">
                 <!--<h2>14,459,095</h2>-->
-                <h2 th:text="${question.QUESTION_NUMBER}"></h2>
+                <h2 th:text="${#lists.size(questions)}"></h2>
                 <p>Questions</p>
             </div>
             <div class="col-sm-6">
@@ -101,7 +101,7 @@
         </div>
     </div>
 
-    </div>
+</div>
 
 <!--/*/ <th:block th:include="fragments/scripts-fragment :: scripts-fragment"></th:block> /*/-->
 <script type="text/javascript" src="scripts/home-tooltip.js"></script>

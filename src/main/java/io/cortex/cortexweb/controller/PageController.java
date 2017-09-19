@@ -16,9 +16,6 @@ import javax.servlet.http.HttpServletResponse;
 @Controller
 public class PageController {
 
-    @Autowired
-    private AuthenticationManager authenticationManager;
-
     @RequestMapping("/")
     public String showIndexPage() {
         return "index";
@@ -47,16 +44,5 @@ public class PageController {
     @RequestMapping("/try-it")
     public String showTryItPage() {
         return "try-it";
-    }
-
-
-    @RequestMapping(value = "/logout", method = RequestMethod.GET)
-    public String logoutPage(HttpServletRequest request, HttpServletResponse response) {
-        Authentication auth = authenticationManager.getSecurityContext().getAuthentication();
-        if (auth != null) {
-            System.out.println("HINDI NULL");
-            new SecurityContextLogoutHandler().logout(request, response, auth);
-        }
-        return "redirect:/sign-in?logout";
     }
 }

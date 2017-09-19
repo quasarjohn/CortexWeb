@@ -7,5 +7,9 @@ import org.springframework.stereotype.Service;
 public interface CommunityQuestionService {
     CommunityQuestion postQuestion(CommunityQuestion communityQuestion);
 
-    Iterable<CommunityQuestion> displayAllQuestions();
+    Iterable<CommunityQuestion> findAllQuestions();
+
+    Iterable<CommunityQuestion> findAllUserQuestions(String email);
+
+    int showQuestionNumber();
 }

@@ -1,8 +1,6 @@
 package io.cortex.cortexweb.service;
 
 import io.cortex.cortexweb.model.User;
-import io.cortex.cortexweb.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service

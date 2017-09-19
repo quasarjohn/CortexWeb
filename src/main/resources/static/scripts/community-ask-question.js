@@ -1,5 +1,9 @@
 var stompClient = null;
 //var sender = document.querySelector("#sender").tex;
+$(document).ready(function () {
+   $("#alert").hide();
+});
+
 
 function connect() {
     var socket = new SockJS('/cortex-websocket');
@@ -14,7 +18,8 @@ function sendQuestion() {
     stompClient.send("/new-question", {}, JSON.stringify({
         'user_id': $("#sender").text(),
         'title': $("#title").val(),
-        'body': $("#body").val()
+        'body': $("#body").val(),
+        'QUESTION_NUMBER': $("#questionNumber").text()
     }));
 }
 
@@ -24,5 +29,9 @@ $(function () {
         e.preventDefault();
     });
     connect();
-    $( "#send" ).click(function() { sendQuestion(); });
+    $( "#send" ).click(function() {
+        sendQuestion();
+        location.reload();
+        alert("Posted successfully");
+    });
 });

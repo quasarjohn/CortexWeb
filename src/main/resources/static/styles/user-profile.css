@@ -1,0 +1,167 @@
+body {
+    background-color: rgba(0, 0, 0, 0.14);
+    font-family: "Varela", sans-serif;
+    background-color: white;
+}
+
+.navbar-brand {
+    font-family: "Montserrat", sans-serif;
+    font-size: 30px;
+    margin-top: 7px;
+}
+
+.navbar-default {
+    font-family: "Montserrat", sans-serif;
+    font-size: 16px;
+    line-height: 14px;
+}
+
+#navBarItem li.active a, #navBarItem li a:hover {
+    background-color: teal;
+    color: white;
+}
+
+.nav li a img {
+    background-color: teal;
+    width: 51px;
+    height: 51px;
+}
+
+.nav .dropdown-menu li h5 {
+    text-align: left;
+    font-family: "Varela", sans-serif;
+    margin-left: 20px;
+    font-size: 14px;
+}
+
+.nav .dropdown-menu li h6 {
+    margin-top: -5px;
+    text-align: left;
+    font-family: "Varela", sans-serif;
+    margin-left: 20px;
+    font-size: 14px;
+}
+
+.nav .dropdown-menu hr {
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+#profilePicture {
+    margin-top: 105px;
+    margin-bottom: 15px;
+    width: 100%;
+    height: 250px;
+    background-color: teal;
+}
+
+#profileUsername, #profileEmail {
+    font-family: "Montserrat", sans-serif;
+    font-size: 22px;
+}
+
+#profileEmail, #profileReputation, .follower_email, .follower_reputation,
+.following_email, .following_reputation{
+    font-weight: 400;
+    color: #6a737c;
+}
+
+#profileReputation {
+    margin-bottom: 15px;
+}
+
+#addBio {
+    color: #337ab7;
+}
+
+#addBio:hover {
+    color: #40b4ff;
+    text-decoration: none;
+}
+
+#content {
+    margin-top: 105px;
+}
+
+#content ul li.active a {
+    background-color: transparent;
+    color: teal;
+    border-radius: 0;
+    border-bottom: solid;
+    border-bottom-color: teal;
+}
+
+#content ul li.active a span {
+    background-color: teal;
+    color: white;
+}
+
+#content ul li a:hover {
+    color: teal;
+}
+
+#content ul li {
+    text-align: center;
+    width: 180px;
+}
+
+#hr_pills {
+    margin-top: 0;
+}
+
+#content #overview h3 {
+    margin-bottom: 35px;
+}
+
+#content #overview p {
+    text-align: left;
+}
+
+#content #overview i {
+    font-size: 18px;
+    color: teal;
+}
+
+#content #overview a {
+    color: #337ab7;
+}
+
+#content #overview a:hover, #content #followers .follower_username:hover,
+#content #followers .follower_email:hover, #content #following .following_username:hover,
+#content #following .following_email:hover{
+    color: #40b4ff;
+    text-decoration: none;
+}
+
+#content #overview .post_date {
+    color: #6a737c;
+    float: right;
+}
+
+#content #followers .follower_picture, #content #following .following_picture {
+    width: 60px;
+    height: 60px;
+    background-color: teal;
+}
+
+#content #followers h6, #content #following h6 {
+    margin-top: 5px;
+}
+
+#content #followers .follower_reputation, #content #following .following_reputation {
+    font-size: 14px;
+}
+
+#content .hr_follower_following {
+    margin-top: 10px;
+}
+
+@media only screen and (max-width: 767px) {
+    .icon-bar {
+        margin-top: 6px;
+    }
+
+    .navbar-brand {
+        margin-top: 0;
+    }
+}

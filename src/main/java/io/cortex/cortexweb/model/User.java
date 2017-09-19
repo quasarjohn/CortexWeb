@@ -1,13 +1,10 @@
 package io.cortex.cortexweb.model;
 
+import javafx.beans.DefaultProperty;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.NotEmpty;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -18,6 +15,15 @@ public class User {
     @NotEmpty
     @Email(message = "Please provide a valid email")
     private String email;
+
+    @Column(name = "username")
+    private String username;
+
+    @Column(name = "reputation_score")
+    private int reputationScore = 0;
+
+    @Column(name = "bio")
+    private String bio;
 
     @Column(name = "enabled")
     private Boolean enabled;
@@ -84,5 +90,29 @@ public class User {
 
     public void setConfirmationCode(int confirmationCode) {
         this.confirmationCode = confirmationCode;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setReputationScore(int reputationScore) {
+        this.reputationScore = reputationScore;
+    }
+
+    public int getReputationScore() {
+        return reputationScore;
+    }
+
+    public String getBio() {
+        return bio;
+    }
+
+    public void setBio(String bio) {
+        this.bio = bio;
     }
 }

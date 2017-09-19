@@ -1,0 +1,97 @@
+body {
+    background-color: white;
+    font-family: "Varela", sans-serif;
+}
+
+.navbar-brand {
+    font-family: "Montserrat", sans-serif;
+    font-size: 30px;
+    margin-top: 7px;
+}
+
+.navbar-default {
+    font-family: "Montserrat", sans-serif;
+    font-size: 16px;
+    line-height: 14px;
+}
+
+#navBarItem li.active a, #navBarItem li a:hover {
+    background-color: teal;
+    color: white;
+}
+
+.nav li a img {
+    background-color: teal;
+    width: 51px;
+    height: 51px;
+}
+
+.nav .dropdown-menu li h5 {
+    text-align: left;
+    font-family: "Varela", sans-serif;
+    margin-left: 20px;
+    font-size: 14px;
+}
+
+.nav .dropdown-menu li h6 {
+    margin-top: -5px;
+    text-align: left;
+    font-family: "Varela", sans-serif;
+    margin-left: 20px;
+    font-size: 14px;
+}
+
+.nav .dropdown-menu hr {
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+h3 {
+    margin-top: 115px;
+    font-family: "Montserrat", sans-serif;
+}
+
+#bioTextArea {
+    resize: vertical;
+}
+
+#PROFILE_PICTURE {
+    width: 100%;
+    height: 210px;
+    background-color: teal;
+}
+
+#uploadBtn {
+    width: 100%;
+}
+
+/* Global styles */
+
+#usernameLbl, #bioLbl, h5 {
+    margin-top: 20px;
+}
+
+#usernameText, #bioTextArea {
+    width: 710px;
+}
+
+#updateBtn, #uploadBtn {
+    margin-top: 40px;
+}
+
+#usernameLbl, #bioLbl, h5 {
+    font-weight: 500;
+    font-size: 16px;
+}
+
+/* Media Queries */
+
+@media only screen and (max-width: 767px) {
+    .icon-bar {
+        margin-top: 6px;
+    }
+
+    .navbar-brand {
+        margin-top: 0;
+    }
+}

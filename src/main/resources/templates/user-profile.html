@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Profile | Cortex</title>
+    <!--/*/ <th:block th:include="fragments/head-fragment :: head-fragment"></th:block> /*/-->
+    <link rel="stylesheet" type="text/css" href="static/styles/user-profile.css" th:href="@{styles/user-profile.css}"/>
+</head>
+<body>
+<!--/*/ <th:block th:include="fragments/community-questions-nav-fragment :: community-questions-nav-fragment"></th:block> /*/-->
+
+<div class="container">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3" th:each="userInfo : ${userInfo}">
+                <img id="profilePicture" src="images/dev1.png" class="img-rounded" />
+                <h3 id="profileUsername"><strong th:text="${userInfo.username}"></strong></h3>
+                <h3 id="profileEmail" th:text="${userInfo.email}"></h3>
+                <p id="profileReputation">Reputation score: <span th:text="${userInfo.reputationScore}"></span></p>
+                <p th:if="${not #lists.isEmpty(userInfo.bio)}" th:text="${userInfo.bio}"></p>
+                <a id="addBio" href="#" th:if="${#lists.isEmpty(userInfo.bio)}">Add a bio</a>
+            </div>
+            <div class="col-sm-9">
+                <div id="content" class="container-fluid">
+                    <ul class="nav nav-pills">
+                        <li class="active"><a data-toggle="pill" href="#" th:attr="href='#overview'">Overview</a></li>
+                        <li><a data-toggle="pill" href="#" th:attr="href='#followers'">Followers <span class="badge" th:text="${#lists.size(followers)}"></span></a></li>
+                        <li><a data-toggle="pill" href="#" th:attr="href='#following'">Following <span class="badge" th:text="${#lists.size(following)}"></span></a></li>
+                    </ul><hr id="hr_pills" />
+
+                    <div class="tab-content">
+                        <!-- Overview tab -->
+                        <div id="overview" class="tab-pane fade in active">
+                            <h3>Questions asked</h3>
+                            <div th:each="userQuestion : ${userQuestions}">
+                                <p><i class="material-icons">&#xe8af;</i><a href="#">&nbsp;&nbsp;<span th:text="${userQuestion.title}"></span></a><span class="post_date">Apr 10 '12</span></p> <!--Date stamp-->
+                                <hr />
+                            </div>
+                            <div>
+                                <p><i class="material-icons">&#xe8af;</i><a href="#">&nbsp;&nbsp;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor?</a><span class="post_date">Apr 10 '12</span></p>
+                                <hr />
+                            </div>
+                            <div>
+                                <p><i class="material-icons">&#xe8af;</i><a href="#">&nbsp;&nbsp;Ut enim ad minim veniam, quis nostrud exercitation?</a><span class="post_date">Aug 01 '14</span></p>
+                                <hr />
+                            </div>
+                            <div>
+                                <p><i class="material-icons">&#xe8af;</i><a href="#">&nbsp;&nbsp;Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium?</a><span class="post_date">Jan 18 '17</span></p>
+                                <hr />
+                            </div>
+                        </div>
+                        <!-- Followers tab -->
+                        <div id="followers" class="tab-pane fade">
+                            <div th:each="i : ${#numbers.sequence(#lists.size(followers)-1, 0, -1)}">
+                                <div th:each="follower, iterStat : ${followers[i]}" th:if="${iterStat.size >= iterStat.count}">
+                                    <div class="media">
+                                        <div class="media-left">
+                                            <img src="images/dev1.png" class="media-object img-rounded follower_picture" />
+                                        </div>
+                                        <div class="media-body">
+                                            <h6 class="media-heading"><a class="follower_username" href="#">&nbsp;<span th:text="${follower.followerUsername}"></span></a>&nbsp;&nbsp;<a class="follower_email" href="#" th:text="${follower.followerEmail}"></a></h6>
+                                            <span class="reputationTooltip follower_reputation" data-toggle="tooltip" data-placement="bottom" title="Reputation score">&nbsp;<span th:text="${follower.followerReputationScore}"></span></span>
+                                            <br /><br />
+                                        </div>
+                                    </div>
+                                    <hr class="hr_follower_following" />
+                                </div>
+                            </div>
+                            <div>
+                                <div class="media">
+                                    <div class="media-left">
+                                        <img src="images/dev1.png" class="media-object img-rounded follower_picture" />
+                                    </div>
+                                    <div class="media-body">
+                                        <h6 class="media-heading"><a class="follower_username" href="#">&nbsp;Jon Snow</a>&nbsp;&nbsp;<a class="follower_email" href="#">email@gmail.com</a></h6>
+                                        <span class="reputationTooltip follower_reputation" data-toggle="tooltip" data-placement="bottom" title="Reputation score">&nbsp;245</span>
+                                        <br /><br />
+                                    </div>
+                                </div>
+                                <hr class="hr_follower_following" />
+                            </div>
+                        </div>
+                        <!-- Following tab -->
+                        <div id="following" class="tab-pane fade">
+                            <div class="following_user" th:each="i : ${#numbers.sequence(#lists.size(following)-1, 0, -1)}">
+                                <div th:each="following, iterStat : ${following[i]}" th:if="${iterStat.size >= iterStat.count}">
+                                    <div class="media">
+                                        <div class="media-left">
+                                            <img src="images/dev1.png" class="media-object img-rounded following_picture" />
+                                        </div>
+                                        <div class="media-body">
+                                            <h6 class="media-heading"><a class="following_username" href="#">&nbsp;<span th:text="${following.followingUsername}"></span></a>&nbsp;&nbsp;<a class="following_email" href="#" th:text="${following.followingEmail}"></a></h6>
+                                            <span class="reputationTooltip following_reputation" data-toggle="tooltip" data-placement="bottom" title="Reputation score">&nbsp;<span th:text="${following.followingReputationScore}"></span></span>
+                                            <br /><br />
+                                        </div>
+                                        <div class="media-right">
+                                            <a th:href="@{'/unfollow/user/' + ${following.followingEmail}}"><button class="unfollowBtn btn btn-default">Unfollow</button></a>
+                                        </div>
+                                    </div>
+                                    <hr class="hr_follower_following" />
+                                </div>
+                            </div>
+                            <div class="following_user">
+                                <div>
+                                    <div class="media">
+                                        <div class="media-left">
+                                            <img src="images/dev1.png" class="media-object img-rounded following_picture" />
+                                        </div>
+                                        <div class="media-body">
+                                            <h6 class="media-heading"><a class="following_username" href="#">&nbsp;Jon Snow</a>&nbsp;&nbsp;<a class="following_email" href="#">email@gmail.com</a></h6>
+                                            <span class="reputationTooltip following_reputation" data-toggle="tooltip" data-placement="bottom" title="Reputation score">&nbsp;245</span>
+                                            <br /><br />
+                                        </div>
+                                        <div class="media-right">
+                                            <button class="unfollowBtn btn btn-default">Unfollow</button>
+                                        </div>
+                                    </div>
+                                    <hr class="hr_follower_following" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--/*/ <th:block th:include="fragments/scripts-fragment :: scripts-fragment"></th:block> /*/-->
+<script type="text/javascript" src="scripts/home-tooltip.js"></script>
+<script type="text/javascript" src="scripts/user-profile.js"></script>
+</body>
+</html>

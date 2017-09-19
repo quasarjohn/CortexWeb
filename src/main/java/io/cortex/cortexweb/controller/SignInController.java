@@ -1,12 +1,19 @@
 package io.cortex.cortexweb.controller;
 
 import io.cortex.cortexweb.model.User;
+import io.cortex.cortexweb.security.AuthenticationManager;
 import io.cortex.cortexweb.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 @Controller
 public class SignInController {
@@ -18,10 +25,23 @@ public class SignInController {
         this.userService = userService;
     }
 
+    @Autowired
+    private AuthenticationManager authenticationManager;
+
     @RequestMapping("/sign-in")
     public String showSignInPage(Model model) {
         model.addAttribute("user", new User());
         return "sign-in";
+    }
+
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
+    public String logoutPage(HttpServletRequest request, HttpServletResponse response) {
+        Authentication auth = authenticationManager.getSecurityContext().getAuthentication();
+        if (auth != null) {
+            System.out.println("HINDI NULL");
+            new SecurityContextLogoutHandler().logout(request, response, auth);
+        }
+        return "redirect:/sign-in?logout";
     }
 
 //    @RequestMapping("/index")   //Wala pang ui sa validation kaya sa console palang output
