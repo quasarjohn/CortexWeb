@@ -13,6 +13,14 @@
         <div class="row">
             <div class="col-sm-3" th:each="userInfo : ${userInfo}">
                 <img id="profilePicture" src="images/dev1.png" class="img-rounded" />
+                <div th:if="${currentUser} neq ${userInfo.email}">
+                    <div th:each="currentUserInfo : ${currentUserInfo}">
+                        <a th:if="${#lists.isEmpty(followingList)}" th:href="@{'/follow/user/' + ${currentUserInfo.email} + '/' + ${currentUserInfo.reputationScore} + '/' +
+                        ${currentUserInfo.username} + '/' + ${userInfo.email} + '/' + ${userInfo.reputationScore} + '/' + ${userInfo.username}}">
+                        <button class="followToggleBtn btn btn-primary">Follow</button></a>
+                        <a th:if="${not #lists.isEmpty(followingList)}" th:href="@{'/unfollow/user/' + ${userInfo.email}}"><button class="followToggleBtn btn btn-danger">Unfollow</button></a>
+                    </div>
+                </div>
                 <h3 id="profileUsername"><strong th:text="${userInfo.username}"></strong></h3>
                 <h3 id="profileEmail" th:text="${userInfo.email}"></h3>
                 <p id="profileReputation">Reputation score: <span th:text="${userInfo.reputationScore}"></span></p>
@@ -132,6 +140,8 @@
         </div>
     </div>
 </div>
+
+<span style="display: none;"></span>
 
 <!--/*/ <th:block th:include="fragments/scripts-fragment :: scripts-fragment"></th:block> /*/-->
 <script type="text/javascript" src="scripts/home-tooltip.js"></script>

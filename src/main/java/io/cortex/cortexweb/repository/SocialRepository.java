@@ -15,6 +15,19 @@ public interface SocialRepository extends CrudRepository<Social, String> {
 
     @Modifying
     @Transactional
+    @Query(value = "insert into social (follower_email, follower_reputation_score, follower_username, following_email, following_reputation_score, following_username) " +
+            "values (?1, ?2, ?3, ?4, ?5, ?6)", nativeQuery = true)
+    void followUser(String followerEmail, int followerReputationScore, String followerUsername,
+                    String followingEmail, int followingReputationScore, String followingUsername);
+
+    @Modifying
+    @Transactional
     @Query(value = "delete from social where follower_email = ?1 and following_email = ?2", nativeQuery = true)
-    void unfollowUserFollowing(String userEmail, String followingEmail);
+    void unfollowUser(String userEmail, String followingEmail);
+
+    @Query(value = "select * from social where follower_email = ?1 and following_email = ?2", nativeQuery = true)
+    Iterable<Social> checkUserFollowing(String userEmail, String followingEmail);
+
+    @Query(value = "select * from social", nativeQuery = true)
+    Iterable<Social> checkSocialTableSize();
 }

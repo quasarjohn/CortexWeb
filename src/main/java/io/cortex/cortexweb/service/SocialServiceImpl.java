@@ -25,7 +25,22 @@ public class SocialServiceImpl implements SocialService {
     }
 
     @Override
-    public void unfollowUserFollowing(String userEmail, String followingEmail) {
-        socialRepository.unfollowUserFollowing(userEmail, followingEmail);
+    public void followUser(String followerEmail, int followerReputationScore, String followerUsername, String followingEmail, int followingReputationScore, String followingUsername) {
+        socialRepository.followUser(followerEmail, followerReputationScore, followerUsername, followingEmail, followingReputationScore, followingUsername);
+    }
+
+    @Override
+    public void unfollowUser(String userEmail, String followingEmail) {
+        socialRepository.unfollowUser(userEmail, followingEmail);
+    }
+
+    @Override
+    public Iterable<Social> checkUserFollowing(String userEmail, String followingEmail) {
+       return socialRepository.checkUserFollowing(userEmail, followingEmail);
+    }
+
+    @Override
+    public Iterable<Social> checkSocialTableSize() {
+        return socialRepository.checkSocialTableSize();
     }
 }

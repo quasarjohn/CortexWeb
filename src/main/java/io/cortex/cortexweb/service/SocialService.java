@@ -9,5 +9,12 @@ public interface SocialService {
 
     Iterable<Social> findAllUserFollowing(String email);
 
-    void unfollowUserFollowing(String userEmail, String followingEmail);
+    void followUser(String followerEmail, int followerReputationScore, String followerUsername,
+                    String followingEmail, int followingReputationScore, String followingUsername);
+
+    void unfollowUser(String userEmail, String followingEmail);
+
+    Iterable<Social> checkUserFollowing(String userEmail, String followingEmail);
+
+    Iterable<Social> checkSocialTableSize();
 }

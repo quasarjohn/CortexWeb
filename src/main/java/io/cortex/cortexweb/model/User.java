@@ -20,7 +20,7 @@ public class User {
     private String username;
 
     @Column(name = "reputation_score")
-    private int reputationScore = 0;
+    private int reputationScore;
 
     @Column(name = "bio")
     private String bio;
