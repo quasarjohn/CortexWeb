@@ -31,7 +31,7 @@ $(function () {
     connect();
     $( "#send" ).click(function() {
         sendQuestion();
-        location.reload();
-        alert("Posted successfully");
+        // location.reload();
+        window.location = getWebServerAddress() + "/community-questions";
     });
 });
