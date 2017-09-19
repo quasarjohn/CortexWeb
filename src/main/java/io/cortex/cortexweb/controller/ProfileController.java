@@ -17,7 +17,7 @@ public class ProfileController {
     private CommunityQuestionService communityQuestionService;
     private SocialService socialService;
     private IAuthenticationManager authenticationManager;
-    private String user;
+    private String currentUser;
 
     @Autowired
     public void setUserService(UserService userService) {
@@ -39,40 +39,51 @@ public class ProfileController {
         this.authenticationManager = authenticationManager;
     }
 
-    @RequestMapping("/user-profile")
-    public String showUserProfilePage(Model model) {
-        user = authenticationManager.getCurrentUser();
-        model.addAttribute("userInfo", userService.findUserByEmail(user));
-        model.addAttribute("userQuestions", communityQuestionService.findAllUserQuestions(user));
-        model.addAttribute("currentUser", user);
-        model.addAttribute("followers", socialService.findAllUserFollowers(user));
-        model.addAttribute("following", socialService.findAllUserFollowing(user));
+    @RequestMapping("{otherUser}-profile")
+    public String showUserProfilePage(Model model, @PathVariable String otherUser) {
+        currentUser = authenticationManager.getCurrentUser();
+        System.out.println(currentUser + " and " + otherUser);
+
+        if(currentUser.equals(otherUser)) {
+            profiling(model, currentUser, currentUser);
+        }
+        else {
+            profiling(model, otherUser, currentUser);
+        }
 
         return "user-profile";
     }
 
     @RequestMapping("/user-settings")
     public String showUserSettingsPage(Model model) {
-        user = authenticationManager.getCurrentUser();
-        model.addAttribute("user", userService.findUserByEmail(user));
+        currentUser = authenticationManager.getCurrentUser();
+        model.addAttribute("user", userService.findUserByEmail(currentUser));
 
         return "user-settings";
     }
 
     @RequestMapping("update/profile")
     public String updateProfile(User userModel) {
-        user = authenticationManager.getCurrentUser();
-        userService.updateUser(userModel.getUsername(), userModel.getBio(), user);
+        currentUser = authenticationManager.getCurrentUser();
+        userService.updateUser(userModel.getUsername(), userModel.getBio(), currentUser);
 
         return "redirect:/user-profile";
     }
 
     @RequestMapping("unfollow/user/{followingEmail}")
     public String unfollowUser(@PathVariable String followingEmail) {
-        user = authenticationManager.getCurrentUser();
-        System.out.println(followingEmail + " <- following email -> " + user);
-        socialService.unfollowUserFollowing(user, followingEmail+".com");
+        currentUser = authenticationManager.getCurrentUser();
+        System.out.println(followingEmail + " <- following email -> " + currentUser);
+        socialService.unfollowUserFollowing(currentUser, followingEmail+".com");
 
         return "redirect:/user-profile";
+    }
+
+    public void profiling(Model model, String user, String currentUser) {
+        model.addAttribute("userInfo", userService.findUserByEmail(user));
+        model.addAttribute("userQuestions", communityQuestionService.findAllUserQuestions(user));
+        model.addAttribute("currentUser", currentUser);
+        model.addAttribute("followers", socialService.findAllUserFollowers(user));
+        model.addAttribute("following", socialService.findAllUserFollowing(user));
     }
 }

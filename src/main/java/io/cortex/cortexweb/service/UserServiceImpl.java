@@ -20,6 +20,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public Iterable<User> findAllUsers() {
+        return userRepository.findAll();
+    }
+
+    @Override
     public void updateUser(String username, String bio, String email) {
         userRepository.updateUser(username, bio, email);
     }
