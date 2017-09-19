@@ -67,7 +67,7 @@ public class ProfileController {
         currentUser = authenticationManager.getCurrentUser();
         userService.updateUser(userModel.getUsername(), userModel.getBio(), currentUser);
 
-        return "redirect:/user-profile";
+        return "redirect:/"+ currentUser +"-profile";
     }
 
     @RequestMapping("unfollow/user/{followingEmail}")
@@ -76,7 +76,7 @@ public class ProfileController {
         System.out.println(followingEmail + " <- following email -> " + currentUser);
         socialService.unfollowUserFollowing(currentUser, followingEmail+".com");
 
-        return "redirect:/user-profile";
+        return "redirect:/"+ currentUser +"-profile";
     }
 
     public void profiling(Model model, String user, String currentUser) {

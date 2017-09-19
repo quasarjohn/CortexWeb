@@ -16,8 +16,8 @@
                 <h3 id="profileUsername"><strong th:text="${userInfo.username}"></strong></h3>
                 <h3 id="profileEmail" th:text="${userInfo.email}"></h3>
                 <p id="profileReputation">Reputation score: <span th:text="${userInfo.reputationScore}"></span></p>
+                <p th:if="${not #lists.isEmpty(userInfo.bio)}" th:text="${userInfo.bio}"></p>
                 <div th:if="${currentUser} eq ${userInfo.email}">
-                    <p th:if="${not #lists.isEmpty(userInfo.bio)}" th:text="${userInfo.bio}"></p>
                     <a id="addBio" href="#" th:if="${#lists.isEmpty(userInfo.bio)}" th:href="@{/user-settings}">Add a bio</a>
                 </div>
             </div>
@@ -98,7 +98,9 @@
                                                 <br /><br />
                                             </div>
                                             <div class="media-right">
-                                                <a th:href="@{'/unfollow/user/' + ${following.followingEmail}}"><button class="unfollowBtn btn btn-default">Unfollow</button></a>
+                                                <div th:if="${currentUser} eq ${userInfo.email}">
+                                                    <a th:href="@{'/unfollow/user/' + ${following.followingEmail}}"><button class="unfollowBtn btn btn-default">Unfollow</button></a>
+                                                </div>
                                             </div>
                                         </div>
                                         <hr class="hr_follower_following" />
