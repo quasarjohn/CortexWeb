@@ -59,114 +59,21 @@
     <div id="users">
         <div class="form-inline">
             <div class="form-group">
-                <label>Find users: </label>
-                <input type="text" class="form-control" placeholder="Search Username" />
+                <label>Find user : </label>
+                <input type="text" class="form-control" oninput="w3.filterHTML('#test', '#userCol', this.value)" placeholder="Search Username" />
             </div>
         </div>
 
-        <div class="row rowMargin">
-            <div class="col-sm-3">
+        <div id="test" class="row rowMargin">
+            <div id="userCol" class="col-sm-3" th:each="user : ${users}">
                 <div class="user">
                     <div class="row">
                         <div class="col-sm-5">
                             <img class="img-responsive" src="images/dev1.png" />
                         </div>
                         <div class="col-sm-7">
-                            <a href="#">Dylan Kane</a>
-                            <p class="reputationTooltip" data-toggle="tooltip" data-placement="bottom" title="Reputation score">6</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <div class="user">
-                    <div class="row">
-                        <div class="col-sm-5">
-                            <img class="img-responsive" src="images/dev1.png" />
-                        </div>
-                        <div class="col-sm-7">
-                            <a href="#">Dylan Kane</a>
-                            <p class="reputationTooltip" data-toggle="tooltip" data-placement="bottom" title="Reputation score">6</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <div class="user">
-                    <div class="row">
-                        <div class="col-sm-5">
-                            <img class="img-responsive" src="images/dev1.png" />
-                        </div>
-                        <div class="col-sm-7">
-                            <a href="#">Dylan Kane</a>
-                            <p class="reputationTooltip" data-toggle="tooltip" data-placement="bottom" title="Reputation score">6</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <div class="user">
-                    <div class="row">
-                        <div class="col-sm-5">
-                            <img class="img-responsive" src="images/dev1.png" />
-                        </div>
-                        <div class="col-sm-7">
-                            <a href="#">Dylan Kane</a>
-                            <p class="reputationTooltip" data-toggle="tooltip" data-placement="bottom" title="Reputation score">6</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row rowMargin">
-            <div class="col-sm-3">
-                <div class="user">
-                    <div class="row">
-                        <div class="col-sm-5">
-                            <img class="img-responsive" src="images/dev1.png" />
-                        </div>
-                        <div class="col-sm-7">
-                            <a href="#">Dylan Kane</a>
-                            <p class="reputationTooltip" data-toggle="tooltip" data-placement="bottom" title="Reputation score">6</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <div class="user">
-                    <div class="row">
-                        <div class="col-sm-5">
-                            <img class="img-responsive" src="images/dev1.png" />
-                        </div>
-                        <div class="col-sm-7">
-                            <a href="#">Dylan Kane</a>
-                            <p class="reputationTooltip" data-toggle="tooltip" data-placement="bottom" title="Reputation score">6</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <div class="user">
-                    <div class="row">
-                        <div class="col-sm-5">
-                            <img class="img-responsive" src="images/dev1.png" />
-                        </div>
-                        <div class="col-sm-7">
-                            <a href="#">Dylan Kane</a>
-                            <p class="reputationTooltip" data-toggle="tooltip" data-placement="bottom" title="Reputation score">6</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <div class="user">
-                    <div class="row">
-                        <div class="col-sm-5">
-                            <img class="img-responsive" src="images/dev1.png" />
-                        </div>
-                        <div class="col-sm-7">
-                            <a href="#">Dylan Kane</a>
-                            <p class="reputationTooltip" data-toggle="tooltip" data-placement="bottom" title="Reputation score">6</p>
+                            <a href="#" th:href="@{'/' + ${user.email} + '-profile'}" th:text="${user.username}"></a>
+                            <p class="reputationTooltip"><span data-toggle="tooltip" data-placement="bottom" title="Reputation score" th:text="${user.reputationScore}"></span></p>
                         </div>
                     </div>
                 </div>

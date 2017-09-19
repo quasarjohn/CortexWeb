@@ -3,6 +3,7 @@ package io.cortex.cortexweb.controller;
 import io.cortex.cortexweb.model.CommunityQuestion;
 import io.cortex.cortexweb.security.IAuthenticationManager;
 import io.cortex.cortexweb.service.CommunityQuestionService;
+import io.cortex.cortexweb.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
@@ -13,7 +14,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class CommunityController {
+    private UserService userService;
     private CommunityQuestionService communityQuestionService;
+
+    @Autowired
+    public void setUserService(UserService userService) {
+        this.userService = userService;
+    }
 
     @Autowired
     public void setCommunityQuestionService(CommunityQuestionService communityQuestionService) {
@@ -44,7 +51,8 @@ public class CommunityController {
     }
 
     @RequestMapping("/community-users")
-    public String showCommunityUsersPage() {
+    public String showCommunityUsersPage(Model model) {
+        model.addAttribute("users", userService.findAllUsers());
         return "community-users";
     }
 

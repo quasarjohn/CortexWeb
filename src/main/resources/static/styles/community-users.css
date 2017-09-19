@@ -69,13 +69,13 @@ h2 {
 }
 
 #users .user {
-    float: left;
+    //float: left;
     margin-left: 20px;
 }
 
 .user img {
-    width: 120px;
-    height: 70px;
+    max-width: 120px;
+    max-height: 70px;
     background-color: teal;
 }
 
@@ -94,10 +94,11 @@ a:hover {
 }
 
 #users .user a, #users .reputationTooltip {
-    margin-left: -20px;
+    margin-left: -50px;
+    text-align: left;
 }
 
-.rowMargin {
+#userCol {
     margin-top: 20px;
 }
 
