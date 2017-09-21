@@ -47,7 +47,7 @@
                         it will open up another activity as it is meant to, and will work completely fine but once ...</p>-->
 
                     <div class="askedBy">
-                        <p th:text="${question.parseEpochDate()}">asked 5 minutes ago</p>
+                        <p th:text="${utils.parseEpochDate(question.time_stamp)}">asked 5 minutes ago</p>
                         <div class="row">
                             <div class="col-sm-5">
                                 <img class="img-responsive" src="images/dev1.png"/>
@@ -80,7 +80,8 @@
                         specified Activity after being click once</a>
                     <p>Here is a video of the problem: https://youtu.be/vfZ8X2qVsLg As you can see once the button is
                         clicked
-                        it will open up another activity as it is meant to, and will work completely fine but once ...</p>
+                        it will open up another activity as it is meant to, and will work completely fine but once
+                        ...</p>
 
                     <div class="askedBy">
                         <p>asked 5 minutes ago</p>

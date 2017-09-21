@@ -4,4 +4,19 @@ function onSignIn(googleUser) {
     console.log('Name: ' + profile.getName());
     console.log('Image URL: ' + profile.getImageUrl());
     console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+
+    sendTokenToServer(googleUser);
+}
+
+function sendTokenToServer(googleUser) {
+    var id_token = googleUser.getAuthResponse().id_token;
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', getWebServerAddress() + "/test/login");
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
+    xhr.onload = function () {
+        console.log("SIGNED IN");
+    };
+    xhr.send('token=' + id_token);
+
 }

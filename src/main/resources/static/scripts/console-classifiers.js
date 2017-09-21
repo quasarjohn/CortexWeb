@@ -4,7 +4,10 @@ $(document).ready(function () {
     //get session's active user
 
     var xhr = json_fetch_session_data();
+
+    console.log("FETCHING DATA");
     xhr.onreadystatechange = function () {
+
         if (this.readyState == 4 && this.status == 200) {
             var jsonData = JSON.parse(xhr.responseText);
             var user = jsonData.email;
@@ -49,10 +52,10 @@ function appendClassifier(classifier) {
     $("#row").append("<div class=\"col-sm-4\">\n" +
         "                <div class=\"w3-card-4\">\n" +
         "                    <img class=\"img-responsive\" " +
-        "src=\"http://192.168.99.1:8091/api/files/" + classifier.title + "/thumbnail\" />\n" +
+        "src=\"http://192.168.0.149:8091/api/files/" + classifier.title + "/thumbnail\" />\n" +
         "                    <div class=\"w3-container\">\n" +
         "                        <h3>" + classifier.title + "</h3>\n" +
-        "                        <p>Accuracy : 92.23%</p>\n" +
+        "                        <p>"+classifier.accuracy+"</p>\n" +
         "                    </div>\n" +
         "                </div>\n" +
         "            </div>")

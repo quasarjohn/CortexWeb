@@ -28,18 +28,17 @@ public class SessionController {
     @Autowired
     private IAuthenticationManager authenticationManager;
 
-    @Autowired
-    private UserRepository userRepository;
-
     @GetMapping("/user-info")
     public ReturnableUser getUserInfo() {
-        User user = userService.findUserByEmail(authenticationManager.getCurrentUser());
-        //User user = userRepository.findUserByEmail(authenticationManager.getCurrentUser());
-
         ReturnableUser returnableUser = new ReturnableUser();
-        returnableUser.setEmail(user.getEmail());
-        returnableUser.setFirst_name(user.getFirstName());
-        returnableUser.setLast_name(user.getLastName());
+
+        User user = userService.findUserByEmail(authenticationManager.getCurrentUser());
+
+        if(user != null) {
+            returnableUser.setEmail(user.getEmail());
+            returnableUser.setFirst_name(user.getFirstName());
+            returnableUser.setLast_name(user.getLastName());
+        }
 
         return returnableUser;
     }

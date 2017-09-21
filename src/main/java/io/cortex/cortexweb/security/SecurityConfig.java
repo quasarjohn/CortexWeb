@@ -1,5 +1,6 @@
 package io.cortex.cortexweb.security;
 
+import io.cortex.cortexweb.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -12,14 +13,21 @@ import javax.sql.DataSource;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        http.csrf().disable();
+
         http
                 .authorizeRequests()
                 .antMatchers("/",
                         "/index",
                         "/try-it",
                         "/documentation",
+                        //allows us to get user info without redirecting the page
+                        "/session/user-info",
+                        //TODO change this -> test manual login
+                        "/test/login/**",
                         "/use-case",
                         "/styles/**",
                         "/images/**",

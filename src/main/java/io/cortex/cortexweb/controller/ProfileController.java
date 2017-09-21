@@ -6,6 +6,7 @@ import io.cortex.cortexweb.security.IAuthenticationManager;
 import io.cortex.cortexweb.service.CommunityQuestionService;
 import io.cortex.cortexweb.service.SocialService;
 import io.cortex.cortexweb.service.UserService;
+import io.cortex.cortexweb.utils.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -50,10 +51,9 @@ public class ProfileController {
         uri = httpServletRequest.getRequestURI();
         System.out.println(uri);
 
-        if(currentUser.equals(otherUser)) {
+        if (currentUser.equals(otherUser)) {
             profiling(model, currentUser, currentUser);
-        }
-        else {
+        } else {
             profiling(model, otherUser, currentUser);
         }
 
@@ -73,7 +73,7 @@ public class ProfileController {
         currentUser = authenticationManager.getCurrentUser();
         userService.updateUser(userModel.getUsername(), userModel.getBio(), currentUser);
 
-        return "redirect:/"+ currentUser +"-profile";
+        return "redirect:/" + currentUser + "-profile";
     }
 
     @RequestMapping("follow/user/{userEmail}/{userReputationScore}/{userUsername}/{otherUserEmail}/{otherUserReputationScore}/{otherUserUsername}")
@@ -81,16 +81,15 @@ public class ProfileController {
                              @PathVariable String otherUserEmail, @PathVariable int otherUserReputationScore, @PathVariable String otherUserUsername) {
         currentUser = authenticationManager.getCurrentUser();
         System.out.println(userEmail + " <- following email -> " + currentUser);
-        System.out.println(userEmail + " " + userReputationScore + " "  + userUsername + " "  + otherUserEmail
-                + " "  + otherUserReputationScore  + " "  +  otherUserUsername);
+        System.out.println(userEmail + " " + userReputationScore + " " + userUsername + " " + otherUserEmail
+                + " " + otherUserReputationScore + " " + otherUserUsername);
         socialService.followUser(userEmail, userReputationScore, userUsername, otherUserEmail, otherUserReputationScore, otherUserUsername);
         System.out.println(uri + " unfollow/user/{followingEmail} mapping");
         String currentUserPathname = "/" + currentUser + "-profile";
 
-        if(currentUserPathname.equals(uri)) {
-            return "redirect:/"+ currentUser +"-profile";
-        }
-        else {
+        if (currentUserPathname.equals(uri)) {
+            return "redirect:/" + currentUser + "-profile";
+        } else {
             return "redirect:" + uri;
         }
     }
@@ -99,19 +98,18 @@ public class ProfileController {
     public String unfollowUser(@PathVariable String userEmail) {
         currentUser = authenticationManager.getCurrentUser();
         System.out.println(userEmail + " <- following email -> " + currentUser);
-        socialService.unfollowUser(currentUser, userEmail+".com");
+        socialService.unfollowUser(currentUser, userEmail + ".com");
         System.out.println(uri + " unfollow/user/{followingEmail} mapping");
         String currentUserPathname = "/" + currentUser + "-profile";
 
-        if(currentUserPathname.equals(uri)) {
-            return "redirect:/"+ currentUser +"-profile";
-        }
-        else {
+        if (currentUserPathname.equals(uri)) {
+            return "redirect:/" + currentUser + "-profile";
+        } else {
             return "redirect:" + uri;
         }
     }
 
-    public void profiling(Model model, String user, String currentUser) {
+    private void profiling(Model model, String user, String currentUser) {
         model.addAttribute("userInfo", userService.findUserByEmail(user));
         model.addAttribute("currentUserInfo", userService.findUserByEmail(currentUser));
         model.addAttribute("userQuestions", communityQuestionService.findAllUserQuestions(user));
@@ -120,5 +118,6 @@ public class ProfileController {
         model.addAttribute("following", socialService.findAllUserFollowing(user));
         model.addAttribute("followingList", socialService.checkUserFollowing(currentUser, user));
         model.addAttribute("socialTable", socialService.checkSocialTableSize());
+        model.addAttribute("utils", new Utils());
     }
 }

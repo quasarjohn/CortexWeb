@@ -42,7 +42,7 @@
                         <div id="overview" class="tab-pane fade in active">
                             <h3>Questions asked</h3>
                             <div th:each="userQuestion : ${userQuestions}">
-                                <p><i class="material-icons">&#xe8af;</i><a href="#">&nbsp;&nbsp;<span th:text="${userQuestion.title}"></span></a><span class="post_date">Apr 10 '12</span></p> <!--Date stamp-->
+                                <p><i class="material-icons">&#xe8af;</i><a href="#">&nbsp;&nbsp;<span th:text="${userQuestion.title}"></span></a><span class="post_date" th:text="${utils.parseEpochDate(userQuestion.time_stamp)}">Apr 10 '12</span></p> <!--Date stamp-->
                                 <hr />
                             </div>
                             <div>

@@ -4,6 +4,7 @@ import io.cortex.cortexweb.model.CommunityQuestion;
 import io.cortex.cortexweb.security.IAuthenticationManager;
 import io.cortex.cortexweb.service.CommunityQuestionService;
 import io.cortex.cortexweb.service.UserService;
+import io.cortex.cortexweb.utils.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
@@ -34,6 +35,7 @@ public class CommunityController {
     @RequestMapping(value = "/community-questions", method = {RequestMethod.GET, RequestMethod.POST})
     public String showCommunityQuestionsPage(Model model) {
         model.addAttribute("questions", communityQuestionService.findAllQuestions());
+        model.addAttribute("utils", new Utils());
         return "community-questions";
     }
 

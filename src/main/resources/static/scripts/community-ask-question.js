@@ -1,7 +1,7 @@
 var stompClient = null;
 //var sender = document.querySelector("#sender").tex;
 $(document).ready(function () {
-   $("#alert").hide();
+    $("#alert").hide();
 });
 
 
@@ -29,9 +29,12 @@ $(function () {
         e.preventDefault();
     });
     connect();
-    $( "#send" ).click(function() {
+    $("#send").click(function () {
         sendQuestion();
-        // location.reload();
-        window.location = getWebServerAddress() + "/community-questions";
+
+        //delay for 1 second para na insert na ung data sa db. XD
+        setTimeout(function () {
+            window.location = getWebServerAddress() + "/community-questions";
+        }, 1000);
     });
 });
