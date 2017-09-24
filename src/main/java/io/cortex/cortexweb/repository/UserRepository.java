@@ -13,4 +13,6 @@ public interface UserRepository extends CrudRepository<User, String> {
     @Transactional
     @Query(value = "update users set username = ?1, bio = ?2 where email = ?3", nativeQuery = true)
     void updateUser(String username, String bio, String email);
+
+    User findUserByUsername(String email);
 }

@@ -7,11 +7,18 @@ import io.cortex.cortexweb.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.method.P;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
+import java.util.Arrays;
+import java.util.List;
 
 @RestController
 @RequestMapping("/test")
@@ -48,7 +55,11 @@ public class SecurityController {
             }
 
             loginResult.setResult("SUCCESS");
-            //sign up the user
+
+            //manually sign in user
+            Authentication authentication = new UsernamePasswordAuthenticationToken(user.getEmail(),
+                    "default_password");
+            SecurityContextHolder.getContext().setAuthentication(authentication);
         }
         //unable to find user
         else {

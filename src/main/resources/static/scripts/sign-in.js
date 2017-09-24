@@ -18,5 +18,4 @@ function sendTokenToServer(googleUser) {
         console.log("SIGNED IN");
     };
     xhr.send('token=' + id_token);
-
 }

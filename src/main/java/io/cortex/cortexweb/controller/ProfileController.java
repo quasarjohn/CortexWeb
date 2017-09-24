@@ -1,8 +1,6 @@
 package io.cortex.cortexweb.controller;
 
-import io.cortex.cortexweb.model.Social;
 import io.cortex.cortexweb.model.User;
-import io.cortex.cortexweb.security.IAuthenticationManager;
 import io.cortex.cortexweb.service.CommunityQuestionService;
 import io.cortex.cortexweb.service.SocialService;
 import io.cortex.cortexweb.service.UserService;
@@ -14,13 +12,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
+import java.security.Principal;
 
 @Controller
 public class ProfileController {
     private UserService userService;
     private CommunityQuestionService communityQuestionService;
     private SocialService socialService;
-    private IAuthenticationManager authenticationManager;
     private String currentUser;
     private String uri;
 
@@ -39,14 +37,10 @@ public class ProfileController {
         this.socialService = socialService;
     }
 
-    @Autowired
-    public void setAuthenticationManager(IAuthenticationManager authenticationManager) {
-        this.authenticationManager = authenticationManager;
-    }
 
     @RequestMapping("{otherUser}-profile")
-    public String showUserProfilePage(Model model, @PathVariable String otherUser, HttpServletRequest httpServletRequest) {
-        currentUser = authenticationManager.getCurrentUser();
+    public String showUserProfilePage(Model model, Principal principal, @PathVariable String otherUser, HttpServletRequest httpServletRequest) {
+        currentUser = principal.getName();
         System.out.println(currentUser + " and " + otherUser);
         uri = httpServletRequest.getRequestURI();
         System.out.println(uri);
@@ -61,25 +55,25 @@ public class ProfileController {
     }
 
     @RequestMapping("/user-settings")
-    public String showUserSettingsPage(Model model) {
-        currentUser = authenticationManager.getCurrentUser();
+    public String showUserSettingsPage(Model model, Principal principal) {
+        currentUser = principal.getName();
         model.addAttribute("user", userService.findUserByEmail(currentUser));
 
         return "user-settings";
     }
 
     @RequestMapping("update/profile")
-    public String updateProfile(User userModel) {
-        currentUser = authenticationManager.getCurrentUser();
+    public String updateProfile(User userModel, Principal principal) {
+        currentUser = principal.getName();
         userService.updateUser(userModel.getUsername(), userModel.getBio(), currentUser);
 
         return "redirect:/" + currentUser + "-profile";
     }
 
     @RequestMapping("follow/user/{userEmail}/{userReputationScore}/{userUsername}/{otherUserEmail}/{otherUserReputationScore}/{otherUserUsername}")
-    public String followUser(@PathVariable String userEmail, @PathVariable int userReputationScore, @PathVariable String userUsername,
+    public String followUser(Principal principal, @PathVariable String userEmail, @PathVariable int userReputationScore, @PathVariable String userUsername,
                              @PathVariable String otherUserEmail, @PathVariable int otherUserReputationScore, @PathVariable String otherUserUsername) {
-        currentUser = authenticationManager.getCurrentUser();
+        currentUser = principal.getName();
         System.out.println(userEmail + " <- following email -> " + currentUser);
         System.out.println(userEmail + " " + userReputationScore + " " + userUsername + " " + otherUserEmail
                 + " " + otherUserReputationScore + " " + otherUserUsername);
@@ -95,8 +89,8 @@ public class ProfileController {
     }
 
     @RequestMapping("unfollow/user/{userEmail}")
-    public String unfollowUser(@PathVariable String userEmail) {
-        currentUser = authenticationManager.getCurrentUser();
+    public String unfollowUser(Principal principal, @PathVariable String userEmail) {
+        currentUser = principal.getName();
         System.out.println(userEmail + " <- following email -> " + currentUser);
         socialService.unfollowUser(currentUser, userEmail + ".com");
         System.out.println(uri + " unfollow/user/{followingEmail} mapping");

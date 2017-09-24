@@ -2,13 +2,13 @@ package io.cortex.cortexweb.controller;
 
 import io.cortex.cortexweb.model.ReturnableUser;
 import io.cortex.cortexweb.model.User;
-import io.cortex.cortexweb.repository.UserRepository;
-import io.cortex.cortexweb.security.IAuthenticationManager;
+import io.cortex.cortexweb.security.AuthenticationManager;
 import io.cortex.cortexweb.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 
 @RestController
 @RequestMapping("/session")
@@ -26,7 +26,7 @@ public class SessionController {
     }
 
     @Autowired
-    private IAuthenticationManager authenticationManager;
+    private AuthenticationManager authenticationManager;
 
     @GetMapping("/user-info")
     public ReturnableUser getUserInfo() {

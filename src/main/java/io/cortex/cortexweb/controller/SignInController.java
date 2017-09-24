@@ -1,24 +1,16 @@
 package io.cortex.cortexweb.controller;
 
-import io.cortex.cortexweb.model.User;
-import io.cortex.cortexweb.security.AuthenticationManager;
 import io.cortex.cortexweb.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.AuthenticationProvider;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.web.authentication.WebAuthenticationDetails;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.HashMap;
-import java.util.Map;
+import java.security.Principal;
 
 @Controller
 public class SignInController {
@@ -31,38 +23,20 @@ public class SignInController {
         this.userService = userService;
     }
 
-    @Autowired
-    private AuthenticationManager authenticationManager;
-
     @RequestMapping("/sign-in")
     public String showSignInPage() {
         return "sign-in";
     }
 
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
-    public String logoutPage(HttpServletRequest request, HttpServletResponse response) {
-        Authentication auth = authenticationManager.getSecurityContext().getAuthentication();
-        if (auth != null) {
-            System.out.println("HINDI NULL");
-            new SecurityContextLogoutHandler().logout(request, response, auth);
-        }
+    public String logoutPage(Principal principal, HttpServletRequest request, HttpServletResponse response) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+        new SecurityContextLogoutHandler().logout(request, response, auth);
+
         return "redirect:/sign-in?logout";
     }
 
-//    private void doAutoLogin(String username, String password, HttpServletRequest request) {
-//
-//        try {
-//            // Must be called from request filtered by Spring Security, otherwise SecurityContextHolder is not updated
-//            UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(username, password);
-//            token.setDetails(new WebAuthenticationDetails(request));
-//            Authentication authentication = this.authenticationProvider.authenticate(token);
-//            SecurityContextHolder.getContext().setAuthentication(authentication);
-//        } catch (Exception e) {
-//            SecurityContextHolder.getContext().setAuthentication(null);
-//            System.out.println("Failed login");
-//        }
-//
-//    }
 
 //    @RequestMapping("/index")   //Wala pang ui sa validation kaya sa console palang output
 //    public String showCommunityOrConsoleIndex(HttpServletRequest httpServletRequest, User user, BindingResult bindingResult) {

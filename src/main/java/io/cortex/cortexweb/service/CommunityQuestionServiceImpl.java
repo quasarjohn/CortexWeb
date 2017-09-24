@@ -25,8 +25,8 @@ public class CommunityQuestionServiceImpl implements CommunityQuestionService {
     }
 
     @Override
-    public Iterable<CommunityQuestion> findAllUserQuestions(String email) {
-        return communityQuestionRepository.findAllUserQuestions(email);
+    public Iterable<CommunityQuestion> findAllUserQuestions(String username) {
+        return communityQuestionRepository.findAllUserQuestions(username);
     }
 
     @Override

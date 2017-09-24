@@ -1,9 +1,8 @@
-package io.cortex.cortexweb.security;
+package io.cortex.cortexweb.configs;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
-import org.springframework.security.core.context.SecurityContext;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
@@ -26,9 +25,9 @@ public class PagesConfig extends WebMvcConfigurerAdapter {
         return dataSource;
     }
 
-    @Bean
-    public IAuthenticationManager securityContext() {
-        IAuthenticationManager manager = new AuthenticationManager();
-        return manager;
-    }
+//    @Bean
+//    public AuthenticationManager securityContext() {
+//        AuthenticationManager manager = new AuthenticationManagerImpl();
+//        return manager;
+//    }
 }

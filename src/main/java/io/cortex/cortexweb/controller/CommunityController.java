@@ -1,7 +1,7 @@
 package io.cortex.cortexweb.controller;
 
 import io.cortex.cortexweb.model.CommunityQuestion;
-import io.cortex.cortexweb.security.IAuthenticationManager;
+import io.cortex.cortexweb.model.User;
 import io.cortex.cortexweb.service.CommunityQuestionService;
 import io.cortex.cortexweb.service.UserService;
 import io.cortex.cortexweb.utils.Utils;
@@ -13,23 +13,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.security.Principal;
+
 @Controller
 public class CommunityController {
+    @Autowired
     private UserService userService;
+
+    @Autowired
     private CommunityQuestionService communityQuestionService;
 
-    @Autowired
-    public void setUserService(UserService userService) {
-        this.userService = userService;
-    }
 
-    @Autowired
-    public void setCommunityQuestionService(CommunityQuestionService communityQuestionService) {
-        this.communityQuestionService = communityQuestionService;
-    }
-
-    @Autowired
-    private IAuthenticationManager authenticationManager;
     private String user;
 
     @RequestMapping(value = "/community-questions", method = {RequestMethod.GET, RequestMethod.POST})
@@ -40,8 +34,10 @@ public class CommunityController {
     }
 
     @RequestMapping("/community-questions-ask-question")
-    public String showCommunityAskQuestionPage(Model model) {
-        user = authenticationManager.getCurrentUser();
+    public String showCommunityAskQuestionPage(Model model, Principal principal) {
+        User u = userService.findUserByEmail(principal.getName());
+        user = u.getUsername();
+        System.out.println("USER: " + user);
         model.addAttribute("sender", user);
         model.addAttribute("questions", communityQuestionService.findAllQuestions());
         return "community-ask-question";
@@ -63,7 +59,7 @@ public class CommunityController {
     @SendTo("/community/questions")
     public CommunityQuestion postQuestion(CommunityQuestion question) {
         question.setTime_stamp(System.currentTimeMillis());
-        question.setUser_id(user);
+        question.setUsername(user);
         question.setQUESTION_NUMBER(communityQuestionService.showQuestionNumber() + 1);
         communityQuestionService.postQuestion(question);
 

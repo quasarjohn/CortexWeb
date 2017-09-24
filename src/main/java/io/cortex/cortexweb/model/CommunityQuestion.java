@@ -16,9 +16,9 @@ public class CommunityQuestion {
     @Column(name = "question_number")
     private int QUESTION_NUMBER;
 
-    @Column(name = "email")
+    @Column(name = "username")
     //@NotNull
-    private String user_id;
+    private String username;
 
     @Column(name = "title")
     //@NotNull
@@ -54,12 +54,12 @@ public class CommunityQuestion {
         this.time_stamp = time_stamp;
     }
 
-    public String getUser_id() {
-        return user_id;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUser_id(String user_id) {
-        this.user_id = user_id;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public int getQUESTION_NUMBER() {
