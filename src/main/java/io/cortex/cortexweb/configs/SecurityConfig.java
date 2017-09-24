@@ -25,6 +25,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/index",
                         "/try-it",
                         "/documentation",
+                        "/community-questions",
+                        "/console-overview",
                         //allows us to get user info without redirecting the page
                         "/session/user-info",
                         //TODO change this -> test manual login

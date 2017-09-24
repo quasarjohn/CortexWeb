@@ -5,6 +5,12 @@
     <!--/*/ <th:block th:include="fragments/head-fragment :: head-fragment"></th:block> /*/-->
     <link rel="stylesheet" type="text/css" href="static/styles/try-it.css" th:href="@{styles/try-it.css}"/>
     <link rel="stylesheet" type="text/css" href="static/styles/global.style.css" th:href="@{styles/global.style.css}"/>
+
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"
+            integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+            crossorigin="anonymous"></script>
+    <script type="text/javascript" src="scripts/utils.js"></script>
+    <script type="text/javascript" src="scripts/security.js"></script>
 </head>
 <body>
 <!--/*/ <th:block th:include="fragments/home-nav-fragment :: home-nav-fragment"></th:block> /*/-->
@@ -35,6 +41,7 @@
         </div>
     </div>
 </nav>-->
+
 
 <div id="con" class="container-fluid text-center">
     <div class="container">
@@ -206,8 +213,9 @@
 <!--/*/ <th:block th:include="fragments/scripts-fragment :: scripts-fragment"></th:block> /*/-->
 <script type="text/javascript" src="scripts/progressbar.js"></script>
 <!--<script type="text/javascript" src="webjars/jquery/2.2.4/jquery.min.js"></script>-->
+
 <script type="text/javascript" src="scripts/try-it.js"></script>
-<script type="text/javascript" src="scripts/utils.js"></script>
+
 
 </body>
 </html>

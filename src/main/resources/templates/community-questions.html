@@ -5,6 +5,11 @@
     <!--/*/ <th:block th:include="fragments/head-fragment :: head-fragment"></th:block> /*/-->
     <link rel="stylesheet" type="text/css" href="static/styles/community-questions.css"
           th:href="@{styles/community-questions.css}"/>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"
+            integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+            crossorigin="anonymous"></script>
+    <script type="text/javascript" src="scripts/utils.js"></script>
+    <script type="text/javascript" src="scripts/security.js"></script>
 </head>
 <body>
 <!--/*/ <th:block th:include="fragments/community-questions-nav-fragment :: community-questions-nav-fragment"></th:block> /*/-->
@@ -107,7 +112,7 @@
 <!--/*/ <th:block th:include="fragments/scripts-fragment :: scripts-fragment"></th:block> /*/-->
 <script type="text/javascript" src="scripts/home-tooltip.js"></script>
 <script type="text/javascript" src="scripts/community-questions.js"></script>
-<script src="/webjars/jquery/jquery.min.js"></script>
+<!--<script src="/webjars/jquery/jquery.min.js"></script>-->
 <script src="/webjars/sockjs-client/sockjs.min.js"></script>
 <script src="/webjars/stomp-websocket/stomp.min.js"></script>
 
