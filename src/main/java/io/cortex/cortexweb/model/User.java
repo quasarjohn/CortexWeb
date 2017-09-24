@@ -4,6 +4,7 @@ import javafx.beans.DefaultProperty;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 
@@ -41,8 +42,17 @@ public class User {
     @Size(min = 8, max = 40)
     private String password;
 
-    @Column(name = "confirmation_code")
-    private int confirmationCode;
+
+    @Column
+    private String api_key;
+
+    public String getApi_key() {
+        return api_key;
+    }
+
+    public void setApi_key(String api_key) {
+        this.api_key = api_key;
+    }
 
     public String getEmail() {
         return email;
@@ -82,14 +92,6 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public int getConfirmationCode() {
-        return confirmationCode;
-    }
-
-    public void setConfirmationCode(int confirmationCode) {
-        this.confirmationCode = confirmationCode;
     }
 
     public String getUsername() {

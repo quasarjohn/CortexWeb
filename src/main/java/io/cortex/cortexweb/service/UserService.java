@@ -11,6 +11,8 @@ public interface UserService {
 
     void updateUser(String username, String bio, String email);
 
+    void saveUser(User user);
+
     //User save(User user);
 
     //Iterable<User> list

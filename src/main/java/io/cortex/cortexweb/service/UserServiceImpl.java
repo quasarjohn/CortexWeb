@@ -28,4 +28,9 @@ public class UserServiceImpl implements UserService {
     public void updateUser(String username, String bio, String email) {
         userRepository.updateUser(username, bio, email);
     }
+
+    @Override
+    public void saveUser(User user) {
+        userRepository.save(user);
+    }
 }
