@@ -16,6 +16,10 @@ function sendTokenToServer(googleUser) {
     xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
     xhr.onload = function () {
         var referrer = localStorage.getItem("referrer");
+
+        if(referrer == null)
+            window.location = getWebServerAddress();
+        else
         window.location = referrer;
     };
     xhr.send('token=' + id_token);

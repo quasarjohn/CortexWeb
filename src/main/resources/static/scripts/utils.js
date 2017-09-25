@@ -12,7 +12,7 @@ function json_fetch_session_data() {
 function sync_json_fetch_session_data() {
 
     var xhr = new window.XMLHttpRequest();
-    xhr.open('GET', getWebServerAddress() +'/session/user-info', true);
+    xhr.open('GET', getWebServerAddress() +'/session/user-info', false);
     xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.send();
