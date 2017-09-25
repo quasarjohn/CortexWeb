@@ -1,12 +1,7 @@
 package io.cortex.cortexweb.model;
 
-import jdk.nashorn.internal.ir.annotations.Ignore;
-import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 @Entity
 @Table(name = "Questions")
