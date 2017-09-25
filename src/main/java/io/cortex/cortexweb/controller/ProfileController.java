@@ -57,7 +57,7 @@ public class ProfileController {
     @RequestMapping("/user-settings")
     public String showUserSettingsPage(Model model, Principal principal) {
         currentUser = principal.getName();
-        //model.addAttribute("currentUserInfo", userService.findUserByUsername(currentUser));
+        model.addAttribute("currentUserInfo", userService.findUserByUsername(currentUser(principal)));
         model.addAttribute("user", userService.findUserByEmail(currentUser));
 
         return "user-settings";
