@@ -19,11 +19,10 @@ function sendQuestion() {
         'email': $("#senderEmail").text(),
         'username': $("#sender").text(),
         'reputationScore': $("#senderReputation").text(),
-        'title': $("#title").val(),
+        'title': $("#question-title").val(),
         'body': $("#body").val(),
         'QUESTION_NUMBER': $("#questionNumber").text()
     }));
-    alert("TITLE " + $("#question-title").val());
 }
 
 
