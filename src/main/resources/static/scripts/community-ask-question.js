@@ -16,9 +16,7 @@ function connect() {
 
 function sendQuestion() {
     stompClient.send("/new-question", {}, JSON.stringify({
-        'email': $("#senderEmail").text(),
         'username': $("#sender").text(),
-        'reputationScore': $("#senderReputation").text(),
         'title': $("#title").val(),
         'body': $("#body").val(),
         'QUESTION_NUMBER': $("#questionNumber").text()

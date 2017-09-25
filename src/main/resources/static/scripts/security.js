@@ -18,10 +18,14 @@ function checkIfUserIsAuthenticated() {
         timeout: 600000,
         async: false,
         success: function (data) {
-            if (data.email == null)
-            //TODO display login modal instead of redirecting to sign in page
-            // displayLoginModal();
-                redirectToSignInPage();
+            if (data.email == null) {
+                displayLoginModal();
+            }
+            else {
+                console.log("USER IS AUTHENTICATED");
+                //prevents loop of google login
+                $("#sb").removeClass("g-signin2");
+            }
         },
         error: function (e) {
             console.log("ERROR : ", e);
@@ -36,13 +40,24 @@ function redirectToSignInPage() {
 
 function displayLoginModal() {
     console.log("DISPLAY MODAL");
+
+    $('#myModal').modal({
+        backdrop: 'static',
+        keyboard: false
+    });
+
     $("#myModal").modal();
 }
-
 
 function startSecurityCheck() {
     checkIfUserIsAuthenticated();
 }
 
+$(document).ready(function () {
+    $("#logout-btn").click(function () {
+        alert("LOGGIN OUT");
+        //TODO implement logout
+    });
+});
 
 startSecurityCheck();

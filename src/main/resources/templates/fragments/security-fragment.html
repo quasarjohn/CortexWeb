@@ -7,7 +7,29 @@
 
 <div th:fragment="security-fragment">
 
-    //TODO include a modal here so we don't have to redirect user to login page anymore
+    <script src="https://apis.google.com/js/platform.js"></script>
+    <meta name="google-signin-client_id"
+          content="36486410372-vl7067jt59p6j46tu712vvi93b91ha0t.apps.googleusercontent.com"/>
+    <link rel="stylesheet" type="text/css" href="styles/security-fragment.css"
+          th:href="@{styles/security-fragment.css}"/>
+
+
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-body" style="text-align: center">
+                    <h3 id="title">Welcome to Cortex</h3>
+
+                    <div id="sb" class="g-signin2" data-onsuccess="onSignIn"
+
+                         data-longtitle="true">button
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
 
     <script type="text/javascript" src="scripts/utils.js"></script>
     <script type="text/javascript" src="scripts/sign-in.js"></script>

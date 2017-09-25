@@ -15,12 +15,11 @@ function sendTokenToServer(googleUser) {
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
     xhr.onload = function () {
-        var referrer = localStorage.getItem("referrer");
 
-        if(referrer == null)
-            window.location = getWebServerAddress();
-        else
-        window.location = referrer;
+        setTimeout(function () {
+            $("#myModal").modal('hide');
+            window.location.reload();
+        }, 250);
     };
     xhr.send('token=' + id_token);
 }
