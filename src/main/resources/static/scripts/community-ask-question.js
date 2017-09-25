@@ -17,12 +17,12 @@ function connect() {
 function sendQuestion() {
     stompClient.send("/new-question", {}, JSON.stringify({
         'username': $("#sender").text(),
-        'title': $("#title").val(),
+        'title': $("#question-title").val(),
         'body': $("#body").val(),
         'QUESTION_NUMBER': $("#questionNumber").text()
     }));
+    alert("TITLE " + $("#question-title").val());
 }
-
 
 $(function () {
     $("form").on('submit', function (e) {
