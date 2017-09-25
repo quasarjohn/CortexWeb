@@ -6,10 +6,14 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/>
     <link rel="stylesheet" type="text/css" href="static/styles/console-overview.css"
           th:href="@{styles/console-overview.css}"/>
-    <script type="text/javascript" src="scripts/utils.js"></script>
-    <script type="text/javascript" src="scripts/security.js"></script>
+
+    <!--/*/ <th:block th:include="fragments/scripts-fragment :: scripts-fragment"></th:block> /*/-->
+    <!--/*/ <th:block th:include="fragments/security-fragment :: security-fragment"></th:block> /*/-->
+
 </head>
 <body>
+
+
 <!--/*/ <th:block th:include="fragments/console-nav-fragment :: console-nav-fragment"></th:block> /*/-->
 
 <!-- Sidebar -->
@@ -30,7 +34,6 @@
 
 <!-- Page content -->
 <div id="pageContent">
-
     <!-- Overlay -->
     <div id="overlay" class="w3-overlay w3-animate-opacity" onclick="sidebarClose()"></div>
 
@@ -42,8 +45,10 @@
         <h1 class="w3-hide-large">Overview</h1>
     </div>
 
+
     <div id="con" class="container-fluid">
         <h2>Welcome to Cortex! Get started here.</h2>
+
 
         <div class="row">
             <div class="col-sm-3 col-xs-3"></div>
@@ -98,8 +103,10 @@
     </div>
 </div>
 
-<!--/*/ <th:block th:include="fragments/scripts-fragment :: scripts-fragment"></th:block> /*/-->
+
 <script type="text/javascript" src="scripts/sidebar.js"></script>
 <!--<script type="text/javascript" src="scripts/home-tooltip.js"></script>-->
+
+
 </body>
 </html>
