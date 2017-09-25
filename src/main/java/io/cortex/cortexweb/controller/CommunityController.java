@@ -2,6 +2,7 @@ package io.cortex.cortexweb.controller;
 
 import io.cortex.cortexweb.model.CommunityQuestion;
 import io.cortex.cortexweb.model.User;
+import io.cortex.cortexweb.security.AuthenticationManager;
 import io.cortex.cortexweb.service.CommunityQuestionService;
 import io.cortex.cortexweb.service.UserService;
 import io.cortex.cortexweb.utils.Utils;
@@ -36,7 +37,7 @@ public class CommunityController {
 
     @RequestMapping(value = "/community-questions", method = {RequestMethod.GET, RequestMethod.POST})
     public String showCommunityQuestionsPage(Model model, Principal principal) {
-        model.addAttribute("currentUserInfo", userService.findUserByUsername(currentUser(principal)));
+        //model.addAttribute("currentUserInfo", userService.findUserByUsername(currentUser(principal)));
         model.addAttribute("questions", communityQuestionService.findAllQuestions());
         model.addAttribute("utils", new Utils());
         return "community-questions";
@@ -65,7 +66,7 @@ public class CommunityController {
 
     @RequestMapping("/community-users")
     public String showCommunityUsersPage(Model model, Principal principal) {
-        model.addAttribute("currentUserInfo", userService.findUserByUsername(currentUser(principal)));
+        //model.addAttribute("currentUserInfo", userService.findUserByUsername(currentUser(principal)));
         model.addAttribute("users", userService.findAllUsers());
         return "community-users";
     }
