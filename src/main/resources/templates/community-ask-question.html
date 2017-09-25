@@ -9,6 +9,8 @@
 <!--/*/ <th:block th:include="fragments/community-questions-nav-fragment :: community-questions-nav-fragment"></th:block> /*/-->
 
 <div id="sender" th:text="${sender}" style="display: none;"></div>
+<div id="senderEmail" th:text="${senderEmail}" style="display: none;"></div>
+<div id="senderReputation" th:text="${senderReputationScore}" style="display: none;"></div>
 <div id="questionNumber" th:text="${#lists.size(questions)+1}" style="display: none;"></div>
 <div class="container">
     <div class="row">

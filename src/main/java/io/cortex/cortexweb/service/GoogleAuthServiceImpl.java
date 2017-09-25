@@ -43,7 +43,7 @@ public class GoogleAuthServiceImpl implements GoogleAuthService {
             user.setFirstName(first_name);
             user.setEnabled(true);
             user.setUsername(username);
-            user.setBio("Set Your Bio");
+            user.setBio(null);
             //wala nang password
             user.setPassword("default_password");
             user.setReputationScore(0);

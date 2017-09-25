@@ -15,7 +15,15 @@
 <!--/*/ <th:block th:include="fragments/community-questions-nav-fragment :: community-questions-nav-fragment"></th:block> /*/-->
 
 <div class="container-fluid">
-    <h2>Questions</h2>
+    <!--<h2>Questions</h2>-->
+
+    <div class="form-inline">
+        <div class="form-group">
+            <!--<label>Find question : </label>-->
+            <label>Questions : </label>
+            <input id="searchQuestion" type="text" class="form-control" oninput="w3.filterHTML('#questions', '#question', this.value)" placeholder="Search Question" />
+        </div>
+    </div>
 
     <div id="askQuestion">
         <div class="row">
@@ -31,7 +39,7 @@
     </div>
 
     <div id="questions" th:if="${not #lists.isEmpty(questions)}">
-        <div class="question" th:each="i : ${#numbers.sequence(#lists.size(questions)-1, 0, -1)}">
+        <div id="question" class="question" th:each="i : ${#numbers.sequence(#lists.size(questions)-1, 0, -1)}">
             <hr/>
             <div class="row" th:each="question, iterStat : ${questions[i]}" th:if="${iterStat.size >= iterStat.count}">
                 <div class="col-sm-2">
@@ -51,17 +59,20 @@
                         clicked
                         it will open up another activity as it is meant to, and will work completely fine but once ...</p>-->
 
-                    <div class="askedBy">
-                        <p th:text="${utils.parseEpochDate(question.time_stamp)}">asked 5 minutes ago</p>
-                        <div class="row">
-                            <div class="col-sm-5">
-                                <img class="img-responsive" src="images/dev1.png"/>
-                            </div>
-                            <div class="col-sm-7">
-                                <a href="#" th:text="${question.username}"></a>
-                                <!--<a href="#">Dylan Kane</a>-->
-                                <p class="reputationTooltip" data-toggle="tooltip" data-placement="bottom"
-                                   title="Reputation score">6</p>
+                    <div>
+                        <div class="askedBy">
+                            <p th:text="${utils.parseEpochDate(question.time_stamp)}">asked 5 minutes ago</p>
+                            <div class="row">
+                                <div class="col-sm-5">
+                                    <img class="img-responsive" src="images/dev1.png"/>
+                                </div>
+                                <div class="col-sm-7">
+                                    <!--<a href="#" th:text="${question.username}"></a>
+                                    <p class="reputationTooltip" data-toggle="tooltip" data-placement="bottom"
+                                       title="Reputation score">6</p>-->
+                                    <a href="#" th:href="@{'/' + ${question.email} + '-profile'}" th:text="${question.username}"></a>
+                                    <p class="reputationTooltip"><span data-toggle="tooltip" data-placement="bottom" title="Reputation score" th:text="${question.reputationScore}"></span></p>
+                                </div>
                             </div>
                         </div>
                     </div>

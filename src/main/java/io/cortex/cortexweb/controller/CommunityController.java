@@ -17,17 +17,26 @@ import java.security.Principal;
 
 @Controller
 public class CommunityController {
-    @Autowired
     private UserService userService;
-
-    @Autowired
     private CommunityQuestionService communityQuestionService;
 
+    @Autowired
+    private void setUserService(UserService userService) {
+        this.userService = userService;
+    }
+
+    @Autowired
+    private void setCommunityQuestionService(CommunityQuestionService communityQuestionService) {
+        this.communityQuestionService = communityQuestionService;
+    }
 
     private String user;
+    private String email;
+    private int reputationScore;
 
     @RequestMapping(value = "/community-questions", method = {RequestMethod.GET, RequestMethod.POST})
-    public String showCommunityQuestionsPage(Model model) {
+    public String showCommunityQuestionsPage(Model model, Principal principal) {
+        model.addAttribute("currentUserInfo", userService.findUserByUsername(currentUser(principal)));
         model.addAttribute("questions", communityQuestionService.findAllQuestions());
         model.addAttribute("utils", new Utils());
         return "community-questions";
@@ -37,19 +46,26 @@ public class CommunityController {
     public String showCommunityAskQuestionPage(Model model, Principal principal) {
         User u = userService.findUserByEmail(principal.getName());
         user = u.getUsername();
+        email = u.getEmail();
+        reputationScore = u.getReputationScore();
         System.out.println("USER: " + user);
+        model.addAttribute("currentUserInfo", userService.findUserByUsername(currentUser(principal)));
         model.addAttribute("sender", user);
+        model.addAttribute("senderEmail", email);
+        model.addAttribute("senderReputationScore", reputationScore);
         model.addAttribute("questions", communityQuestionService.findAllQuestions());
         return "community-ask-question";
     }
 
     @RequestMapping("/question")
-    public String showQuestionPage() {
+    public String showQuestionPage(Model model, Principal principal) {
+        model.addAttribute("currentUserInfo", userService.findUserByUsername(currentUser(principal)));
         return "community-view-question";
     }
 
     @RequestMapping("/community-users")
-    public String showCommunityUsersPage(Model model) {
+    public String showCommunityUsersPage(Model model, Principal principal) {
+        model.addAttribute("currentUserInfo", userService.findUserByUsername(currentUser(principal)));
         model.addAttribute("users", userService.findAllUsers());
         return "community-users";
     }
@@ -64,6 +80,13 @@ public class CommunityController {
         communityQuestionService.postQuestion(question);
 
         return question;
+    }
+
+    private String currentUser(Principal principal) {
+        User u = userService.findUserByEmail(principal.getName());
+        String user = u.getUsername();
+
+        return user;
     }
 
     /*@RequestMapping("/show/question")

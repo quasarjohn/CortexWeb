@@ -9,7 +9,7 @@ public interface CommunityQuestionService {
 
     Iterable<CommunityQuestion> findAllQuestions();
 
-    Iterable<CommunityQuestion> findAllUserQuestions(String email);
+    Iterable<CommunityQuestion> findAllUserQuestions(String username);
 
     int showQuestionNumber();
 }

@@ -43,13 +43,12 @@
                         </a>
                         <ul class="dropdown-menu w3-round">
                             <li><h5>Signed in as</h5></li>
-                            <li><h6 th:inline="text"><strong>[[${#httpServletRequest.remoteUser}]]</strong></h6></li>
+                            <li><h6><strong th:text="${currentUserInfo.username}"></strong></h6></li>
                             <hr/>
-                            <li><a href="#">Your profile</a></li>
-                            <li><a href="#">Your reputation</a></li>
+                            <li><a href="#" th:href="@{'/' + ${currentUserInfo.email} + '-profile'}">Your profile</a></li>
                             <hr/>
-                            <li><a href="#">Settings</a></li>
-                            <li><a href="#" th:href="@{/logout}">Signs out</a></li>
+                            <li><a href="#" th:href="@{/user-settings}">Settings</a></li>
+                            <li><a href="#" th:href="@{/logout}">Sign out</a></li>
                         </ul>
                     </li>
                 </ul>

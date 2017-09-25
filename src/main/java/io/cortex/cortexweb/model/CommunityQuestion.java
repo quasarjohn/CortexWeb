@@ -28,6 +28,12 @@ public class CommunityQuestion {
     //@NotNull
     private String body;
 
+    @Column(name = "email")
+    private String email;
+
+    @Column(name = "reputation_score")
+    private int reputationScore;
+
     private long time_stamp;
 
     public String getTitle() {
@@ -68,5 +74,21 @@ public class CommunityQuestion {
 
     public void setQUESTION_NUMBER(int QUESTION_NUMBER) {
         this.QUESTION_NUMBER = QUESTION_NUMBER;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public int getReputationScore() {
+        return reputationScore;
+    }
+
+    public void setReputationScore(int reputationScore) {
+        this.reputationScore = reputationScore;
     }
 }

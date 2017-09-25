@@ -57,6 +57,7 @@ public class ProfileController {
     @RequestMapping("/user-settings")
     public String showUserSettingsPage(Model model, Principal principal) {
         currentUser = principal.getName();
+        model.addAttribute("currentUserInfo", userService.findUserByUsername(currentUser(principal)));
         model.addAttribute("user", userService.findUserByEmail(currentUser));
 
         return "user-settings";
@@ -113,5 +114,12 @@ public class ProfileController {
         model.addAttribute("followingList", socialService.checkUserFollowing(currentUser, user));
         model.addAttribute("socialTable", socialService.checkSocialTableSize());
         model.addAttribute("utils", new Utils());
+    }
+
+    private String currentUser(Principal principal) {
+        User u = userService.findUserByEmail(principal.getName());
+        String user = u.getUsername();
+
+        return user;
     }
 }

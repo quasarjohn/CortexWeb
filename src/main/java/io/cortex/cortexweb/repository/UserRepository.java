@@ -14,5 +14,6 @@ public interface UserRepository extends CrudRepository<User, String> {
     @Query(value = "update users set username = ?1, bio = ?2 where email = ?3", nativeQuery = true)
     void updateUser(String username, String bio, String email);
 
-    User findUserByUsername(String email);
+    @Query(value = "select email from users where username = ?1", nativeQuery = true)
+    User findUserByUsername(String username);
 }

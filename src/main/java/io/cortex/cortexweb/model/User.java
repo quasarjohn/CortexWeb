@@ -42,7 +42,6 @@ public class User {
     @Size(min = 8, max = 40)
     private String password;
 
-
     @Column
     private String api_key;
 

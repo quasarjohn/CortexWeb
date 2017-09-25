@@ -5,8 +5,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 public interface CommunityQuestionRepository extends CrudRepository<CommunityQuestion, String> {
-    @Query(value = "select * from questions where email = ?1", nativeQuery = true)
-    Iterable<CommunityQuestion> findAllUserQuestions(String email);
+    @Query(value = "select * from questions where username = ?1", nativeQuery = true)
+    Iterable<CommunityQuestion> findAllUserQuestions(String username);
 
     @Query(value = "select count(*) from questions", nativeQuery = true)
     int showQuestionNumber();
