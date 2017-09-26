@@ -45,6 +45,8 @@ public class User {
     @Column
     private String api_key;
 
+    @Column String img_url;
+
     public String getApi_key() {
         return api_key;
     }
@@ -115,5 +117,13 @@ public class User {
 
     public void setBio(String bio) {
         this.bio = bio;
+    }
+
+    public String getImg_url() {
+        return img_url;
+    }
+
+    public void setImg_url(String img_url) {
+        this.img_url = img_url;
     }
 }

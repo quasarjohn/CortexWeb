@@ -39,7 +39,7 @@
                                           style="padding: 28px 20px; margin-top: 2px;">CONSOLE</a></li>
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="margin-top: 2px;">
-                            <img class="img-circle" src="images/dev1.png"/>&nbsp;<span class="caret"></span>
+                            <img class="img-circle" th:src="${currentUserInfo!=null} ? ${currentUserInfo.img_url}" src="images/dev1.png"/>&nbsp;<span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu w3-round">
                             <li><h5>Signed in as</h5></li>

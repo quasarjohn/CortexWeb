@@ -37,6 +37,8 @@ public class GoogleAuthServiceImpl implements GoogleAuthService {
 
             String first_name = (String) payload.get("given_name");
             String last_name = (String) payload.get("family_name");
+            String img_url = (String) payload.get("picture");
+
 
             user.setEmail(payload.getEmail());
             user.setLastName(last_name);
@@ -44,6 +46,7 @@ public class GoogleAuthServiceImpl implements GoogleAuthService {
             user.setEnabled(true);
             user.setUsername(username);
             user.setBio(null);
+            user.setImg_url(img_url);
             //wala nang password
             user.setPassword("default_password");
             user.setReputationScore(0);
