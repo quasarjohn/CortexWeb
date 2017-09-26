@@ -9,6 +9,8 @@ function onSignIn(googleUser) {
 }
 
 function sendTokenToServer(googleUser) {
+    var profile = googleUser.getBasicProfile();
+
     var id_token = googleUser.getAuthResponse().id_token;
     var xhr = new XMLHttpRequest();
     xhr.open('POST', getWebServerAddress() + "/test/login");
@@ -16,10 +18,13 @@ function sendTokenToServer(googleUser) {
     xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
     xhr.onload = function () {
 
+        $("#title").html("Welcome to Cortex");
+        $("#sas").html("Signed in as " + profile.getName());
+
         setTimeout(function () {
             $("#myModal").modal('hide');
-            window.location.reload();
-        }, 250);
+            window.location = localStorage.getItem("referrer")
+        }, 500);
     };
     xhr.send('token=' + id_token);
 }

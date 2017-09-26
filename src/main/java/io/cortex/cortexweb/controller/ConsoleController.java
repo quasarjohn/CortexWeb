@@ -20,25 +20,33 @@ public class ConsoleController {
 
     @RequestMapping("/console-overview")
     public String showConsoleOverviewPage(Model model, Principal principal) {
-        model.addAttribute("currentUserInfo", userService.findUserByUsername(currentUser(principal)));
+        User user = getUserInfo(principal);
+        if (user != null)
+            model.addAttribute("currentUserInfo", user);
         return "console-overview";
     }
 
     @RequestMapping("/console-classify")
     public String showConsoleClassifyPage(Model model, Principal principal) {
-        model.addAttribute("currentUserInfo", userService.findUserByUsername(currentUser(principal)));
+        User user = getUserInfo(principal);
+        if (user != null)
+            model.addAttribute("currentUserInfo", user);
         return "console-classify";
     }
 
     @RequestMapping("/console-train")
     public String showConsoleTrainPage(Model model, Principal principal) {
-        model.addAttribute("currentUserInfo", userService.findUserByUsername(currentUser(principal)));
+        User user = getUserInfo(principal);
+        if (user != null)
+            model.addAttribute("currentUserInfo", user);
         return "console-train";
     }
 
     @RequestMapping("/console-classifiers")
     public String showConsoleClassifiersPage(Model model, Principal principal) {
-        model.addAttribute("currentUserInfo", userService.findUserByUsername(currentUser(principal)));
+        User user = getUserInfo(principal);
+        if (user != null)
+            model.addAttribute("currentUserInfo", user);
         return "console-classifiers";
     }
 
@@ -51,5 +59,9 @@ public class ConsoleController {
             user = u.getUsername();
         }
         return user;
+    }
+
+    private User getUserInfo(Principal principal) {
+        return userService.findUserByUsername(currentUser(principal));
     }
 }

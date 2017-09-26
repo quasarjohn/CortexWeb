@@ -1,10 +1,5 @@
 function checkIfUserIsAuthenticated() {
 
-    var referrer = window.location.href;
-    localStorage.setItem("referrer", referrer);
-
-    console.log("FETCHING DATA");
-
     $.ajax({
         type: "GET",
         headers: {
@@ -19,7 +14,7 @@ function checkIfUserIsAuthenticated() {
         async: false,
         success: function (data) {
             if (data.email == null) {
-                interceptPage();
+                displayLoginModal();
             }
             else {
                 console.log("USER IS AUTHENTICATED");
@@ -32,11 +27,6 @@ function checkIfUserIsAuthenticated() {
         }
     });
 }
-
-function interceptPage() {
-    window.location = getWebServerAddress() + "/forbidden";
-}
-
 
 function displayLoginModal() {
     console.log("DISPLAY MODAL");
@@ -52,12 +42,5 @@ function displayLoginModal() {
 function startSecurityCheck() {
     checkIfUserIsAuthenticated();
 }
-
-$(document).ready(function () {
-    $("#logout-btn").click(function () {
-        alert("LOGGIN OUT");
-        //TODO implement logout
-    });
-});
 
 startSecurityCheck();

@@ -1,11 +1,11 @@
-.g-signin2{
+.g-signin2 {
     width: 100%;
 }
 
-.g-signin2 > div{
+.g-signin2 > div {
     margin: 0 auto;
 }
 
 #title {
-    margin-bottom: 100px;
+    margin-bottom: 50px;
 }
