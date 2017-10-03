@@ -12,4 +12,8 @@ public interface CommunityQuestionService {
     Iterable<CommunityQuestion> findAllUserQuestions(String username);
 
     int showQuestionNumber();
+
+    void changePicture(String PICTURE_PATH, String email);
+
+    void changeUsername(String username, String email);
 }

@@ -37,7 +37,12 @@
                 <li><a href="#" th:href="@{/console-overview}" style="padding: 28px 20px; margin-top: 2px;">CONSOLE</a></li>
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="margin-top: 2px;">
-                        <img class="img-circle" src="images/dev1.png" />&nbsp;<span class="caret"></span>
+                        <div th:if="${#lists.isEmpty(currentUserInfo.PICTURE_PATH)}">
+                            <img class="img-circle" th:src="${currentUserInfo.img_url}" />&nbsp;<span class="caret"></span>
+                        </div>
+                        <div th:if="${not #lists.isEmpty(currentUserInfo.PICTURE_PATH)}">
+                            <img class="img-circle" th:src="@{'/get-image/server/' + ${currentUserInfo.email}}" />&nbsp;<span class="caret"></span>
+                        </div>
                     </a>
                     <ul class="dropdown-menu w3-round">
                         <li><h5>Signed in as</h5></li>
@@ -58,11 +63,38 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-3" th:each="userInfo : ${userInfo}">
-                <img id="profilePicture" src="images/dev1.png" class="img-rounded" />
+                <!-- profile picture -->
+                <div th:if="${#lists.isEmpty(userInfo.PICTURE_PATH)}">
+                    <div th:if="${currentUser} eq ${userInfo.email}" class="con">
+                        <form method="POST" enctype="multipart/form-data" class="fileUploadForm" style="display: none">
+                            <input class="file1" type="file" name="file" style="display: none"/>
+                            <input type="submit" value="Submit" class="btnSubmit" style="display: none"/>
+                        </form>
+                        <img th:src="${userInfo.img_url}" class="userProfilePicture img-rounded" />
+                        <span class="fa fa-camera centerPos"><p>Change Picture</p></span>
+                    </div>
+                    <div th:if="${currentUser} neq ${userInfo.email}">
+                        <img th:src="${userInfo.img_url}" class="profilePicture img-rounded" />
+                    </div>
+                </div>
+
+                <div th:if="${not #lists.isEmpty(userInfo.PICTURE_PATH)}">
+                    <div th:if="${currentUser} eq ${userInfo.email}" class="con">
+                        <form method="POST" enctype="multipart/form-data" class="fileUploadForm" style="display: none">
+                            <input class="file1" type="file" name="file" style="display: none"/>
+                            <input type="submit" value="Submit" class="btnSubmit" style="display: none"/>
+                        </form>
+                        <img th:src="@{'/get-image/server/' + ${userInfo.email}}" class="userProfilePicture img-rounded" />
+                        <span class="fa fa-camera centerPos"><p>Change Picture</p></span>
+                    </div>
+                    <div th:if="${currentUser} neq ${userInfo.email}">
+                        <img th:src="@{'/get-image/server/' + ${userInfo.email}}" class="profilePicture img-rounded" />
+                    </div>
+                </div>
+                <!-- end of profile picture -->
                 <div th:if="${currentUser} neq ${userInfo.email}">
                     <div th:each="currentUserInfo : ${currentUserInfo}">
-                        <a th:if="${#lists.isEmpty(followingList)}" th:href="@{'/follow/user/' + ${currentUserInfo.email} + '/' + ${currentUserInfo.reputationScore} + '/' +
-                        ${currentUserInfo.username} + '/' + ${userInfo.email} + '/' + ${userInfo.reputationScore} + '/' + ${userInfo.username}}">
+                        <a th:if="${#lists.isEmpty(followingList)}" th:href="@{'/follow/user/' + ${currentUserInfo.email} + '/' + ${currentUserInfo.reputationScore} + '/' + ${currentUserInfo.username} + '/' + ${userInfo.email} + '/' + ${userInfo.reputationScore} + '/' + ${userInfo.username}}">
                         <button class="followToggleBtn btn btn-primary">Follow</button></a>
                         <a th:if="${not #lists.isEmpty(followingList)}" th:href="@{'/unfollow/user/' + ${userInfo.email}}"><button class="followToggleBtn btn btn-danger">Unfollow</button></a>
                     </div>
@@ -88,7 +120,7 @@
                         <div id="overview" class="tab-pane fade in active">
                             <h3>Questions asked</h3>
                             <div th:each="userQuestion : ${userQuestions}">
-                                <p><i class="material-icons">&#xe8af;</i><a href="#">&nbsp;&nbsp;<span th:text="${userQuestion.title}"></span></a><span class="post_date" th:text="${utils.parseEpochDate(userQuestion.time_stamp)}">Apr 10 '12</span></p> <!--Date stamp-->
+                                <p><i class="material-icons">&#xe8af;</i><a href="#">&nbsp;&nbsp;<span th:text="${userQuestion.title}"></span></a><span class="post_date" th:text="${utils.parseEpochDate(userQuestion.time_stamp)}"></span></p> <!--Date stamp-->
                                 <hr />
                             </div>
                             <div>
@@ -111,10 +143,16 @@
                                     <div th:each="follower, iterStat : ${followers[i]}" th:if="${iterStat.size >= iterStat.count}">
                                         <div class="media">
                                             <div class="media-left">
-                                                <img src="images/dev1.png" class="media-object img-rounded follower_picture" />
+                                                <div th:if="${#lists.isEmpty(follower.follower_PICTURE_PATH)}">
+                                                        <img th:src="${follower.followerImgUrl}" class="media-object img-rounded follower_picture" />
+                                                </div>
+
+                                                <div th:if="${not #lists.isEmpty(follower.follower_PICTURE_PATH)}">
+                                                        <img th:src="@{'/get-image/server/' + ${follower.followerEmail}}" class="media-object img-rounded follower_picture" />
+                                                </div>
                                             </div>
                                             <div class="media-body">
-                                                <h6 class="media-heading"><a class="follower_username" href="#">&nbsp;<span th:text="${follower.followerUsername}"></span></a>&nbsp;&nbsp;<a class="follower_email" href="#" th:text="${follower.followerEmail}"></a></h6>
+                                                <h6 class="media-heading"><a class="follower_username"  th:href="@{'/' + ${follower.followerEmail} + '-profile'}">&nbsp;<span th:text="${follower.followerUsername}"></span></a>&nbsp;&nbsp;<a class="follower_email"  th:href="@{'/' + ${follower.followerEmail} + '-profile'}" th:text="${follower.followerEmail}"></a></h6>
                                                 <span class="reputationTooltip follower_reputation" data-toggle="tooltip" data-placement="bottom" title="Reputation score">&nbsp;<span th:text="${follower.followerReputationScore}"></span></span>
                                                 <br /><br />
                                             </div>
@@ -144,10 +182,16 @@
                                     <div th:each="following, iterStat : ${following[i]}" th:if="${iterStat.size >= iterStat.count}">
                                         <div class="media">
                                             <div class="media-left">
-                                                <img src="images/dev1.png" class="media-object img-rounded following_picture" />
+                                                <div th:if="${#lists.isEmpty(following.following_PICTURE_PATH)}">
+                                                    <img th:src="${following.followingImgUrl}" class="media-object img-rounded following_picture" />
+                                                </div>
+
+                                                <div th:if="${not #lists.isEmpty(following.following_PICTURE_PATH)}">
+                                                    <img th:src="@{'/get-image/server/' + ${following.followingEmail}}" class="media-object img-rounded following_picture" />
+                                                </div>
                                             </div>
                                             <div class="media-body">
-                                                <h6 class="media-heading"><a class="following_username" href="#">&nbsp;<span th:text="${following.followingUsername}"></span></a>&nbsp;&nbsp;<a class="following_email" href="#" th:text="${following.followingEmail}"></a></h6>
+                                                <h6 class="media-heading"><a class="following_username"  th:href="@{'/' + ${following.followingEmail} + '-profile'}">&nbsp;<span th:text="${following.followingUsername}"></span></a>&nbsp;&nbsp;<a class="following_email"  th:href="@{'/' + ${following.followingEmail} + '-profile'}" th:text="${following.followingEmail}"></a></h6>
                                                 <span class="reputationTooltip following_reputation" data-toggle="tooltip" data-placement="bottom" title="Reputation score">&nbsp;<span th:text="${following.followingReputationScore}"></span></span>
                                                 <br /><br />
                                             </div>

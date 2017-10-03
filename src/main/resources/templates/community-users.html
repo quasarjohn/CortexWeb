@@ -37,7 +37,12 @@
                 <li><a href="#" th:href="@{/console-overview}" style="padding: 28px 20px; margin-top: 2px;">CONSOLE</a></li>
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="margin-top: 2px;">
-                        <img class="img-circle" src="images/dev1.png" />&nbsp;<span class="caret"></span>
+                        <div th:if="${#lists.isEmpty(currentUserInfo.PICTURE_PATH)}">
+                            <img class="img-circle" th:src="${currentUserInfo.img_url}" />&nbsp;<span class="caret"></span>
+                        </div>
+                        <div th:if="${not #lists.isEmpty(currentUserInfo.PICTURE_PATH)}">
+                            <img class="img-circle" th:src="@{'/get-image/server/' + ${currentUserInfo.email}}" />&nbsp;<span class="caret"></span>
+                        </div>
                     </a>
                     <ul class="dropdown-menu w3-round">
                         <li><h5>Signed in as</h5></li>
@@ -70,7 +75,13 @@
                 <div class="user">
                     <div class="row">
                         <div class="col-sm-5">
-                            <img class="img-responsive" src="images/dev1.png" />
+                            <div th:if="${#lists.isEmpty(user.PICTURE_PATH)}">
+                                <img th:src="${user.img_url}" class="img-responsive" />
+                            </div>
+
+                            <div th:if="${not #lists.isEmpty(user.PICTURE_PATH)}">
+                                <img th:src="@{'/get-image/server/' + ${user.email}}" class="img-responsive" />
+                            </div>
                         </div>
                         <div class="col-sm-7">
                             <a href="#" th:href="@{'/' + ${user.email} + '-profile'}" th:text="${user.username}"></a>

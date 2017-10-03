@@ -4,8 +4,6 @@
     <title>Settings | Cortex</title>
     <!--/*/ <th:block th:include="fragments/head-fragment :: head-fragment"></th:block> /*/-->
     <link rel="stylesheet" type="text/css" href="static/styles/user-settings.css" th:href="@{styles/user-settings.css}"/>
-    <!--/*/ <th:block th:include="fragments/scripts-fragment :: scripts-fragment"></th:block> /*/-->
-    <!--/*/ <th:block th:include="fragments/security-fragment :: security-fragment"></th:block> /*/-->
 </head>
 <body>
 <nav class="navbar navbar-default navbar-fixed-top">
@@ -40,7 +38,12 @@
                 <li><a href="#" th:href="@{/console-overview}" style="padding: 28px 20px; margin-top: 2px;">CONSOLE</a></li>
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="margin-top: 2px;">
-                        <img class="img-circle" src="images/dev1.png" />&nbsp;<span class="caret"></span>
+                        <div th:if="${#lists.isEmpty(currentUserInfo.PICTURE_PATH)}">
+                            <img class="img-circle" th:src="${currentUserInfo.img_url}" />&nbsp;<span class="caret"></span>
+                        </div>
+                        <div th:if="${not #lists.isEmpty(currentUserInfo.PICTURE_PATH)}">
+                            <img class="img-circle" th:src="@{'/get-image/server/' + ${currentUserInfo.email}}" />&nbsp;<span class="caret"></span>
+                        </div>
                     </a>
                     <ul class="dropdown-menu w3-round">
                         <li><h5>Signed in as</h5></li>
@@ -62,35 +65,44 @@
             <h3>Profile Settings</h3>
             <hr />
 
-            <div class="row">
-                <div class="col-sm-9">
-                    <form th:object="${user}" th:action="@{/update/profile}" method="post">
-                        <div class="form-group">
-                            <label id="usernameLbl">Username :</label>
-                            <input type="text" id="usernameText" th:field="*{username}" class="form-control" placeholder="Your desired username" />
-                        </div>
+            <!--<div class="row">-->
+                <form th:object="${user}" th:action="@{/update/profile}" method="post">
+                    <!--<div class="col-sm-9">-->
+                            <div class="form-group">
+                                <label id="usernameLbl">Username :</label>
+                                <input type="text" id="usernameText" th:field="*{username}" class="form-control" placeholder="Your desired username" />
+                            </div>
 
-                        <div class="form-group">
-                            <label id="bioLbl">Bio :</label>
-                            <textarea class="form-control" id="bioTextArea" th:field="*{bio}" rows="4" placeholder="Tell us a little bit of yourself.."></textarea>
-                        </div>
+                            <div class="form-group">
+                                <label id="bioLbl">Bio :</label>
+                                <textarea class="form-control" id="bioTextArea" th:field="*{bio}" rows="4" placeholder="Tell us a little bit of yourself.."></textarea>
+                            </div>
 
-                        <button type="submit" id="updateBtn" class="btn btn-default">Update Profile</button>
-                    </form>
-                </div>
+                            <button type="submit" id="updateBtn" class="btn btn-default">Update Profile</button>
+                    <!--</div>
 
-                <div class="col-sm-3">
-                    <h5>Profile picture : </h5>
-                    <img src="images/dev1.png" id="PROFILE_PICTURE" class="img-rounded" />
-                    <form>
+                    <div class="col-sm-3">
+                        <h5>Profile picture : </h5>
+                        <img th:if="${#lists.isEmpty(user.PICTURE_PATH)}" src="images/dev1.png" class="PROFILE_PICTURE img-rounded" />
+                        <img th:if="${not #lists.isEmpty(user.PICTURE_PATH)}" src="pictures/jl.github@gmail.com.png" class="PROFILE_PICTURE img-rounded" />-->
+                    <!--<form id="fileForm" method="post">
+                        <input id="fileChooser" type="file" />
                         <button type="submit" id="uploadBtn" class="btn btn-default">Upload new picture</button>
+                    </form>-->
+                    <!--<form method="POST" action="/uploadPicture" enctype="multipart/form-data">
+                        <input type="file" name="file" /><br/><br/>
+                        <input type="submit" class="btn btn-default" value="Submit" />
                     </form>
-                </div>
-            </div>
+                    </div>-->
+                </form>
+            <!--</div>-->
 
         </div>
     </div>
 
-    <script type="text/javascript" src="scripts/home-tooltip.js"></script>
+<!--/*/ <th:block th:include="fragments/scripts-fragment :: scripts-fragment"></th:block> /*/-->
+<script type="text/javascript" src="scripts/home-tooltip.js"></script>
+<!--<script type="text/javascript" src="scripts/user-settings.js"></script>-->
+<!--/*/ <th:block th:include="fragments/security-fragment :: security-fragment"></th:block> /*/-->
 </body>
 </html>

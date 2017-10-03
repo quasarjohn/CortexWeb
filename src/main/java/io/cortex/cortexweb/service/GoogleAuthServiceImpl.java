@@ -4,6 +4,8 @@ import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken;
 import com.google.api.client.googleapis.auth.oauth2.GoogleIdTokenVerifier;
 import com.google.api.client.http.javanet.NetHttpTransport;
 import com.google.api.client.json.jackson2.JacksonFactory;
+import io.cortex.cortexweb.model.CommunityQuestion;
+import io.cortex.cortexweb.model.Social;
 import io.cortex.cortexweb.model.User;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +24,8 @@ public class GoogleAuthServiceImpl implements GoogleAuthService {
     public User authenticate(String security_token) throws GeneralSecurityException, IOException {
 
         User user = new User();
+        Social social = new Social();
+        CommunityQuestion communityQuestion = new CommunityQuestion();
 
         GoogleIdTokenVerifier verifier = new GoogleIdTokenVerifier.
                 Builder(new NetHttpTransport(), new JacksonFactory())

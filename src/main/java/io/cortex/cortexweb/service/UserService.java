@@ -13,6 +13,8 @@ public interface UserService {
 
     void updateUser(String username, String bio, String email);
 
+    void changePicture(String PICTURE_PATH, String email);
+
     void saveUser(User user);
 
     //User save(User user);

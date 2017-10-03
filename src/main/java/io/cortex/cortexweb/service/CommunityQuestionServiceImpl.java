@@ -33,4 +33,14 @@ public class CommunityQuestionServiceImpl implements CommunityQuestionService {
     public int showQuestionNumber() {
         return communityQuestionRepository.showQuestionNumber();
     }
+
+    @Override
+    public void changePicture(String PICTURE_PATH, String email) {
+        communityQuestionRepository.changePicture(PICTURE_PATH, email);
+    }
+
+    @Override
+    public void changeUsername(String username, String email) {
+        communityQuestionRepository.changeUsername(username, email);
+    }
 }

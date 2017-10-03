@@ -5,11 +5,6 @@
     <!--/*/ <th:block th:include="fragments/head-fragment :: head-fragment"></th:block> /*/-->
     <link rel="stylesheet" type="text/css" href="static/styles/community-questions.css"
           th:href="@{styles/community-questions.css}"/>
-    <script src="https://code.jquery.com/jquery-2.2.4.min.js"
-            integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
-            crossorigin="anonymous"></script>
-    <!--/*/ <th:block th:include="fragments/scripts-fragment :: scripts-fragment"></th:block> /*/-->
-    <!--/*/ <th:block th:include="fragments/security-fragment :: security-fragment"></th:block> /*/-->
 </head>
 <body>
 <!--/*/ <th:block th:include="fragments/community-questions-nav-fragment :: community-questions-nav-fragment"></th:block> /*/-->
@@ -61,10 +56,16 @@
 
                     <div>
                         <div class="askedBy">
-                            <p th:text="${utils.parseEpochDate(question.time_stamp)}">asked 5 minutes ago</p>
+                            <p th:text="${utils.parseEpochDate(question.time_stamp)}"></p>
                             <div class="row">
                                 <div class="col-sm-5">
-                                    <img class="img-responsive" src="images/dev1.png"/>
+                                    <div th:if="${#lists.isEmpty(question.PICTURE_PATH)}">
+                                        <img th:src="${question.img_url}" class="img-responsive" />
+                                    </div>
+
+                                    <div th:if="${not #lists.isEmpty(question.PICTURE_PATH)}">
+                                        <img th:src="@{'/get-image/server/' + ${question.email}}" class="img-responsive" />
+                                    </div>
                                 </div>
                                 <div class="col-sm-7">
                                     <!--<a href="#" th:text="${question.username}"></a>
@@ -124,6 +125,10 @@
 <script type="text/javascript" src="scripts/home-tooltip.js"></script>
 <script type="text/javascript" src="scripts/community-questions.js"></script>
 <!--<script src="/webjars/jquery/jquery.min.js"></script>-->
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"
+        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+        crossorigin="anonymous"></script>
+<!--/*/ <th:block th:include="fragments/security-fragment :: security-fragment"></th:block> /*/-->
 <script src="/webjars/sockjs-client/sockjs.min.js"></script>
 <script src="/webjars/stomp-websocket/stomp.min.js"></script>
 

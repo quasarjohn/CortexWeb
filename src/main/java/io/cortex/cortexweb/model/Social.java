@@ -1,14 +1,12 @@
 package io.cortex.cortexweb.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "Social")
 public class Social {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "SEQUENCE_OF_EVENTS")
     private int SEQUENCE_OF_EVENTS;
 
@@ -21,6 +19,12 @@ public class Social {
     @Column(name = "following_reputation_score")
     private int followingReputationScore;
 
+    @Column(name = "following_img_url")
+    private String followingImgUrl;
+
+    @Column(name = "following_picture_path")
+    private String following_PICTURE_PATH;
+
     @Column(name = "follower_email")
     private String followerEmail;
 
@@ -29,6 +33,12 @@ public class Social {
 
     @Column(name = "follower_reputation_score")
     private int followerReputationScore;
+
+    @Column(name = "follower_img_url")
+    private String followerImgUrl;
+
+    @Column(name = "follower_picture_path")
+    private String follower_PICTURE_PATH;
 
     public String getFollowerEmail() {
         return followerEmail;
@@ -84,5 +94,37 @@ public class Social {
 
     public void setFollowingReputationScore(int followingReputationScore) {
         this.followingReputationScore = followingReputationScore;
+    }
+
+    public String getFollowingImgUrl() {
+        return followingImgUrl;
+    }
+
+    public void setFollowingImgUrl(String followingImgUrl) {
+        this.followingImgUrl = followingImgUrl;
+    }
+
+    public String getFollowing_PICTURE_PATH() {
+        return following_PICTURE_PATH;
+    }
+
+    public void setFollowing_PICTURE_PATH(String following_PICTURE_PATH) {
+        this.following_PICTURE_PATH = following_PICTURE_PATH;
+    }
+
+    public String getFollowerImgUrl() {
+        return followerImgUrl;
+    }
+
+    public void setFollowerImgUrl(String followerImgUrl) {
+        this.followerImgUrl = followerImgUrl;
+    }
+
+    public String getFollower_PICTURE_PATH() {
+        return follower_PICTURE_PATH;
+    }
+
+    public void setFollower_PICTURE_PATH(String follower_PICTURE_PATH) {
+        this.follower_PICTURE_PATH = follower_PICTURE_PATH;
     }
 }

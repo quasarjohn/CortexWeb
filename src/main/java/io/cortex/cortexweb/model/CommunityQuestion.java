@@ -29,6 +29,12 @@ public class CommunityQuestion {
     @Column(name = "reputation_score")
     private int reputationScore;
 
+    @Column(name = "img_url")
+    private String img_url;
+
+    @Column(name = "picture_path")
+    private String PICTURE_PATH;
+
     private long time_stamp;
 
     public String getTitle() {
@@ -85,5 +91,21 @@ public class CommunityQuestion {
 
     public void setReputationScore(int reputationScore) {
         this.reputationScore = reputationScore;
+    }
+
+    public String getImg_url() {
+        return img_url;
+    }
+
+    public void setImg_url(String img_url) {
+        this.img_url = img_url;
+    }
+
+    public String getPICTURE_PATH() {
+        return PICTURE_PATH;
+    }
+
+    public void setPICTURE_PATH(String PICTURE_PATH) {
+        this.PICTURE_PATH = PICTURE_PATH;
     }
 }

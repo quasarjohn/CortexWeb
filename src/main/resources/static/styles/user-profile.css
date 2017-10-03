@@ -47,12 +47,42 @@ body {
     margin-bottom: 8px;
 }
 
-#profilePicture {
+.profilePicture, .userProfilePicture {
     margin-top: 105px;
     margin-bottom: 15px;
     width: 100%;
     height: 250px;
     background-color: teal;
+}
+
+.con:hover .userProfilePicture {
+    opacity: 0.3;
+    cursor: pointer;
+}
+
+.con:hover .centerPos {
+    cursor: pointer;
+    display: block;
+}
+
+.con {
+    position: relative;
+}
+
+.con .centerPos {
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    text-align: center;
+    transform: translate(-50%, -50%);
+    font-size: 32px;
+    display: none;
+}
+
+.con .centerPos p {
+    font-family: "Varela", sans-serif;
+    font-size: 19px;
+    line-height: 40px;
 }
 
 .followToggleBtn {

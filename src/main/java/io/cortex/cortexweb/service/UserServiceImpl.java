@@ -16,7 +16,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User findUserByEmail(String email) {
-        return userRepository.findOne(email);
+        return userRepository.findUserByEmail(email);
     }
 
     @Override
@@ -32,6 +32,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public void updateUser(String username, String bio, String email) {
         userRepository.updateUser(username, bio, email);
+    }
+
+    @Override
+    public void changePicture(String PICTURE_PATH, String email) {
+        userRepository.changePicture(PICTURE_PATH, email);
     }
 
     @Override

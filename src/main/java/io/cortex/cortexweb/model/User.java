@@ -42,6 +42,9 @@ public class User {
     @Size(min = 8, max = 40)
     private String password;
 
+    @Column(name = "picture_path")
+    private String PICTURE_PATH;
+
     @Column
     private String api_key;
 
@@ -125,5 +128,13 @@ public class User {
 
     public void setImg_url(String img_url) {
         this.img_url = img_url;
+    }
+
+    public String getPICTURE_PATH() {
+        return PICTURE_PATH;
+    }
+
+    public void setPICTURE_PATH(String PICTURE_PATH) {
+        this.PICTURE_PATH = PICTURE_PATH;
     }
 }

@@ -74,7 +74,14 @@ public class CommunityController {
 
     @MessageMapping("/new-question")
     @SendTo("/community/questions")
-    public CommunityQuestion postQuestion(CommunityQuestion question) {
+    public CommunityQuestion postQuestion(CommunityQuestion question, Principal principal) {
+        String currentUser = principal.getName();
+        User u = userService.findUserByEmail(currentUser);
+
+        System.out.println(u.getImg_url() + "<- img_url" + currentUser + "<- currentUser");
+
+        question.setImg_url(u.getImg_url());
+        question.setPICTURE_PATH(u.getPICTURE_PATH());
         question.setTime_stamp(System.currentTimeMillis());
         question.setUsername(user);
         question.setQUESTION_NUMBER(communityQuestionService.showQuestionNumber() + 1);
