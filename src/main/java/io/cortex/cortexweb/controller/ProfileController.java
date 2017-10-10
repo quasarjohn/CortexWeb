@@ -4,6 +4,7 @@ import io.cortex.cortexweb.model.User;
 import io.cortex.cortexweb.service.CommunityQuestionService;
 import io.cortex.cortexweb.service.SocialService;
 import io.cortex.cortexweb.service.UserService;
+import io.cortex.cortexweb.utils.SystemPaths;
 import io.cortex.cortexweb.utils.Utils;
 import org.apache.commons.compress.utils.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +33,7 @@ public class ProfileController {
     private SocialService socialService;
     private String currentUser;
     private String uri;
-    private static String DIR = "C://Users//JL//Desktop//Test//";
+    private static String DIR = SystemPaths.USER_IMAGE_DIR;
 
     @Autowired
     public void setUserService(UserService userService) {
@@ -104,11 +105,11 @@ public class ProfileController {
 //            Files.write(path, bytes);
 //            System.out.println("Sent to server");
 //            String PICTURE_PATH = "pictures/" + currentUser + ".png";
-            userService.updateUser(user.getUsername(), user.getBio(), currentUser);
-            socialService.changeUsernameFollowing(user.getUsername(), currentUser);
-            socialService.changeUsernameFollower(user.getUsername(), currentUser);
-            communityQuestionService.changeUsername(user.getUsername(), currentUser);
-            System.out.println("User profile updated");
+        userService.updateUser(user.getUsername(), user.getBio(), currentUser);
+        socialService.changeUsernameFollowing(user.getUsername(), currentUser);
+        socialService.changeUsernameFollower(user.getUsername(), currentUser);
+        communityQuestionService.changeUsername(user.getUsername(), currentUser);
+        System.out.println("User profile updated");
 //        } catch (IOException e) {
 //            e.printStackTrace();
 //        }
@@ -181,13 +182,14 @@ public class ProfileController {
 //    }
 
     @GetMapping(value = "/get-image/server/{otherUser}", produces = MediaType.IMAGE_PNG_VALUE)
-    public @ResponseBody byte[] getImageFromServer(Principal principal, @PathVariable String otherUser) throws IOException{
+    public @ResponseBody
+    byte[] getImageFromServer(Principal principal, @PathVariable String otherUser) throws IOException {
         currentUser = principal.getName();
         //get the file path in the db
         System.out.println(otherUser + ".com" + "<- from get-image/server mapping");
         otherUser = otherUser + ".com";
         User user;
-        if(currentUser.equals(otherUser)) {
+        if (currentUser.equals(otherUser)) {
             user = userService.findUserByEmail(currentUser);
         } else {
             user = userService.findUserByEmail(otherUser);
@@ -211,29 +213,30 @@ public class ProfileController {
 
         File PROFILE_PICTURES_DIRECTORY = new File(DIR);
 
-        if(!PROFILE_PICTURES_DIRECTORY.exists()) {
+        if (!PROFILE_PICTURES_DIRECTORY.exists()) {
             PROFILE_PICTURES_DIRECTORY.mkdir();
         }
 
         //DIR = DIR + currentUser + "//";
-        File USER_DIRECTORY = new File(DIR + currentUser + "//");
+        File USER_DIRECTORY = new File(DIR + currentUser + "/");
 
         System.out.println(USER_DIRECTORY + " <- user_directory");
-        if(!USER_DIRECTORY.exists()) {
+        if (!USER_DIRECTORY.exists()) {
             USER_DIRECTORY.mkdir();
         }
 
         try {
+            String file_name = profilePicture.getOriginalFilename();
+            System.out.println(file_name);
+
             byte[] bytes = profilePicture.getBytes();
-            Path path = Paths.get(USER_DIRECTORY + "//" + currentUser + ".png");
+            Path path = Paths.get(USER_DIRECTORY + "/dp");
             Files.write(path, bytes);
-            System.out.println("Sent to server");
             //save the path to db
             userService.changePicture(path.toString(), currentUser);
             socialService.changePictureFollowing(path.toString(), currentUser);
             socialService.changePictureFollower(path.toString(), currentUser);
             communityQuestionService.changePicture(path.toString(), currentUser);
-            System.out.println("User profile updated");
         } catch (IOException e) {
             e.printStackTrace();
         }

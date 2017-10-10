@@ -24,7 +24,7 @@ function sendTokenToServer(googleUser) {
         setTimeout(function () {
             $("#myModal").modal('hide');
             window.location = localStorage.getItem("referrer")
-        }, 500);
+        }, 1000);
     };
     xhr.send('token=' + id_token);
 }

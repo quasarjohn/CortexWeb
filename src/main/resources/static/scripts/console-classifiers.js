@@ -52,7 +52,7 @@ function appendClassifier(classifier) {
     $("#row").append("<div class=\"col-sm-4\">\n" +
         "                <div class=\"w3-card-4\">\n" +
         "                    <img class=\"img-responsive\" " +
-        "src=\"http://192.168.0.149:8091/api/files/" + classifier.title + "/thumbnail\" />\n" +
+        "src=\"http://localhost:8091/api/files/" + classifier.title + "/thumbnail\" />\n" +
         "                    <div class=\"w3-container\">\n" +
         "                        <h3>" + classifier.title + "</h3>\n" +
         "                        <p>"+classifier.accuracy+"</p>\n" +
