@@ -16,10 +16,10 @@ body {
 	line-height: 14px;
 }
 */
-#navBarItem li.active a, #navBarItem li a:hover {
-	background-color: teal;
-	color: white;
-}
+/*#navBarItem li.active a, #navBarItem li a:hover {*/
+	/*background-color: teal;*/
+	/*color: white;*/
+/*}*/
 
 #con {
 	margin-top: 210px;

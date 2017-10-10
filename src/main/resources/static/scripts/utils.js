@@ -33,7 +33,7 @@ function requestJson(url) {
 }
 
 function getServerAddress() {
-    return 'http://192.168.0.149:8091';
+    return 'http://localhost:8091';
 }
 
 function getWebServerAddress() {

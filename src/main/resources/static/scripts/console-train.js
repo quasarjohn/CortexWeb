@@ -86,7 +86,7 @@ function ajax_upload_training_data(user) {
         },
         //user1 is the temporary api key
         enctype: 'multipart/form-data',
-        url: getServerAddress() + "/api/" + user + "/trainer/upload_train_model/" + $("#classifiername").val() + "/4000",
+        url: getServerAddress() + "/api/" + user + "/trainer/upload_train_model/" + $("#classifiername").val() + "/10000",
         data: data,
         processData: false, //prevent jQuery from automatically transforming the data into a query string
         contentType: false,
@@ -118,9 +118,9 @@ function ajax_upload_training_data(user) {
                 count += delay;
 
                 seconds = count % 60000;
-                seconds /= 1000;
-                minute = Math.floor(count / 60000);
-                hour = Math.floor(minute / 60000);
+                seconds /= 1000;    //1 second
+                minute = Math.floor(count / 60000); //60 seconds
+                hour = Math.floor(minute / 60); //60 mins
 
                 $("#progressBarMessage").text("CORTEX is training your image classifier... " + hour + "h " + minute + "m " + seconds + "s ago.");
 

@@ -35,6 +35,12 @@
 
 var classifier = "flowers";
 
+// $(document).ready(function () {
+//    $("#dropdown-preview").click(function () {
+//       console.log("Dropdown shit clicked");
+//    });
+// });
+
 $(document).ready(function () {
     $(".url").prop("disabled", false);
     $("#progressbarCon").hide();
@@ -233,6 +239,10 @@ $(document).ready(function () {
                 classifier = "bills";
                 $("#dropdown-preview").html("Bills <span class=\"caret\">");
                 break;
+            case "Dogs":
+                classifier = "Dogs";
+                $("#dropdown-preview").html("Dogs <span class=\"caret\">");
+                break;
             default:
                 break;
         }
@@ -248,6 +258,8 @@ function changeImgSrc(category) {
     var flowers = ["daisy.jpg", "dandelion.jpg", "rose.jpg", "sunflower.jpg", "daisy1.jpg", "rose1.jpg", "tulip1.jpg"];
     var hand_gestures = ["a.jpg", "i.jpg", "n.jpg", "p.jpg", "s.jpg", "t.jpg", "u.jpg"];
     var bills = ["5.jpg", "10.jpg", "20.jpg", "100.jpg", "1000.jpg", "200.jpg", "500.jpg"];
+    var Dogs = ["62122054_457f5cc72e.jpg", "2610103_5d5fa76be4.jpg", "1.jpg", "1_0.jpg", "253.jpg", "5.jpg", "55683.jpg"]; 
+    // Di ko na nilagay yung mga image nang dogs sa src
 
     if (category == "flowers") {
         for (var i = 0; i < images.length; i++) {
@@ -257,6 +269,11 @@ function changeImgSrc(category) {
     else if (category == "bills") {
         for (var i = 0; i < images.length; i++) {
             images[i].attr("src", "images/bills/" + bills[i]);
+        }
+    }
+    else if (category == "Dogs") {
+        for (var i = 0; i < images.length; i++) {
+            images[i].attr("src", "images/Dogs/" + Dogs[i]);
         }
     }
     else {

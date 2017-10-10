@@ -20,3 +20,35 @@
     font-size: 14px;
     line-height: 14px;
 }
+
+#navBarItem li.active a, #navBarItem li a:hover {
+    background-color: teal;
+    color: white;
+}
+
+.nav li a img {
+    margin-top: -10px;
+    background-color: teal;
+    width: 35px;
+    height: 35px;
+}
+
+.nav .dropdown-menu li h5 {
+    text-align: left;
+    font-family: "Varela", sans-serif;
+    margin-left: 20px;
+    font-size: 14px;
+}
+
+.nav .dropdown-menu li h6 {
+    margin-top: -5px;
+    text-align: left;
+    font-family: "Varela", sans-serif;
+    margin-left: 20px;
+    font-size: 14px;
+}
+
+.nav .dropdown-menu hr {
+    margin-top: 8px;
+    margin-bottom: 8px;
+}

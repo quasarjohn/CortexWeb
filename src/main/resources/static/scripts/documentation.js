@@ -48,20 +48,20 @@ $("blockquote").click(function () {
     //all the data are retrieved from Cortex API server
     switch (this.id) {
         case "classify-from-url" :
-            loadDocumentation("http://192.168.0.149:8091/api/docs/classifier/classify-from-url");
+            loadDocumentation("http://localhost:8091/api/docs/classifier/classify-from-url");
             break;
         case "upload-classify":
-            loadDocumentation("http://192.168.0.149:8091/api/docs/classifier/upload-classify");
+            loadDocumentation("http://localhost:8091/api/docs/classifier/upload-classify");
         case "upload-train":
-            loadDocumentation("http://192.168.0.149:8091/api/docs/trainer/train");
+            loadDocumentation("http://localhost:8091/api/docs/trainer/train");
         case "status":
-            loadDocumentation("http://192.168.0.149:8091/api/docs/trainer/status");
+            loadDocumentation("http://localhost:8091/api/docs/trainer/status");
         case "info":
-            loadDocumentation("http://192.168.0.149:8091/api/docs/trainer/info");
+            loadDocumentation("http://localhost:8091/api/docs/trainer/info");
         case "logs":
-            loadDocumentation("http://192.168.0.149:8091/api/docs/trainer/logs");
+            loadDocumentation("http://localhost:8091/api/docs/trainer/logs");
         case "stop":
-            loadDocumentation("http://192.168.0.149 :8091/api/docs/trainer/stop");
+            loadDocumentation("http://localhost:8091/api/docs/trainer/stop");
         default:
             break;
     }

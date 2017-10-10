@@ -4,60 +4,10 @@
     <title>Community | Cortex</title>
     <!--/*/ <th:block th:include="fragments/head-fragment :: head-fragment"></th:block> /*/-->
     <link rel="stylesheet" type="text/css" href="static/styles/community-users.css" th:href="@{styles/community-users.css}" />
+    <link rel="stylesheet" type="text/css" href="static/styles/global.style.css" th:href="@{styles/global.style.css}"/>
 </head>
 <body>
-<nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a href="#" th:href="@{/}" class="navbar-brand w3-text-teal" data-toggle="tooltip" data-placement="bottom"
-               title="Home">
-                <span class="fa fa-copyright"></span> CORTEX</a>
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navBarItem">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-        </div>
-        <div id="navBarItem" class="collapse navbar-collapse">
-            <form class="navbar-form navbar-left">
-                <div class="input-group" style="margin-top: 15px;">
-                    <input type="text" class="form-control" placeholder="Search" />
-                    <div class="input-group-btn">
-                        <button class="btn btn-default" type="submit">
-                            <i class="fa fa-search"></i>
-                        </button>
-                    </div>
-                </div>
-            </form>
-            <ul class="nav navbar-nav navbar">
-                <li><a href="#" th:href="@{/community-questions}" style="padding: 28px 20px; margin-top: 1px;">QUESTIONS</a></li>
-                <li class="active"><a href="#" th:href="@{/community-users}" style="padding: 28px 20px; margin-top: 1px">USERS</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="#" th:href="@{/console-overview}" style="padding: 28px 20px; margin-top: 2px;">CONSOLE</a></li>
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="margin-top: 2px;">
-                        <div th:if="${#lists.isEmpty(currentUserInfo.PICTURE_PATH)}">
-                            <img class="img-circle" th:src="${currentUserInfo.img_url}" />&nbsp;<span class="caret"></span>
-                        </div>
-                        <div th:if="${not #lists.isEmpty(currentUserInfo.PICTURE_PATH)}">
-                            <img class="img-circle" th:src="@{'/get-image/server/' + ${currentUserInfo.email}}" />&nbsp;<span class="caret"></span>
-                        </div>
-                    </a>
-                    <ul class="dropdown-menu w3-round">
-                        <li><h5>Signed in as</h5></li>
-                        <li><h6><strong th:text="${currentUserInfo.username}"></strong></h6></li>
-                        <hr />
-                        <li><a href="#" th:href="@{'/' + ${currentUserInfo.email} + '-profile'}">Your profile</a></li>
-                        <hr />
-                        <li><a href="#" th:href="@{/user-settings}">Settings</a></li>
-                        <li><a href="#" th:href="@{/logout}">Sign out</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
+<!--/*/ <th:block th:include="fragments/console-community-nav-fragment :: console-community-nav-fragment"></th:block> /*/-->
 
 <div class="container-fluid">
     <h2>Users</h2>
@@ -96,5 +46,6 @@
 
 <!--/*/ <th:block th:include="fragments/scripts-fragment :: scripts-fragment"></th:block> /*/-->
 <script type="text/javascript" src="scripts/home-tooltip.js"></script>
+<script type="text/javascript" src="scripts/navbar.js"></script>
 </body>
 </html>

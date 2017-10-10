@@ -6,12 +6,6 @@
     <link rel="stylesheet" type="text/css" href="static/styles/try-it.css" th:href="@{styles/try-it.css}"/>
     <link rel="stylesheet" type="text/css" href="static/styles/global.style.css" th:href="@{styles/global.style.css}"/>
 
-    <script src="https://code.jquery.com/jquery-2.2.4.min.js"
-            integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
-            crossorigin="anonymous"></script>
-    <!--/*/ <th:block th:include="fragments/scripts-fragment :: scripts-fragment"></th:block> /*/-->
-    <!--/*/ <th:block th:include="fragments/security-fragment :: security-fragment"></th:block> /*/-->
-
 </head>
 <body>
 <!--/*/ <th:block th:include="fragments/home-nav-fragment :: home-nav-fragment"></th:block> /*/-->
@@ -60,14 +54,14 @@
             <p>Choose a sample image or upload your own image to try out Visual Recognition</p>
 
             <div class="dropdown">
-                <button id="dropdown-preview" class="btn btn-primary dropdown-toggle" type="button"
-                        data-toggle="dropdown">
-                    Flowers <span class="caret"></span>
-                </button>
+                <button id="dropdown-preview" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                    Flowers
+                    <span class="caret"></span></button>
                 <ul class="dropdown-menu">
-                    <li id="flowers" class="active"><a>Flowers</a></li>
-                    <li id="hands"><a>Hand Gestures</a></li>
-                    <li id="bills"><a>Bills</a></li>
+                    <li id="flowers" class="active"><a href="#">Flowers</a></li>
+                    <li id="hands"><a href="#">Hand Gestures</a></li>
+                    <li id="bills"><a href="#">Bills</a></li>
+                    <li id="Dogs"><a href="#">Dogs</a></li>
                     <!-- Put the categories here -->
                 </ul>
             </div>
@@ -217,6 +211,10 @@
 
 <script type="text/javascript" src="scripts/try-it.js"></script>
 
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"
+        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+        crossorigin="anonymous"></script>
+<!--/*/ <th:block th:include="fragments/security-fragment :: security-fragment"></th:block> /*/-->
 
 </body>
 </html>

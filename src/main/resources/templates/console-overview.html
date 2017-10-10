@@ -4,17 +4,12 @@
     <title>Cortex | Console</title>
     <!--/*/ <th:block th:include="fragments/head-fragment :: head-fragment"></th:block> /*/-->
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/>
-    <link rel="stylesheet" type="text/css" href="static/styles/console-overview.css"
-          th:href="@{styles/console-overview.css}"/>
-
-    <!--/*/ <th:block th:include="fragments/scripts-fragment :: scripts-fragment"></th:block> /*/-->
-    <!--/*/ <th:block th:include="fragments/security-fragment :: security-fragment"></th:block> /*/-->
-
+    <link rel="stylesheet" type="text/css" href="static/styles/console-overview.css" th:href="@{styles/console-overview.css}"/>
+    <link rel="stylesheet" type="text/css" href="static/styles/global.style.css" th:href="@{styles/global.style.css}"/>
+    <link rel="stylesheet" type="text/css" href="static/styles/console-sidebar.css" th:href="@{styles/console-sidebar.css}"/>
 </head>
 <body>
-
-
-<!--/*/ <th:block th:include="fragments/console-nav-fragment :: console-nav-fragment"></th:block> /*/-->
+<!--/*/ <th:block th:include="fragments/console-community-nav-fragment :: console-community-nav-fragment"></th:block> /*/-->
 
 <!-- Sidebar -->
 <div id="sidebar" class="w3-sidebar w3-bar-block w3-teal w3-collapse w3-animate-left w3-card-4">
@@ -105,9 +100,11 @@
 </div>
 
 
+<!--/*/ <th:block th:include="fragments/scripts-fragment :: scripts-fragment"></th:block> /*/-->
+<!--/*/ <th:block th:include="fragments/security-fragment :: security-fragment"></th:block> /*/-->
 <script type="text/javascript" src="scripts/sidebar.js"></script>
-<!--<script type="text/javascript" src="scripts/home-tooltip.js"></script>-->
-
+<script type="text/javascript" src="scripts/home-tooltip.js"></script>
+<script type="text/javascript" src="scripts/navbar.js"></script>
 
 </body>
 </html>
