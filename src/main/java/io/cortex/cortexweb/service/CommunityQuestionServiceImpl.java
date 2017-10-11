@@ -43,4 +43,11 @@ public class CommunityQuestionServiceImpl implements CommunityQuestionService {
     public void changeUsername(String username, String email) {
         communityQuestionRepository.changeUsername(username, email);
     }
+
+    @Override
+    public CommunityQuestion findOne(Integer number) {
+        return communityQuestionRepository.findOne(number);
+    }
+
+
 }

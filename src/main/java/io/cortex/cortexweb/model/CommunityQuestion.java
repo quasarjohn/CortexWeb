@@ -1,6 +1,8 @@
 package io.cortex.cortexweb.model;
 
 
+import io.cortex.cortexweb.utils.Utils;
+
 import javax.persistence.*;
 
 @Entity
@@ -34,6 +36,17 @@ public class CommunityQuestion {
 
     @Column(name = "picture_path")
     private String PICTURE_PATH;
+
+    @Transient
+    private String parsed_time;
+    @Transient
+    public String getParsed_time() {
+        return parsed_time;
+    }
+    @Transient
+    public void setParsed_time(String parsed_time) {
+        this.parsed_time = parsed_time;
+    }
 
     private long time_stamp;
 

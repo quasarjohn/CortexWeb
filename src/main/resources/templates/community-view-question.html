@@ -3,8 +3,9 @@
 <head>
     <title>Community | Cortex</title>
     <!--/*/ <th:block th:include="fragments/head-fragment :: head-fragment"></th:block> /*/-->
-    <link rel="stylesheet" type="text/css" href="static/styles/community-view-question.css" th:href="@{styles/community-view-question.css}" />
-    <link rel="stylesheet" type="text/css" href="static/styles/global.style.css" th:href="@{styles/global.style.css}" />
+    <link rel="stylesheet" type="text/css" href="static/styles/community-view-question.css"
+          th:href="@{styles/community-view-question.css}"/>
+    <link rel="stylesheet" type="text/css" href="static/styles/global.style.css" th:href="@{styles/global.style.css}"/>
 </head>
 <body>
 <!--/*/ <th:block th:include="fragments/console-community-nav-fragment :: console-community-nav-fragment"></th:block> /*/-->
@@ -13,134 +14,35 @@
 
     <div class="row titleRow">
         <div class="col-sm-10"> <!-- title of question -->
-            <h2>Android Button does not redirect to the specified Activity after being click once</h2>
+            <h2 th:text="${question.body}"></h2>
         </div>
         <div class="col-sm-2">
-            <a id="askQuestionBtn" href="#" th:href="@{/community-questions-ask-question}" class="btn btn-default">Ask Question</a>
+            <a id="askQuestionBtn" href="#" th:href="@{/community-questions-ask-question}" class="btn btn-default">Ask
+                Question</a>
         </div>
     </div>
-    <hr />
+    <hr/>
 
-    <div class="row contentRow">
-    <div class="col-sm-1">
-            <span class="fa fa-thumbs-up" data-toggle="tooltip" data-placement="bottom" title="This question shows research effort;
-            it is useful and clear"></span>
-        <h3>0</h3>
-        <p>votes</p>
-        <span class="fa fa-thumbs-up fa-rotate-180" data-toggle="tooltip" data-placement="bottom" title="This question does not
-            show any research effort; it is unclear or not useful"></span>
+    <div id="answers">
+
+
     </div>
-    <div class="col-sm-11"> <!-- content of question -->
-        <p class="content">Here is a video of the problem: https://youtu.be/vfZ8X2qVsLg As you can see once the button is clicked
-            it will open up another activity as it is meant to, and will work completely fine but once another button is clicked to go
-            back to the home screen, the previous button will no longer open up the activity anymore. Why is this happening and how can I
-            fix it?</p>
-
-        <div class="by">
-            <p>asked 5 minutes ago</p>
-            <div class="row">
-                <div class="col-sm-5">
-                    <img class="img-responsive" src="images/dev1.png" />
-                </div>
-                <div class="col-sm-7">
-                    <a href="#">Dylan Kane</a>
-                    <p class="reputationTooltip" data-toggle="tooltip" data-placement="bottom" title="Reputation score">6</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="comment clearRight"> <!-- comment -->
-            <hr />
-            <p class="inline">Why aren't you using a onClickListener for the create lobby button? And why are you setting first the child
-                game 's value to be "CHANGED" and then overwrite it? – </p>
-            <a href="#" class="username inline">Catalin Ghita</a>
-            <p class="commentDateAndTime inline">Aug 26 at 21:39</p>
-        </div>
-
-        <div class="commentTextarea clearRight displayNone" >
-            <hr />
-            <form>
-                <div class="form-group">
-                    <textarea class="form-control" rows="2" placeholder="Comment here..."></textarea>
-                </div>
-
-                <button type="submit" class="sendComment btn btn-default inline">Send</button>
-                <button type="submit" class="cancelComment btn btn-default inline">Cancel</button>
-            </form>
-        </div>
-
-        <div class="addComment clearRight" style="display: block;">
-            <hr />
-            <p>Add a comment</p>
-        </div>
-    </div>
-</div>
-    <hr class="endLine" />
-
-    <div class="row contentRow">
-        <div class="col-sm-1">
-            <span class="fa fa-thumbs-up" data-toggle="tooltip" data-placement="bottom" title="This question shows research effort;
-            it is useful and clear"></span>
-            <h3>0</h3>
-            <p>votes</p>
-            <span class="fa fa-thumbs-up fa-rotate-180" data-toggle="tooltip" data-placement="bottom" title="This question does not
-            show any research effort; it is unclear or not useful"></span>
-        </div>
-        <div class="col-sm-11"> <!-- content of answer -->
-            <p class="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam luctus sagittis cursus. Vestibulum euismod ipsum a sagittis tempor. Proin elit nunc,
-                semper in vulputate dignissim, eleifend vitae quam. Integer non imperdiet metus. In sit amet tellus non libero pretium molestie. Morbi blandit bibendum tempus.
-                Pellentesque ac sapien ligula. Nunc porttitor, neque quis porta sagittis, tellus arcu venenatis purus, non laoreet augue diam et elit. Nunc massa erat, rhoncus at
-                pretium id, consectetur vitae nisi. Nam id velit at ligula pellentesque dignissim ac ac justo. Integer iaculis, purus ac faucibus aliquam, nulla orci elementum erat,
-                at vehicula nisl velit eu quam. Morbi a dapibus urna, nec efficitur dui. Pellentesque nec tincidunt lectus. Quisque sit amet ullamcorper dui, eu condimentum elit.
-                Integer pellentesque pretium nisl, ut feugiat mauris pretium eget.</p>
-
-            <div class="by">
-                <p>answered 20 minutes ago</p>
-                <div class="row">
-                    <div class="col-sm-5">
-                        <img class="img-responsive" src="images/dev2.png" />
-                    </div>
-                    <div class="col-sm-7">
-                        <a href="#">Jon Snow</a>
-                        <p class="reputationTooltip" data-toggle="tooltip" data-placement="bottom" title="Reputation score">100</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="commentTextarea clearRight displayNone">
-                <hr />
-                <form>
-                    <div class="form-group">
-                        <textarea class="form-control" rows="2" placeholder="Comment here..."></textarea>
-                    </div>
-
-                    <button type="submit" class="sendComment btn btn-default inline">Send</button>
-                    <button type="submit" class="cancelComment btn btn-default inline">Cancel</button>
-                </form>
-            </div>
-
-            <div class="addComment clearRight" style="display: block;">
-                <hr />
-                <p>Add a comment</p>
-            </div>
-        </div>
-    </div>
-    <hr class="endLine" />
 
     <div class="container-fluid yourAnswer">
         <h3>Your Answer</h3>
 
-        <form>
-           <div class="row">
-               <div class="col-sm-8">
-                   <div class="form-group">
-                       <textarea class="form-control" rows="5" placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit..."></textarea>
-                   </div>
+        <form id="myForm">
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="form-group">
+                        <textarea id="user_input" class="form-control" rows="5"
+                                  placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit..."></textarea>
+                    </div>
 
-                   <button type="submit" class="btn btn-default postAnswer">Post Your Answer</button>
-               </div>
-               <div class="col-sm-4"></div>
-           </div>
+                    <button id="send" type="submit" class="btn btn-default postAnswer">Post Your Answer</button>
+                </div>
+                <div class="col-sm-4"></div>
+            </div>
         </form>
     </div>
 </div>
@@ -149,5 +51,8 @@
 <script type="text/javascript" src="scripts/home-tooltip.js"></script>
 <script type="text/javascript" src="scripts/navbar.js"></script>
 <script type="text/javascript" src="scripts/community-view-question.js"></script>
+<script src="/webjars/sockjs-client/sockjs.min.js"></script>
+<script src="/webjars/stomp-websocket/stomp.min.js"></script>
+
 </body>
 </html>

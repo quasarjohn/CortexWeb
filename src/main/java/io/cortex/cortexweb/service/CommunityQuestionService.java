@@ -16,4 +16,6 @@ public interface CommunityQuestionService {
     void changePicture(String PICTURE_PATH, String email);
 
     void changeUsername(String username, String email);
+
+    CommunityQuestion findOne(Integer number);
 }

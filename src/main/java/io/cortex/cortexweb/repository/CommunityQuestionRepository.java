@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.transaction.annotation.Transactional;
 
-public interface CommunityQuestionRepository extends CrudRepository<CommunityQuestion, String> {
+public interface CommunityQuestionRepository extends CrudRepository<CommunityQuestion, Integer> {
     @Query(value = "select * from questions where username = ?1", nativeQuery = true)
     Iterable<CommunityQuestion> findAllUserQuestions(String username);
 
@@ -22,4 +22,7 @@ public interface CommunityQuestionRepository extends CrudRepository<CommunityQue
     @Transactional
     @Query(value = "update questions set username = ?1 where email = ?2", nativeQuery = true)
     void changeUsername(String username, String email);
+
+    @Override
+    CommunityQuestion findOne(Integer s);
 }
