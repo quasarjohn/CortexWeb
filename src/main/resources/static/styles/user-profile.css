@@ -96,7 +96,7 @@ body {
 }
 
 #profileEmail, #profileReputation, .follower_email, .follower_reputation,
-.following_email, .following_reputation{
+.following_email, .following_reputation, .classifier_accuracy{
     font-weight: 400;
     color: #6a737c;
 }
@@ -115,7 +115,7 @@ body {
 }
 
 #content {
-    margin-top: 105px;
+    margin-top: 75px;
 }
 
 #content ul li.active a {
@@ -173,21 +173,23 @@ body {
     float: right;
 }
 
-#content #followers .follower_picture, #content #following .following_picture {
+#content #followers .follower_picture, #content #following .following_picture,
+#content #classifiers .classifier_picture{
     width: 60px;
     height: 60px;
     background-color: teal;
 }
 
-#content #followers h6, #content #following h6 {
+#content #followers h6, #content #following h6, #content #classifiers h6 {
     margin-top: 5px;
 }
 
-#content #followers .follower_reputation, #content #following .following_reputation {
+#content #followers .follower_reputation, #content #following .following_reputation,
+#content #classifiers .classifier_accuracy{
     font-size: 14px;
 }
 
-#content .hr_follower_following {
+#content .hr {
     margin-top: 10px;
 }
 

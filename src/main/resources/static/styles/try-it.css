@@ -14,10 +14,10 @@ body {
     line-height: 14px;
 }
 */
-#navBarItem li.active a, #navBarItem li a:hover {
-    background-color: teal;
-    color: white;
-}
+/*#navBarItem li.active a, #navBarItem li a:hover {*/
+    /*background-color: teal;*/
+    /*color: white;*/
+/*}*/
 
 #con {
     margin-top: 80px;
@@ -74,6 +74,10 @@ body {
 
 #con2 .dropdown .dropdown-menu {
     margin-top: -25px;
+}
+
+#con2 .dropdown .dropdown-menu li.active a{
+    background-color: teal;
 }
 
 #con2 .firstRow img {

@@ -111,6 +111,25 @@ body {
     margin-bottom: 30px;
 }
 
+.dropdown-classifiers {
+    margin-bottom: 30px;
+}
+
+#con .dropdown .btn {
+    background-color: teal;
+    color: white;
+}
+
+.scrollable-dropdown {
+    height: auto;
+    max-height: 200px;
+    overflow-x: hidden;
+}
+
+.scrollable-dropdown li.active a{
+    background-color: teal;
+}
+
 #con #fileChooserBtn span {
     font-size: 40px;
     margin-bottom: 15px;
@@ -138,7 +157,7 @@ body {
     font-family: "Montserrat", sans-serif;
     display: block;
     margin: auto;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
 }
 
 #con #classifyingCon {
