@@ -3,6 +3,7 @@ package io.cortex.cortexweb.controller;
 import io.cortex.cortexweb.model.Answer;
 import io.cortex.cortexweb.model.CommunityQuestion;
 import io.cortex.cortexweb.model.User;
+import io.cortex.cortexweb.service.AnswerService;
 import io.cortex.cortexweb.service.CommunityQuestionService;
 import io.cortex.cortexweb.service.UserService;
 import io.cortex.cortexweb.utils.Utils;
@@ -12,9 +13,7 @@ import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 
@@ -22,6 +21,7 @@ import java.security.Principal;
 public class CommunityController {
     private UserService userService;
     private CommunityQuestionService communityQuestionService;
+    private AnswerService answerService;
 
     @Autowired
     private void setUserService(UserService userService) {
@@ -31,6 +31,11 @@ public class CommunityController {
     @Autowired
     private void setCommunityQuestionService(CommunityQuestionService communityQuestionService) {
         this.communityQuestionService = communityQuestionService;
+    }
+
+    @Autowired
+    private void setAnswerService(AnswerService answerService) {
+        this.answerService = answerService;
     }
 
     private String user;
@@ -61,11 +66,11 @@ public class CommunityController {
     }
 
     @RequestMapping("/question-{question_number}")
-    public String showQuestionPage(Model model, Principal principal,
-                                   @PathVariable Integer question_number) {
+    public String showQuestionPage(Model model, Principal principal, @PathVariable Integer question_number) {
         model.addAttribute("currentUserInfo", userService.findUserByUsername(currentUser(principal)));
         model.addAttribute("question", communityQuestionService.findOne(question_number));
         model.addAttribute("utils", new Utils());
+        model.addAttribute("answers", answerService.findAnswersByQuestion_number(question_number));
 
         return "community-view-question";
     }
@@ -101,15 +106,29 @@ public class CommunityController {
     //TODO dynamic DestinationVariable
     @MessageMapping("/new-answer/question-{question_number}")
     @SendTo("/community/question-{question_number}")
-    public Answer postComment(Answer comment, Principal principal,
-                              @DestinationVariable String question_number) {
-
+    public Answer postComment(Answer answer, Principal principal, @DestinationVariable String question_number, String body) {
         System.out.println("new comment");
-        comment.setTime_stamp(System.currentTimeMillis());
-        comment.setParsed_time(new Utils().parseEpochDate(comment.getTime_stamp()));
-        comment.setUsername(principal.getName());
 
-        return comment;
+        String substringedBody = body.substring(0, 29);
+        String tempNewBody = body.replace(substringedBody, "");
+        String newBody = tempNewBody.substring(0, tempNewBody.length()-2);
+
+        System.out.println(newBody);
+        User user = userService.findUserByEmail(principal.getName());
+
+        answer.setTime_stamp(System.currentTimeMillis());
+        answer.setParsed_time(new Utils().parseEpochDate(answer.getTime_stamp()));
+        answer.setUsername(user.getUsername());
+        answer.setMarked(0);
+        answer.setReputation_score(user.getReputationScore());
+        answer.setImg_url(user.getImg_url());
+        answer.setQuestion_number(question_number);
+        answer.setBody(newBody);
+        answer.setEmail(principal.getName());
+
+        answerService.saveAnswer(answer);
+
+        return answer;
     }
 
     private String currentUser(Principal principal) {
