@@ -7,7 +7,8 @@ $(document).ready(function () {
             var json_data = JSON.parse(xhr.responseText)
 
             if(json_data.email != null) {
-                $("#signin").html("SIGN OUT");
+                // $("#signin").html("SIGN OUT");
+                $("#signin").hide();
 
                 $("#signin").click(function (event) {
                     event.preventDefault();
