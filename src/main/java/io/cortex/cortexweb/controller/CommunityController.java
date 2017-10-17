@@ -131,10 +131,21 @@ public class CommunityController {
         return answer;
     }
 
-    private String currentUser(Principal principal) {
-        User u = userService.findUserByEmail(principal.getName());
-        String user = u.getUsername();
+//    private String currentUser(Principal principal) {
+//        User u = userService.findUserByEmail(principal.getName());
+//        String user = u.getUsername();
+//
+//        return user;
+//    }
 
+    private String currentUser(Principal principal) {
+        //eto pre yung binago ko. kaya lang, magiging empty string tapos magnunull pa rin
+        //yung user ng ibabalik nia. ayusin ko na lang bukas
+        String user = "";
+        if (principal != null) {
+            User u = userService.findUserByEmail(principal.getName());
+            user = u.getUsername();
+        }
         return user;
     }
 
