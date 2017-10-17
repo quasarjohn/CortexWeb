@@ -26,16 +26,23 @@
                         <li><a href="#" th:href="@{/about}" style="padding: 28px 20px; margin-top: 1px">ABOUT</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a id="signin" href="#" th:href="@{/console-overview}" style="padding: 28px 20px; margin-top: 2px;">SIGN IN</a></li>
-                        <li class="dropdown">
+                        <li th:if="${currentUserInfo==null}"><a id="signin" href="#" th:href="@{/console-overview}" style="padding: 28px 20px; margin-top: 2px;">SIGN IN</a></li>
+                        <li class="dropdown" th:if="${currentUserInfo!=null}">
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="margin-top: 2px;">
-                                <img class="img-circle" th:src="${currentUserInfo!=null} ? ${currentUserInfo.img_url}" src="images/dev1.png"/>&nbsp;<span class="caret"></span>
+                                <!--<img class="img-circle" th:src="${currentUserInfo!=null} ? ${currentUserInfo.img_url}" src="images/dev1.png"/>&nbsp;<span class="caret"></span>-->
                                 <!--<div th:if="${#lists.isEmpty(currentUserInfo.PICTURE_PATH)}">-->
                                 <!--<img class="img-circle" th:src="${currentUserInfo.img_url}" />&nbsp;<span class="caret"></span>-->
                                 <!--</div>-->
                                 <!--<div th:if="${not #lists.isEmpty(currentUserInfo.PICTURE_PATH)}">-->
                                 <!--<img class="img-circle" th:src="@{'/get-image/server/' + ${currentUserInfo.email}}" />&nbsp;<span class="caret"></span>-->
                                 <!--</div>-->
+
+                                <div th:if="${#lists.isEmpty(currentUserInfo.PICTURE_PATH)}">
+                                    <img class="img-circle" th:src="${currentUserInfo.img_url}" />&nbsp;<span class="caret"></span>
+                                </div>
+                                <div th:if="${not #lists.isEmpty(currentUserInfo.PICTURE_PATH)}">
+                                    <img class="img-circle" th:src="@{'/get-image/server/' + ${currentUserInfo.email}}" />&nbsp;<span class="caret"></span>
+                                </div>
                             </a>
                             <ul class="dropdown-menu w3-round">
                                 <li><h5>Signed in as</h5></li>
