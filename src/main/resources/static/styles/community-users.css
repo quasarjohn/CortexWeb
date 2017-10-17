@@ -56,6 +56,9 @@ h2 {
 #users {
     margin-top: 15px;
     background-color: white;
+    height: 480px;
+    overflow: auto;
+    overflow-x: hidden;
 }
 
 #users label {

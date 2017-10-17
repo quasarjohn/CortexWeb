@@ -18,6 +18,42 @@ public class ConsoleController {
         this.userService = userService;
     }
 
+    @RequestMapping("/")
+    public String showIndexPage(Model model, Principal principal) {
+        model.addAttribute("currentUserInfo", userService.findUserByUsername(currentUser(principal)));
+        return "index";
+    }
+
+    @RequestMapping("/use-case")
+    public String showUseCasesPage(Model model, Principal principal) {
+        model.addAttribute("currentUserInfo", userService.findUserByUsername(currentUser(principal)));
+        return "use-case";
+    }
+
+    @RequestMapping("/documentation")
+    public String showDocumentationPage(Model model, Principal principal) {
+        model.addAttribute("currentUserInfo", userService.findUserByUsername(currentUser(principal)));
+        return "documentation";
+    }
+
+    @RequestMapping("/support")
+    public String showSupportPage(Model model, Principal principal) {
+        model.addAttribute("currentUserInfo", userService.findUserByUsername(currentUser(principal)));
+        return "support";
+    }
+
+    @RequestMapping("/about")
+    public String showAboutPage(Model model, Principal principal) {
+        model.addAttribute("currentUserInfo", userService.findUserByUsername(currentUser(principal)));
+        return "about";
+    }
+
+    @RequestMapping("/try-it")
+    public String showTryItPage(Model model, Principal principal) {
+        model.addAttribute("currentUserInfo", userService.findUserByUsername(currentUser(principal)));
+        return "try-it";
+    }
+
     @RequestMapping("/console-overview")
     public String showConsoleOverviewPage(Model model, Principal principal) {
         model.addAttribute("currentUserInfo", userService.findUserByUsername(currentUser(principal)));

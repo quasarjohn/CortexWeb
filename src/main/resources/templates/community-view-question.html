@@ -14,14 +14,66 @@
 
     <div class="row titleRow">
         <div class="col-sm-10"> <!-- title of question -->
-            <h2 th:text="${question.body}"></h2>
+            <h2 th:text="${question.title}"></h2>
         </div>
         <div class="col-sm-2">
-            <a id="askQuestionBtn" href="#" th:href="@{/community-questions-ask-question}" class="btn btn-default">Ask
-                Question</a>
+            <a id="askQuestionBtn" href="#" th:href="@{/community-questions-ask-question}" class="btn btn-default">Ask Question</a>
         </div>
     </div>
     <hr/>
+
+    <div class="row contentRow">
+        <div class="col-sm-1">
+            <span class="fa fa-thumbs-up" data-toggle="tooltip" data-placement="bottom" title="This question shows research effort;
+            it is useful and clear"></span>
+            <h3>0</h3>
+            <p>votes</p>
+            <span class="fa fa-thumbs-up fa-rotate-180" data-toggle="tooltip" data-placement="bottom" title="This question does not
+            show any research effort; it is unclear or not useful"></span>
+        </div>
+        <div class="col-sm-11"> <!-- content of question -->
+            <p class="content" th:text="${question.content}"></p>
+
+            <div class="by">
+                <p>asked 5 minutes ago</p> <!-- time stamp -->
+                <div class="row">
+                    <div class="col-sm-5">
+                        <img class="img-responsive" src="images/dev1.png" />    <!-- img_url -->
+                    </div>
+                    <div class="col-sm-7">
+                        <a href="#">Dylan Kane</a> <!-- sender -->
+                        <p class="reputationTooltip" data-toggle="tooltip" data-placement="bottom" title="Reputation score">6</p> <!-- sender rep -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="comment clearRight"> <!-- comment -->
+                <hr />
+                <p class="inline">Why aren't you using a onClickListener for the create lobby button? And why are you setting first the child
+                    game 's value to be "CHANGED" and then overwrite it? – </p>
+                <a href="#" class="username inline">Catalin Ghita</a>
+                <p class="commentDateAndTime inline">Aug 26 at 21:39</p>
+            </div>
+
+            <div class="commentTextarea clearRight displayNone" >
+                <hr />
+                <form>
+                    <div class="form-group">
+                        <textarea class="form-control" rows="2" placeholder="Comment here..."></textarea>
+                    </div>
+
+                    <button type="submit" class="sendComment btn btn-default inline">Send</button>
+                    <button type="submit" class="cancelComment btn btn-default inline">Cancel</button>
+                </form>
+            </div>
+
+            <div class="addComment clearRight" style="display: block;">
+                <hr />
+                <p>Add a comment</p>
+            </div>
+        </div>
+    </div>
+    <hr class="endLine" />
 
     <div id="answers">
 
