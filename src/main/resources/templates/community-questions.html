@@ -46,7 +46,8 @@
                 </div>
 
                 <div class="col-sm-10">
-                    <a class="questionTitle" href="#" th:href="@{/question-{question_number}(question_number = ${question.QUESTION_NUMBER})}" th:text="${question.title}"></a>
+                    <a class="questionTitle" href="#" th:href="@{'/question-' + ${question.QUESTION_NUMBER}}" th:text="${question.title}"></a>
+                    <!--<a class="questionTitle" href="#" th:href="@{/question-{question_number}(question_number = ${question.QUESTION_NUMBER})}" th:text="${question.title}"></a>-->
                     <p th:text="${question.body}"></p>
                     <!--<a class="questionTitle" href="#" th:href="@{/question}">Android Button does not redirect to the
                         specified Activity after being click once</a>
