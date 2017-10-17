@@ -86,7 +86,7 @@ function ajax_upload_training_data(user) {
         },
         //user1 is the temporary api key
         enctype: 'multipart/form-data',
-        url: getServerAddress() + "/api/" + user + "/trainer/upload_train_model/" + $("#classifiername").val() + "/10000",
+        url: getServerAddress() + "/api/" + user + "/trainer/upload_train_model/" + $("#classifiername").val() + "/500",
         data: data,
         processData: false, //prevent jQuery from automatically transforming the data into a query string
         contentType: false,

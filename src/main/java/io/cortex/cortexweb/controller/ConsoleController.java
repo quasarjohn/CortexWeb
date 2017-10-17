@@ -39,7 +39,7 @@ public class ConsoleController {
     @RequestMapping("/console-classifiers")
     public String showConsoleClassifiersPage(Model model, Principal principal) {
         User user = userService.findUserByUsername(currentUser(principal));
-        if (user.getPICTURE_PATH() == null) user.setPICTURE_PATH("");
+//        if (user.getPICTURE_PATH() == null) user.setPICTURE_PATH("");
         model.addAttribute("currentUserInfo", user);
         return "console-classifiers";
     }
