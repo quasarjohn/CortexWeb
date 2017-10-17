@@ -12,9 +12,9 @@ public class Utils {
         long limit = 86328000;
 
         if (time_difference <= limit) {
-            return "asked " + parseToAgo(time_difference);
+            return /*"asked " + */parseToAgo(time_difference);
         } else {
-            return "asked " + parseToDate(time_stamp);
+            return /*"asked " + */parseToDate(time_stamp);
         }
     }
 

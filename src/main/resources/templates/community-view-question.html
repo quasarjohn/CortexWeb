@@ -9,7 +9,7 @@
 </head>
 <body>
 <!--/*/ <th:block th:include="fragments/console-community-nav-fragment :: console-community-nav-fragment"></th:block> /*/-->
-
+<span id="body" style="display: none;"></span>
 <div class="container">
 
     <div class="row titleRow">
@@ -24,56 +24,63 @@
 
     <div class="row contentRow">
         <div class="col-sm-1">
-            <span class="fa fa-thumbs-up" data-toggle="tooltip" data-placement="bottom" title="This question shows research effort;
-            it is useful and clear"></span>
-            <h3>0</h3>
-            <p>votes</p>
-            <span class="fa fa-thumbs-up fa-rotate-180" data-toggle="tooltip" data-placement="bottom" title="This question does not
-            show any research effort; it is unclear or not useful"></span>
+            <!--<span class="fa fa-thumbs-up" data-toggle="tooltip" data-placement="bottom" title="This question shows research effort;-->
+            <!--it is useful and clear"></span>-->
+            <!--<h3>0</h3>-->
+            <!--<p>votes</p>-->
+            <!--<span class="fa fa-thumbs-up fa-rotate-180" data-toggle="tooltip" data-placement="bottom" title="This question does not-->
+            <!--show any research effort; it is unclear or not useful"></span>-->
         </div>
         <div class="col-sm-11"> <!-- content of question -->
-            <p class="content" th:text="${question.content}"></p>
+            <p class="content" th:text="${question.body}"></p>
 
             <div class="by">
-                <p>asked 5 minutes ago</p> <!-- time stamp -->
+                <p>asked <span th:text="${utils.parseEpochDate(question.time_stamp)}"></span></p> <!-- time stamp -->
                 <div class="row">
                     <div class="col-sm-5">
-                        <img class="img-responsive" src="images/dev1.png" />    <!-- img_url -->
+                        <img class="img-responsive" th:src="${question.img_url}" />    <!-- img_url -->
                     </div>
                     <div class="col-sm-7">
-                        <a href="#">Dylan Kane</a> <!-- sender -->
-                        <p class="reputationTooltip" data-toggle="tooltip" data-placement="bottom" title="Reputation score">6</p> <!-- sender rep -->
+                        <a href="#" th:href="@{'/' + ${question.email} + '-profile'}" th:text="${question.username}"></a>
+                        <p class="reputationTooltip"><span data-toggle="tooltip" data-placement="bottom" title="Reputation score" th:text="${question.reputationScore}"></span></p>
                     </div>
                 </div>
-            </div>
-
-            <div class="comment clearRight"> <!-- comment -->
-                <hr />
-                <p class="inline">Why aren't you using a onClickListener for the create lobby button? And why are you setting first the child
-                    game 's value to be "CHANGED" and then overwrite it? – </p>
-                <a href="#" class="username inline">Catalin Ghita</a>
-                <p class="commentDateAndTime inline">Aug 26 at 21:39</p>
-            </div>
-
-            <div class="commentTextarea clearRight displayNone" >
-                <hr />
-                <form>
-                    <div class="form-group">
-                        <textarea class="form-control" rows="2" placeholder="Comment here..."></textarea>
-                    </div>
-
-                    <button type="submit" class="sendComment btn btn-default inline">Send</button>
-                    <button type="submit" class="cancelComment btn btn-default inline">Cancel</button>
-                </form>
-            </div>
-
-            <div class="addComment clearRight" style="display: block;">
-                <hr />
-                <p>Add a comment</p>
             </div>
         </div>
     </div>
     <hr class="endLine" />
+
+<div th:if="${not #lists.isEmpty(answers)}">
+    <div th:each="answer : ${answers}">
+        <div class="row contentRow">
+            <div class="col-sm-1">
+                <span class="fa fa-thumbs-up" data-toggle="tooltip" data-placement="bottom" title="This question shows research effort;
+                it is useful and clear"></span>
+                <h3>0</h3>
+                <p>votes</p>
+                <span class="fa fa-thumbs-up fa-rotate-180" data-toggle="tooltip" data-placement="bottom" title="This question does not
+                show any research effort; it is unclear or not useful"></span>
+            </div>
+            <div class="col-sm-11"> <!-- content of answer -->
+                <p class="content" th:text="${answer.body}"></p>
+
+                <div class="by">
+                    <p>answered <span th:text="${utils.parseEpochDate(answer.time_stamp)}"></span></p> <!-- time stamp -->
+                    <div class="row">
+                        <div class="col-sm-5">
+                            <img class="img-responsive" th:src="${answer.img_url}" />    <!-- img_url -->
+                        </div>
+                        <div class="col-sm-7">
+                            <a href="#" th:href="@{'/' + ${answer.email} + '-profile'}" th:text="${answer.username}"></a>
+                            <p class="reputationTooltip"><span data-toggle="tooltip" data-placement="bottom" title="Reputation score" th:text="${answer.reputation_score}"></span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr class="endLine" />
+    </div>
+</div>
 
     <div id="answers">
 
