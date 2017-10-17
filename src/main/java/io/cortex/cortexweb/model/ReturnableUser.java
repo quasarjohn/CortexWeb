@@ -2,7 +2,7 @@ package io.cortex.cortexweb.model;
 
 public class ReturnableUser {
 
-    private String email, first_name, last_name;
+    private String email, first_name, last_name, api_key;
 
     public String getEmail() {
         return email;
@@ -26,5 +26,13 @@ public class ReturnableUser {
 
     public void setLast_name(String last_name) {
         this.last_name = last_name;
+    }
+
+    public String getApi_key() {
+        return api_key;
+    }
+
+    public void setApi_key(String api_key) {
+        this.api_key = api_key;
     }
 }

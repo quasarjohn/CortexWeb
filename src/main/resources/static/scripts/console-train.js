@@ -11,7 +11,8 @@ $(document).ready(function () {
 
     $("#fileChooserBtn").click(function () {
         var classifiername = $("#classifiername").val();
-        if (classifiername == null || classifiername == "" || classifiername.indexOf(" ") > -1)
+        if (classifiername == null || classifiername == "" ||
+            classifiername.indexOf(" ") > -1)
             alert("Title cannot be empty and contain spaces!");
         else {
             $("#file1").click();

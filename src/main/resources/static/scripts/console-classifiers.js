@@ -36,27 +36,42 @@ $(document).ready(function () {
 
                         //simply append to current row
                         else {
-                            appendClassifier(classifier);
+                            appendClassifier(classifier, jsonData);
                         }
-
                         counter++;
                     });
+
                 }
-            }
+            };
         }
-    }
+    };
 });
 
 //TODO right now, I am using the title of the classifier as the param for the path of the image, a unique random key must be generated instead to avoid conflicts in case two classifiers are given the same name
-function appendClassifier(classifier) {
+function appendClassifier(classifier, user) {
+    var clipboard = new Clipboard('.copy-btn');
+    clipboard.on('success', function(e) {
+
+
+        e.clearSelection();
+    });
+
+    var url = getServerAddress() + "/api/" + user.api_key +
+        "/classifier/classify_image/" + classifier.model_key + "?img_url=http://replace-with-your-own-url";
+
+
     $("#row").append("<div class=\"col-sm-4\">\n" +
-        "                <div class=\"w3-card-4\">\n" +
+        "                <div id='" + classifier.model_key + "' class=\"w3-card-4\">\n" +
         "                    <img class=\"img-responsive\" " +
         "src=\"http://localhost:8091/api/files/" + classifier.title + "/thumbnail\" />\n" +
         "                    <div class=\"w3-container\">\n" +
         "                        <h3>" + classifier.title + "</h3>\n" +
-        "                        <p>"+classifier.accuracy+"</p>\n" +
+        "                        <p>" + classifier.accuracy + "</p>\n" +
+        "                        <button class='copy-btn' " +
+        "data-clipboard-text = '" + url + "'>Copy URL to Clipboard</button>\n" +
         "                    </div>\n" +
         "                </div>\n" +
-        "            </div>")
+        "            </div>");
 }
+
+

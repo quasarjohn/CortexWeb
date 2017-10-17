@@ -3,10 +3,12 @@
 <head>
     <title>Cortex | Console</title>
     <!--/*/ <th:block th:include="fragments/head-fragment :: head-fragment"></th:block> /*/-->
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
-    <link rel="stylesheet" type="text/css" href="static/styles/console-classifiers.css" th:href="@{styles/console-classifiers.css}" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/>
+    <link rel="stylesheet" type="text/css" href="static/styles/console-classifiers.css"
+          th:href="@{styles/console-classifiers.css}"/>
     <link rel="stylesheet" type="text/css" href="static/styles/global.style.css" th:href="@{styles/global.style.css}"/>
-    <link rel="stylesheet" type="text/css" href="static/styles/console-sidebar.css" th:href="@{styles/console-sidebar.css}"/>
+    <link rel="stylesheet" type="text/css" href="static/styles/console-sidebar.css"
+          th:href="@{styles/console-sidebar.css}"/>
 </head>
 <body>
 <!--/*/ <th:block th:include="fragments/console-community-nav-fragment :: console-community-nav-fragment"></th:block> /*/-->
@@ -14,17 +16,18 @@
 <!-- Sidebar -->
 <div id="sidebar" class="w3-sidebar w3-bar-block w3-teal w3-collapse w3-animate-left w3-card-4">
     <a href="#" th:href="@{/console-overview}" class="overview w3-bar-item w3-button w3-hover-white">
-        <span class="fa fa-home"></span> &nbsp;&nbsp;Overview</a><hr />
+        <span class="fa fa-home"></span> &nbsp;&nbsp;Overview</a>
+    <hr/>
     <h5 class="w3-bar-item">Tools</h5>
     <a href="#" th:href="@{/console-classify}" class="classify w3-bar-item w3-button w3-hover-white">
         <span class="fa fa-image"></span> &nbsp;&nbsp;Classify</a>
     <a href="#" th:href="@{/console-train}" class="train w3-bar-item w3-button w3-hover-white">
-        <span class="fa fa-upload"></span> &nbsp;&nbsp;Train</a><hr />
+        <span class="fa fa-upload"></span> &nbsp;&nbsp;Train</a>
+    <hr/>
     <h5 class="w3-bar-item">Your classifier</h5>
     <a href="#" th:href="@{/console-classifiers}" class="classifiers w3-bar-item w3-button w3-hover-white w3-white">
         <span class="fa fa-archive"></span> &nbsp;&nbsp;Classifiers</a>
 </div>
-
 
 
 <!-- Page content -->
@@ -36,13 +39,16 @@
 
     <!-- Hamburger button -->
     <div class="w3-main">
-        <button class="sidebarBtn w3-button w3-hover-teal w3-hide-xlarge w3-hide-large" onclick="sidebarOpen()" >&#9776;</button>
+        <button class="sidebarBtn w3-button w3-hover-teal w3-hide-xlarge w3-hide-large" onclick="sidebarOpen()">
+            &#9776;
+        </button>
         <h1 class="w3-hide-large">Classifiers</h1>
     </div>
 
     <div id="con" class="container-fluid">
         <h2>Your classifiers</h2>
-        <h4>Use these classifiers by making http requests. To know how, check the <a href="/documentation">documentation</a> page. </h4>
+        <h4>Use these classifiers by making http requests. To know how, check the <a
+                href="/documentation">documentation</a> page. </h4>
 
         <div id="rows">
 
@@ -59,6 +65,7 @@
 <script type="text/javascript" src="scripts/home-tooltip.js"></script>
 <script type="text/javascript" src="scripts/navbar.js"></script>
 <script type="text/javascript" src="scripts/console-classifiers.js"></script>
+<script type="text/javascript" src="scripts/clipboard.min.js"></script>
 
 </body>
 </html>

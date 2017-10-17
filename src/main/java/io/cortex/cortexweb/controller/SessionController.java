@@ -39,6 +39,7 @@ public class SessionController {
             returnableUser.setEmail(user.getEmail());
             returnableUser.setFirst_name(user.getFirstName());
             returnableUser.setLast_name(user.getLastName());
+            returnableUser.setApi_key(user.getApi_key());
         }
 
         return returnableUser;
