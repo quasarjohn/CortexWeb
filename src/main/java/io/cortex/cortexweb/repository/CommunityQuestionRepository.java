@@ -23,6 +23,11 @@ public interface CommunityQuestionRepository extends CrudRepository<CommunityQue
     @Query(value = "update questions set username = ?1 where email = ?2", nativeQuery = true)
     void changeUsername(String username, String email);
 
+    @Modifying
+    @Transactional
+    @Query(value = "update questions set marked = 1 where question_number = ?1", nativeQuery = true)
+    void updateMarked(int question_number);
+
     @Override
     CommunityQuestion findOne(Integer s);
 }

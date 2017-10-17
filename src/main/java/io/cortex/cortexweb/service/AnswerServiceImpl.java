@@ -23,4 +23,9 @@ public class AnswerServiceImpl implements AnswerService {
     public Iterable<Answer> findAnswersByQuestion_number(int question_number) {
         return answerRepository.findAnswersByQuestion_number(question_number);
     }
+
+    @Override
+    public void updateMarked(int question_number, String answer) {
+        answerRepository.updateMarked(question_number, answer);
+    }
 }

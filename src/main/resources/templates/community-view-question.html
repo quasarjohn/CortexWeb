@@ -30,6 +30,8 @@
             <!--<p>votes</p>-->
             <!--<span class="fa fa-thumbs-up fa-rotate-180" data-toggle="tooltip" data-placement="bottom" title="This question does not-->
             <!--show any research effort; it is unclear or not useful"></span>-->
+            <span class="fa fa-question-circle bg-teal" data-toggle="tooltip" data-placement="bottom" title="This is the question being asked"></span>
+            <p class="bg-teal">Question</p>
         </div>
         <div class="col-sm-11"> <!-- content of question -->
             <p class="content" th:text="${question.body}"></p>
@@ -54,12 +56,31 @@
     <div th:each="answer : ${answers}">
         <div class="row contentRow">
             <div class="col-sm-1">
-                <span class="fa fa-thumbs-up" data-toggle="tooltip" data-placement="bottom" title="This question shows research effort;
-                it is useful and clear"></span>
-                <h3>0</h3>
-                <p>votes</p>
-                <span class="fa fa-thumbs-up fa-rotate-180" data-toggle="tooltip" data-placement="bottom" title="This question does not
-                show any research effort; it is unclear or not useful"></span>
+                <div th:if="${currentUserInfo.username} eq ${question.username}">
+                    <div th:if="${answer.marked==0}">
+                        <a th:href="@{'/marked-as-answer/' + ${answer.question_number} + '/' + ${answer.body}}"><span class="fa fa-thumbs-up" data-toggle="tooltip" data-placement="bottom" title="Mark as answer?" style="color: #6a737c;"></span></a>
+                        <p style="color: #6a737c;">Answer</p>
+                    </div>
+                    <div th:if="${answer.marked==1}">
+                        <span class="fa fa-thumbs-up bg-teal" data-toggle="tooltip" data-placement="bottom" title="Marked as answer"></span>
+                        <p class="bg-teal">Answer</p>
+                    </div>
+                </div>
+                <div th:if="${currentUserInfo.username} neq ${question.username}">
+                    <div th:if="${answer.marked==0}">
+                        <span class="fa fa-thumbs-up" data-toggle="tooltip" data-placement="bottom" title="Mark as answer?" style="color: #6a737c;"></span>
+                        <p style="color: #6a737c;">Answer</p>
+                    </div>
+                    <div th:if="${answer.marked==1}">
+                        <span class="fa fa-thumbs-up bg-teal" data-toggle="tooltip" data-placement="bottom" title="Marked as answer"></span>
+                        <p class="bg-teal">Answer</p>
+                    </div>
+                </div>
+                <!--<span class="fa fa-thumbs-up" data-toggle="tooltip" data-placement="bottom" title="This question shows research effort;-->
+                <!--it is useful and clear"></span>-->
+                <!--<h3>0</h3>-->
+                <!--<span class="fa fa-thumbs-up fa-rotate-180" data-toggle="tooltip" data-placement="bottom" title="This question does not-->
+                <!--show any research effort; it is unclear or not useful"></span>-->
             </div>
             <div class="col-sm-11"> <!-- content of answer -->
                 <p class="content" th:text="${answer.body}"></p>

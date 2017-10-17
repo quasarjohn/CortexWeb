@@ -38,11 +38,20 @@
             <hr/>
             <div class="row" th:each="question, iterStat : ${questions[i]}" th:if="${iterStat.size >= iterStat.count}">
                 <div class="col-sm-2">
-                    <h3>0</h3>
-                    <p>votes</p>
-                    <h3>0</h3>
-                    <p>answers</p>
-                    <h5>10 views</h5>
+                    <!--<span class="fa fa-thumbs-up" data-toggle="tooltip" data-placement="bottom" title="This question is already answered" ></span>-->
+                    <!--<h3>0</h3>-->
+                    <!--<p>votes</p>-->
+                    <!--<h3>0</h3>-->
+                    <!--<p>Answered</p>-->
+                    <!--<h5>10 views</h5>-->
+                    <div th:if="${question.marked==0}">
+                        <span class="fa fa-thumbs-up" data-toggle="tooltip" data-placement="bottom" title="This question is not yet answered" style="color: #6a737c;"></span>
+                        <p style="color: #6a737c;">Not yet answered</p>
+                    </div>
+                    <div th:if="${question.marked==1}">
+                        <span class="fa fa-thumbs-up bg-teal" data-toggle="tooltip" data-placement="bottom" title="This question is already answered" ></span>
+                        <p class="bg-teal">Answered</p>
+                    </div>
                 </div>
 
                 <div class="col-sm-10">

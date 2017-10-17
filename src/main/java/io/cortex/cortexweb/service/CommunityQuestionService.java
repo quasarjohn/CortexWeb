@@ -17,5 +17,7 @@ public interface CommunityQuestionService {
 
     void changeUsername(String username, String email);
 
+    void updateMarked(int question_number);
+
     CommunityQuestion findOne(Integer number);
 }
