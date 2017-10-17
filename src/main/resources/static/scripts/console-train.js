@@ -10,7 +10,13 @@ $(document).ready(function () {
     $("#hideOnLoad").attr("style", "display: block;");
 
     $("#fileChooserBtn").click(function () {
-        $("#file1").click();
+        var classifiername = $("#classifiername").val();
+        if (classifiername == null || classifiername == "" || classifiername.indexOf(" ") > -1)
+            alert("Title cannot be empty and contain spaces!");
+        else {
+            $("#file1").click();
+        }
+
     });
 
     $("#file1").change(function () {
