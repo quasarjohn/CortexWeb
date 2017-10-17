@@ -25,7 +25,6 @@ function connect() {
 }
 
 function sendAnswer() {
-    alert('sending');
     stompClient.send("/new-answer" + window.location.pathname, {}, JSON.stringify({
         'question_number': 1,
         'body': $("#user_input").val(),
@@ -43,7 +42,6 @@ $(function () {
 });
 
 function showAnswer(answer) {
-    alert("prepending");
     $("#answers").prepend('<div class="row contentRow">\n' +
         '            <div class="col-sm-1">\n' +
         '            <span class="fa fa-thumbs-up" data-toggle="tooltip" data-placement="bottom" title="This question shows research effort;\n' +
@@ -70,26 +68,26 @@ function showAnswer(answer) {
         '                    </div>\n' +
         '                </div>\n' +
         '\n' +
-        '                <div class="comment clearRight"> <!-- comment -->\n' +
-        '                    <hr/>\n' +
-        '                    <p class="inline">Why aren\'t you using a onClickListener for the create lobby button? And why are you\n' +
-        '                        setting first the child\n' +
-        '                        game \'s value to be "CHANGED" and then overwrite it? – </p>\n' +
-        '                    <a href="#" class="username inline">Catalin Ghita</a>\n' +
-        '                    <p class="commentDateAndTime inline">Aug 26 at 21:39</p>\n' +
-        '                </div>\n' +
-        '\n' +
-        '                <div class="commentTextarea clearRight displayNone">\n' +
-        '                    <hr/>\n' +
-        '                    <form>\n' +
-        '                        <div class="form-group">\n' +
-        '                            <textarea class="form-control" rows="2" placeholder="Comment here..."></textarea>\n' +
-        '                        </div>\n' +
-        '\n' +
-        '                        <button type="submit" class="sendComment btn btn-default inline">Send</button>\n' +
-        '                        <button type="submit" class="cancelComment btn btn-default inline">Cancel</button>\n' +
-        '                    </form>\n' +
-        '                </div>\n' +
+        // '                <div class="comment clearRight"> <!-- comment -->\n' +
+        // '                    <hr/>\n' +
+        // '                    <p class="inline">Why aren\'t you using a onClickListener for the create lobby button? And why are you\n' +
+        // '                        setting first the child\n' +
+        // '                        game \'s value to be "CHANGED" and then overwrite it? – </p>\n' +
+        // '                    <a href="#" class="username inline">Catalin Ghita</a>\n' +
+        // '                    <p class="commentDateAndTime inline">Aug 26 at 21:39</p>\n' +
+        // '                </div>\n' +
+        // '\n' +
+        // '                <div class="commentTextarea clearRight displayNone">\n' +
+        // '                    <hr/>\n' +
+        // '                    <form>\n' +
+        // '                        <div class="form-group">\n' +
+        // '                            <textarea class="form-control" rows="2" placeholder="Comment here..."></textarea>\n' +
+        // '                        </div>\n' +
+        // '\n' +
+        // '                        <button type="submit" class="sendComment btn btn-default inline">Send</button>\n' +
+        // '                        <button type="submit" class="cancelComment btn btn-default inline">Cancel</button>\n' +
+        // '                    </form>\n' +
+        // '                </div>\n' +
         '\n' +
         '                <div class="addComment clearRight" style="display: block;">\n' +
         '                    <hr/>\n' +
