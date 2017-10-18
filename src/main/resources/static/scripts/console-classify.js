@@ -51,17 +51,16 @@ function populateClassifiersList(classifiers) {
 
 function listenToClassifierSelection() {
     $(".dropdown-menu li").click(function () {
-        alert("CLASSIFIER SELECTED");
+        $(".dropdown-menu li").removeClass("active");
+        alert("classifier selected");
+        $(this).addClass("active");
         // console.log("CLASSIFIER SELECTED");
-        alert(this.id);
         model_key = this.id.toString();
-        alert(model_key);
     });
 }
 
 //uploads file using ajax
 function ajax_classify_image() {
-    alert(model_key);
     onClassificationStarted();
     var form = $('#fileUploadForm')[0];
     var data = new FormData(form);

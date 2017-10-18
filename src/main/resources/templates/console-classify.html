@@ -50,19 +50,16 @@
             Lucilius imperdiet urbanitas nec ea, sea sumo habemus ne.</h4>
 
         <!-- Dropdown classifiers -->
-        <div class="dropdown dropdown-classifiers">
-            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Classifiers
+        <div class="dropdown">
+            <button id="dropdown-preview" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                Classifiers
                 <span class="caret"></span></button>
-            <ul class="dropdown-menu scrollable-dropdown">
-                <!--<li id="dasddasd"><a href="#">Dogs</a></li>-->
-                <!--<li><a href="#">Cats</a></li>-->
-                <!--<li><a href="#">Ants</a></li>-->
-                <!--<li><a href="#">Shit</a></li>-->
-                <!--<li><a href="#">Ballpen</a></li>-->
-                <!--<li><a href="#">Hopia</a></li>-->
-                <!--<li><a href="#">Peso Bills</a></li>-->
-                <!--<li><a href="#">Dust</a></li>-->
-                <!--<li><a href="#">Air</a></li>-->
+            <ul class="dropdown-menu">
+                <li id="flowers" class="active"><a href="#">Flowers</a></li>
+                <li id="hands"><a href="#">Hand Gestures</a></li>
+                <li id="bills"><a href="#">Bills</a></li>
+                <li id="Dogs"><a href="#">Dogs</a></li>
+                <!-- Put the categories here -->
             </ul>
         </div>
 
@@ -104,21 +101,8 @@
                         <div class="panel-group panel2 w3-round-large" style="width: 100%">
                             <div class="panel panel-default">
                                 <div class="panel-heading text-center">Score</div>
-                                <div class="panel-content">
-                                    <h6>0.94</h6>
-                                    <div class="progress">
-                                        <div class="progress-bar progress-bar-custom text" role="progressbar"
-                                             aria-valuenow="94"
-                                             aria-valuemin="0" aria-valuemax="100" style="width: 14%;">
-                                        </div>
-                                    </div>
-                                    <h6>0.94</h6>
-                                    <div class="progress">
-                                        <div class="progress-bar progress-bar-custom text" role="progressbar"
-                                             aria-valuenow="94"
-                                             aria-valuemin="0" aria-valuemax="100" style="width: 14%;">
-                                        </div>
-                                    </div>
+                                <div id="progressList" class="panel-content">
+
                                 </div>
                             </div>
                         </div>
