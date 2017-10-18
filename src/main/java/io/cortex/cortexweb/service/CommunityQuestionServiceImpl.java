@@ -45,6 +45,11 @@ public class CommunityQuestionServiceImpl implements CommunityQuestionService {
     }
 
     @Override
+    public void updateMarked(int question_number) {
+        communityQuestionRepository.updateMarked(question_number);
+    }
+
+    @Override
     public CommunityQuestion findOne(Integer number) {
         return communityQuestionRepository.findOne(number);
     }

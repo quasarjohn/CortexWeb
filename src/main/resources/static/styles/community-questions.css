@@ -105,7 +105,21 @@ hr {
     background-color: gray;
 }
 
-.col-sm-2 h3, .col-sm-2 p, .askedBy p, .askedBy .reputationTooltip {
+.col-sm-2 span {
+    margin-top: 32px;
+    font-size: 56px;
+    margin-bottom: 5px;
+}
+
+.col-sm-2 span:hover {
+    cursor: pointer;
+}
+
+.bg-teal {
+    color: teal;
+}
+
+.col-sm-2 h3, .askedBy p, .askedBy .reputationTooltip {
     color: #6a737c;
 }
 

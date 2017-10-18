@@ -37,6 +37,9 @@ public class CommunityQuestion {
     @Column(name = "picture_path")
     private String PICTURE_PATH;
 
+    @Column(name = "marked")
+    private int marked;
+
     @Transient
     private String parsed_time;
     @Transient
@@ -120,5 +123,13 @@ public class CommunityQuestion {
 
     public void setPICTURE_PATH(String PICTURE_PATH) {
         this.PICTURE_PATH = PICTURE_PATH;
+    }
+
+    public int getMarked() {
+        return marked;
+    }
+
+    public void setMarked(int marked) {
+        this.marked = marked;
     }
 }

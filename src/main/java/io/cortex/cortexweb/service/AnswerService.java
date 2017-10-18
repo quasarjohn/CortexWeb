@@ -8,4 +8,6 @@ public interface AnswerService {
     void saveAnswer(Answer answer);
 
     Iterable<Answer> findAnswersByQuestion_number(int question_number);
+
+    void updateMarked(int question_number, String answer);
 }

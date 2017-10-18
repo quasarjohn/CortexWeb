@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 
+import static java.lang.Integer.parseInt;
+
 @Controller
 public class CommunityController {
     private UserService userService;
@@ -82,6 +84,15 @@ public class CommunityController {
         return "community-users";
     }
 
+    @RequestMapping("/marked-as-answer/{question_number}/{body}")
+    public String markAnswer(Model model, @PathVariable String question_number, @PathVariable String body) {
+        System.out.println("marked question number " + parseInt(question_number) + "body " + body);
+
+        answerService.updateMarked(parseInt(question_number), body);
+        communityQuestionService.updateMarked(parseInt(question_number));
+
+        return "redirect:/question-"+question_number;
+    }
 
     @MessageMapping("/new-question")
     @SendTo("/community/questions")
@@ -101,7 +112,6 @@ public class CommunityController {
 
         return question;
     }
-
 
     //TODO dynamic DestinationVariable
     @MessageMapping("/new-answer/question-{question_number}")
@@ -130,13 +140,6 @@ public class CommunityController {
 
         return answer;
     }
-
-//    private String currentUser(Principal principal) {
-//        User u = userService.findUserByEmail(principal.getName());
-//        String user = u.getUsername();
-//
-//        return user;
-//    }
 
     private String currentUser(Principal principal) {
         //eto pre yung binago ko. kaya lang, magiging empty string tapos magnunull pa rin

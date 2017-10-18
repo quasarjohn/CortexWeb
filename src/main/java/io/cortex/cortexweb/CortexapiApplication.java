@@ -16,7 +16,7 @@ import java.sql.SQLException;
 public class CortexapiApplication {
 
 	public static void main(String[] args) throws SQLException {
-//		Server.createTcpServer("-tcpPort", "9092", "-tcpAllowOthers").start();
+		Server.createTcpServer("-tcpPort", "9092", "-tcpAllowOthers").start();
 		SpringApplication.run(CortexapiApplication.class, args);
 	}
 
