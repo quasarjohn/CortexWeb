@@ -22,7 +22,7 @@ body {
 /*}*/
 
 #sidebar {
-    height: 88vh;
+    height: 92vh;
     right: 0;
 }
 
@@ -96,7 +96,7 @@ body {
 
 #con #mainContent {
     position: fixed;
-    height: 88vh;
+    height: 92vh;
     width: 47vw;
     left: 15vw;
     overflow: auto;
@@ -107,7 +107,7 @@ body {
 }
 
 #con #scrollSpy, #con #mainContent, #sidebar {
-    margin-top: 12.5vh;
+    margin-top: 8.5vh;
 }
 
 #con ul {
